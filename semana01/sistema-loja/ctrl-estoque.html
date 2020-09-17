@@ -1,23 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Controle de Estoque</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
     <div>
-        <p>Jó Quem Pô</p>
+        <header class="head">
+            <p class="nome-da-loja">Jó Quem Pô!</p>
+        </header>
     </div>
     
-    <div>
-        <a href="index.html">Página Inicial</a>
-        <a href="ctrl-estoque.html">Controle de Estoque</a>
-        <a href="add-produto.html">Adicionar Produto</a>
-        <a href="funcionarios.html">Funcionários</a>
-    </div>
-
     <h2>Controle de Estoque</h2>
 
     <table>
@@ -29,28 +25,28 @@
         </tr>
 
         <tr>
-            <td><img src="./img/pedra.jpg" alt="Uma linda pedra."/></td>
+            <td><img class="imagem-estoque" src="./img/pedra.jpg" alt="Uma linda pedra."/></td>
             <td> Pedra </td>
             <td> 10,00 </td>
             <td> 500 </td>
         </tr>
 
         <tr>
-            <td><img src="./img/papel.jpg" alt="Folhas de papel sulfite."/></td>
+            <td><img class="imagem-estoque" src="./img/papel.jpg" alt="Folhas de papel sulfite."/></td>
             <td> Papel </td>
             <td> 80,00 </td>
             <td> 100 </td>
         </tr>
 
         <tr>
-            <td><img src="./img/tesoura.jpg" alt="Uma tesoura profissional."/></td>
+            <td><img class="imagem-estoque" src="./img/tesoura.jpg" alt="Uma tesoura profissional."/></td>
             <td> Tesoura </td>
             <td> 105,00 </td>
             <td> 5 </td>
         </tr>
 
         <tr>
-            <td><img src="./img/fogo.jpg" alt="Vela com chama."/></td>
+            <td><img class="imagem-estoque" src="./img/fogo.jpg" alt="Vela com chama."/></td>
             <td> Fogo </td>
             <td> 300,00 </td>
             <td> 7 </td>
@@ -58,7 +54,7 @@
         
         <!-- Crie mais uma linha desta tabela abaixo \/ -->
         <tr>
-            <td><img src="./img/chuva.jpg" alt="Bom... tecnicamente, uma chuva."/></td>
+            <td><img class="imagem-estoque" src="./img/chuva.jpg" alt="Bom... tecnicamente, uma chuva."/></td>
             <td> Chuva </td>
             <td> 799,90 </td>
             <td> 3 </td>
@@ -66,5 +62,13 @@
         
     </table>
 
+    <div>
+        <footer class="foot">
+            <a class="foota" href="index.html">Página Inicial</a>
+            <a class="foota" href="ctrl-estoque.html">Controle de Estoque</a>
+            <a class="foota" href="add-produto.html">Adicionar Produto</a>
+            <a class="foota" href="funcionarios.html">Funcionários</a>
+        </footer>
+    </div>
 </body>
 </html>

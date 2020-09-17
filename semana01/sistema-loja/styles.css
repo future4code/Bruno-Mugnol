@@ -1,0 +1,57 @@
+.head {
+    color: silver;
+   background-color: rgb(163, 24, 24);
+   margin: 0px;
+   padding: 0px 10vw;
+   text-align: center;
+}
+p.bananinha {
+    font-size: 2vw;
+    text-align: center;
+}
+.nome-da-loja {
+    display: inline;
+    font-size: 5vw;
+    font-style: italic;
+}
+
+p {
+    text-align: justify;
+}
+
+.foot {
+    text-align: center;
+}
+
+.foota {
+    color: rgb(163, 24, 24);
+    margin: 2vw;
+}
+
+header h1 {
+    font-size: 3vw;
+}
+
+
+.apps {
+    width: 50px;
+    text-align: center;
+}
+
+.imagem-estoque {
+    width: 50px;
+}
+
+table {
+    color: mediumaquamarine;
+}
+
+td {
+    text-align: center;
+    background-color: rgb(163, 24, 24);
+}
+
+tr {
+    color: black;
+    margin: 550px;
+}
