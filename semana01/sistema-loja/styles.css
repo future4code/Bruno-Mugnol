@@ -1,18 +1,35 @@
 .head {
     color: silver;
    background-color: rgb(163, 24, 24);
-   margin: 0px;
-   padding: 0px 10vw;
+   margin:-15px 0 5vh 0;
+   position: sticky;
+   top: 0vh;
+   padding: 2vh 0vw;
+   width: 100vw;
    text-align: center;
 }
 p.bananinha {
     font-size: 2vw;
     text-align: center;
+    background-color:  rgb(163, 24, 24);
 }
 .nome-da-loja {
     display: inline;
-    font-size: 5vw;
+    font-size: 7vw;
     font-style: italic;
+    background-color: rgb(163, 24, 24);
+}
+
+header h1 {
+    font-size: 4vw;
+    background-color:  rgb(163, 24, 24);
+}
+
+* {
+    margin-left: 0;
+    background-color: rgb(88, 199, 199);
+    font-size: 2vw;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 p {
@@ -21,37 +38,53 @@ p {
 
 .foot {
     text-align: center;
+    background-color: silver;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    margin:0px;
+    display: block;
 }
 
 .foota {
     color: rgb(163, 24, 24);
-    margin: 2vw;
+    background-color: silver;
+    font-size: 2vh;
+    margin-right: 4vw;
 }
-
-header h1 {
-    font-size: 3vw;
-}
-
 
 .apps {
-    width: 50px;
+    width: 5vw;
+    margin: 10px;
     text-align: center;
 }
 
 .imagem-estoque {
     width: 50px;
 }
-
-table {
-    color: mediumaquamarine;
+th {
+    text-align: center;
+    align-content: center;
+    background-color: maroon;
+    color: silver;
+    border: 100px solid black
+    margin: 0 1000px;
 }
 
 td {
     text-align: center;
-    background-color: rgb(163, 24, 24);
+    background-color: rgb(163, 24, 24);    
+    border: 1px solid black
 }
 
 tr {
     color: black;
-    margin: 550px;
+    font-weight: 550;
+}
+
+p.teste {
+    color: transparent;
+    display: none;
 }
