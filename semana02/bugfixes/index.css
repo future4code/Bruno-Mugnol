@@ -74,7 +74,7 @@ div>p:first-child {
     color: white;
     padding-top: 100px;
     white-space: pre-line;
-    list-style-position: inside;
+    list-style-position: inside; /* aqui */
 }
 
 #container-de-descricao>ol {
