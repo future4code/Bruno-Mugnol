@@ -1,0 +1,149 @@
+* {
+    text-align: justify;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+    background-color: rgba(25, 97, 29, 0.74);
+    margin: 0px;
+}
+
+a {
+    font-weight: bolder;
+    font-variant: small-caps;
+}
+
+.head-div, .head1, #mind-blown, #unorthodox {
+    background-color: rgb(168, 43, 226);
+}
+
+.head-div {    
+    position: sticky;
+    top: 0px;
+    margin: 0vh 0vw;
+    padding: 1vh 0vw 2vh;
+    overflow: auto;
+}
+
+h1#mind-blown {
+    text-align: center;
+    display: block;
+    margin: 10px;
+    padding: 0px;
+}
+
+#unorthodox {
+    text-align: right;
+}
+
+header#head2 {
+    display: block;
+    padding-right: 3vw;
+}
+
+#contato {
+    float: left;
+    margin: 0px 4vw;
+    font-size: medium;
+    font-variant: small-caps;
+}
+
+#here {    
+    font-variant: small-caps;
+    color: black;
+}
+
+p#this-page {
+    float: right;
+    margin: 0px 4vw;
+    font-size: small;
+    font-style: italic;
+}
+
+div#div-about {
+    margin: 20px 70px 10px;
+}
+
+#about-me {
+    display: block;
+    margin-bottom: -15px;
+}
+
+.pos1 {margin-left: 20px;}
+.pos2 {margin-left: 50px;}
+.pos3 {margin-left: 80px;}
+.pos4 {margin-left: 110px;}
+.pos5 {margin-left: 130px;}
+.pos7 {margin-left: -20px;}
+.pos8 {margin-left: 0px;}
+.pos9 {margin-left: -20px;}
+.pos10 {margin-left: -60px;}
+.pos11 {margin-left: -80px;}
+.pos12 {margin-left: -100px;}
+.pos13 {margin-left: -120px;}
+
+.more-button {
+    background-color: rgba(25, 97, 29, 0.74);
+    text-align: center;
+    color: black;
+    padding: 15px 10px;
+    margin: 15px 30px;
+    border: 2px solid rgba(25, 97, 29, 0.74);
+    transition-duration: 0.2s;
+    display: block;
+}
+
+.more-button:hover {
+    background-color: rgb(168, 43, 226);
+    border: 2px solid rgb(130, 29, 177);
+}
+
+.more-button:focus {
+    background-color: rgb(168, 43, 226);
+    border: 2px solid rgb(130, 29, 177);
+}
+
+.div-more {
+    display: none;
+    margin: 10px 7vw;
+    padding: 10px 30px;
+    background-color: rgba(25, 97, 29, 0.219);
+    border: 1px solid rgba(25, 97, 29, 0.74);
+}
+
+.more-button:focus + .div-more {
+    display: block;
+}
+
+#more1 #more2 {    
+    margin: auto 15px;
+}
+
+li.inst {
+    margin: -20px auto;
+}
+
+p.inst {
+    display: inline-block;
+}
+
+div.inst{
+    display: inline-block;
+    margin-right: 7vw;
+    margin-left: 7vw;
+}
+
+div.projects{
+    display: inline-block;
+    margin-left: 7vw;
+    margin-right: 7vw;
+}
+
+div#inst-proj {
+    margin: -10px 0px;
+    text-align: center;
+}
+
+h2.h2-inst, h2.h2-projects {
+    text-align: center;
+}
