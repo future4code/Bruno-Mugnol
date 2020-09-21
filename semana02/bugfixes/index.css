@@ -38,6 +38,18 @@ img {
     width: 50px;
 }
 
+img.icone {
+    width: auto;
+}
+
+img.icone:hover {
+    opacity: .5;
+}
+
+img.icone:active {
+    opacity: 1;
+}
+
 div>p:first-child {
     display: inline;
 }
