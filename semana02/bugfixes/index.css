@@ -19,6 +19,8 @@ h2 {
 input {
     height: 20px;
     width: 500px;
+    border: none;
+    border-bottom: 1.75px solid black;
 }
 
 button:focus {
@@ -118,7 +120,6 @@ td button {
     margin-top: 20px;
     height: 100px;
 }
-
 
 #back-button {
     background-color: white;
