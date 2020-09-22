@@ -1,0 +1,131 @@
+* {
+    text-align: justify;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+    background-color: rgba(25, 97, 29, 0.74);
+    margin: 0px;
+}
+
+a {
+    font-weight: bolder;
+    font-variant: small-caps;
+}
+
+.head-div, .head1, #mind-blown, #unorthodox {
+    background-color: rgb(168, 43, 226);
+}
+
+.head-div {    
+    position: sticky;
+    top: 0px;
+    margin: 0vh 0vw 2vh;
+    padding: 1vh 0vw 2vh;
+    overflow: auto;
+}
+
+h1#mind-blown {
+    text-align: center;
+    display: block;
+    margin: 10px;
+    padding: 0px;
+}
+
+#unorthodox {
+    text-align: right;
+}
+
+header#head2 {
+    display: block;
+    padding-right: 3vw;
+}
+
+#back {
+    float: left;
+    margin: 0px 6vw;
+    font-size: large;
+    font-variant: small-caps;
+}
+
+#here {    
+    font-variant: small-caps;
+    color: black;
+}
+
+p#this-page {
+    float: right;
+    margin: 0px 4vw;
+    font-size: small;
+    font-style: italic;
+}
+
+.div-form {
+    margin: auto;
+    padding: 30px;
+    padding-bottom: 50px;
+    width: 50%;
+    border: 3px solid green;
+    background-color: rgb(192, 236, 218);
+    overflow: auto;
+}
+
+input, label {
+    display: block;
+    text-align: center;
+}
+
+label{
+    margin-top: 10px;
+}
+
+input {
+    border: 1px solid green;
+    background-color: white;
+}
+
+input#fullname, input#email {
+    width: 60%;
+    margin: auto;
+}
+
+input#texto {
+    width: 75%;
+    margin: auto;
+    overflow: auto;
+    word-break: break-all;
+}
+
+input#send {
+    width: 20%;
+    margin: 30px auto 0px;
+    padding: 15px 10px;
+    border: 1.5px solid green;
+    background-color: rgba(0, 128, 0, 0.425);
+    transition-duration: 0.2s;
+}
+
+input#send:active {
+    background-color: green;
+}
+
+p.me, p.in-me, p.email-me {
+    display: inline;
+    font-size: 20px;
+}
+
+div.me {
+    text-align: center;
+    margin: 30px;
+}
+
+p.in-me {
+    font-variant: small-caps;
+    font-weight: bold;
+}
+
+p.email-me {
+    font-variant: small-caps;
+    font-weight: bold;
+    font-style: italic;
+}
