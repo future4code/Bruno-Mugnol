@@ -9,13 +9,20 @@ div {
     outline: 1px solid black;
 /* outline em vez de border para não aumentar 
 o tamanho da div em 1px para cada lado */
-    width: 100%;
+    width: calc(100% - 20px);
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
 }
 
-div#main-container {    
+/* 421px - 800px (Tablets e celulares grandes) */
+div#main-container {
+    outline: none;
     display: grid;
     grid-template: repeat(10,80px) / 1fr 1fr;
-    grid-gap: 30px 20px;
+    gap: 30px 5px;
     margin:0;    
     padding: 0;
     width: 100%;
@@ -25,6 +32,7 @@ div#main-container {
     background-color: red;
     grid-column: span 2;
     margin: 0;
+    width: 100%;
 }
 
 .blue-block {
@@ -54,4 +62,47 @@ div#main-container {
     margin-bottom: 10px;
     grid-column: span 2;
     height: 100%;
+}
+
+/* <600px (celulares e dispositivos menores) */
+@media screen and (max-device-width: 420px) {
+    div#main-container {
+        display: grid;
+        grid-template-rows: repeat(12, 80px);
+        grid-template-columns: 1fr;
+    }
+
+    #first-block, .green-block, #last-block {
+        grid-column: span 1;
+    }
+
+    .black-block {
+        grid-row: span 1;
+    }
+}
+
+/* >800px (computadores e TVs) */
+@media screen and (min-device-width: 801px) {
+    div#main-container {
+        display: grid;
+        grid-template-rows: repeat(8, 80px);
+        grid-template-columns: 33% 1fr 1fr 33%;
+    }
+
+    #first-block {
+        grid-area: 1 / 1 / 2 / -1;
+    }
+
+    .green-block {
+        grid-column: span 1;
+    }
+
+    .yellow-block, .black-block, div#block-10{
+        grid-column: span 2;
+    }
+
+     #last-block {
+        grid-column: span 1;
+        margin-bottom: 0;
+    }
 }
