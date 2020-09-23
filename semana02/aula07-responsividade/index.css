@@ -6,11 +6,25 @@ body {
 }
 
 div {
-    border: 1px solid black;
+    outline: 1px solid black;
+/* outline em vez de border para não aumentar 
+o tamanho da div em 1px para cada lado */
+    width: 100%;
+}
+
+div#main-container {    
+    display: grid;
+    grid-template: repeat(10,80px) / 1fr 1fr;
+    grid-gap: 30px 20px;
+    margin:0;    
+    padding: 0;
+    width: 100%;
 }
 
 #first-block {
     background-color: red;
+    grid-column: span 2;
+    margin: 0;
 }
 
 .blue-block {
@@ -23,13 +37,21 @@ div {
 
 .green-block {
     background-color: green;
+    grid-column: span 2;
 }
 
 .black-block {
     background-color: black;
     color: white;
+    grid-row: span 3;
 }
 
 .white-block {
     background-color: white;
+}
+
+#last-block {
+    margin-bottom: 10px;
+    grid-column: span 2;
+    height: 100%;
 }
