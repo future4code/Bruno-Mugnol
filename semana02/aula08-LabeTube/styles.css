@@ -79,6 +79,14 @@ article {
     width: 100%;
     text-align: center;
     background-color: burlywood;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+p#thebest {
+    white-space: pre-line;
+    font-style: italic;
 }
 
 footer {
@@ -111,11 +119,9 @@ iframe {
 
 .secao-video {
     display: none;
-    position: fixed;
-    bottom: 30vh;
 }
 
-#secao-catodico:hover + #catodico {
-    background-color: cyan;
-    display: block;
+h1.nome-do-site:hover + footer{
+    color: darkblue;
+    background-color: teal;
 }
