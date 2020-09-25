@@ -1,0 +1,118 @@
+/* Esse site será Mobile-First, com foco para usuários de iPhone6/7/8 */
+/* cor de fundo do logo: rgb(19, 34, 53)
+cor de letra do logo: rgb(109, 218, 211)
+combinação: rgb(132, 140, 156) */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: fit-content;
+}
+
+/* Cabeçalho */
+header{
+    height: 80px;
+    width: 100%;
+    background-color: rgb(19, 34, 53);
+    display: grid;
+    grid-template: 1fr / 70% 30%;
+    position: sticky;
+}
+
+/* Acesso ao Menu */
+label#menu-checkbox {
+    font-weight: bold;
+    color: rgb(213, 217, 226);
+    background-color: rgb(19, 34, 53);
+    grid-area: 1 / 2 / 1 / 3;
+    height: 48px;
+    width: 62px;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    outline: 1px solid silver;
+}
+
+/* Texto M E N U */
+#menu-p {
+    grid-area: 1 / 1 / 2 / 2;
+    align-items: center;
+}
+
+/* Escondendo o checkbox padrão */
+#menu-checkbox input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 0;
+    cursor: pointer;
+}
+
+/* Nosso próprio checkbox, invisível, sobrepondo o MENU */
+.checkmark {
+    grid-area: 1 / 1 / 2 / 2;
+    flex-shrink: 0;
+    height: 48px;
+    width: 82px;
+    opacity: 0.7;
+    position: sticky;
+}
+
+/* Logo do cabeçalho */
+img#logo-header {
+    margin-left: 3px;
+    height: 100%;
+    width: auto;
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+/* Opções do MENU */
+.menu-aberto {
+    list-style-type: none;
+    background-color: aliceblue;
+    grid-area: 1 / 2 / 2 /3;
+    display: none;
+    width: 50vw;
+    position: absolute;
+    top: 80px;
+    left: 50vw;
+}
+
+/* Itens das opções do MENU */
+.menu-li {
+    border: 2px solid rgb(132, 140, 156);
+    border-top: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+}
+
+/* efeitos do menu */
+#menu-checkbox input:not(:checked) ~.checkmark{
+    background-color: rgba(45, 69, 100, 0.76);
+    color: rgb(109, 218, 211);
+}
+
+.menu-li:active {
+    background-color: rgba(1, 8, 14, 0.5);
+}
+
+#menu-checkbox input:checked ~.checkmark,h1 {
+    background-color: black;
+    display: block;
+    color: brown;
+}
+
+#menu-checkbox input:checked ~ .checkmark,h1 {
+    color: blueviolet;
+}
