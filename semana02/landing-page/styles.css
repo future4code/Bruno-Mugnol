@@ -24,7 +24,7 @@ header{
 }
 
 /* Acesso ao Menu */
-label#menu-checkbox {
+#menu-p {
     font-weight: bold;
     color: rgb(213, 217, 226);
     background-color: rgb(19, 34, 53);
@@ -41,32 +41,6 @@ label#menu-checkbox {
     outline: 1px solid silver;
 }
 
-/* Texto M E N U */
-#menu-p {
-    grid-area: 1 / 1 / 2 / 2;
-    align-items: center;
-}
-
-/* Escondendo o checkbox padrão */
-#menu-checkbox input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 0;
-    width: 0;
-    cursor: pointer;
-}
-
-/* Nosso próprio checkbox, invisível, sobrepondo o MENU */
-.checkmark {
-    grid-area: 1 / 1 / 2 / 2;
-    flex-shrink: 0;
-    height: 48px;
-    width: 82px;
-    opacity: 0.7;
-    position: sticky;
-}
-
 /* Logo do cabeçalho */
 img#logo-header {
     margin-left: 3px;
@@ -79,7 +53,6 @@ img#logo-header {
 .menu-aberto {
     list-style-type: none;
     background-color: aliceblue;
-    grid-area: 1 / 2 / 2 /3;
     display: none;
     width: 50vw;
     position: absolute;
@@ -90,6 +63,8 @@ img#logo-header {
 /* Itens das opções do MENU */
 .menu-li {
     border: 2px solid rgb(132, 140, 156);
+    color: rgb(19, 34, 53);
+    font-weight: bolder;
     border-top: none;
     display: flex;
     justify-content: center;
@@ -98,21 +73,11 @@ img#logo-header {
 }
 
 /* efeitos do menu */
-#menu-checkbox input:not(:checked) ~.checkmark{
+#menu-p:hover {
     background-color: rgba(45, 69, 100, 0.76);
     color: rgb(109, 218, 211);
 }
 
-.menu-li:active {
-    background-color: rgba(1, 8, 14, 0.5);
-}
-
-#menu-checkbox input:checked ~.checkmark,h1 {
-    background-color: black;
+#menu-p:hover + .menu-aberto {
     display: block;
-    color: brown;
-}
-
-#menu-checkbox input:checked ~ .checkmark,h1 {
-    color: blueviolet;
 }
