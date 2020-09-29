@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>F4Life</title>
+</head>
+
+<body>
+    <header>
+        <img id="logo-header" src="./resources/f4life-cropped1.png">
+        <p id="menu-p">M
+            E
+            N
+            U</p>
+        <ul class="menu-aberto">
+            <li class="menu-li">Login</li>
+            <li class="menu-li">Cadastre-se</li>
+            <li class="menu-li">Cadastre seu imóvel</li>
+            <li class="menu-li">Recomendados</li>
+            <li class="menu-li">Configurações</li>
+            <li class="menu-li">Sair</li>
+        </ul>
+    </header>
+
+    <section class="subtitle">
+        <h2 class="subtitle">Suas escolhas definem sua vida.</h2>
+    </section>
+
+    <main>
+        <section id="teste1"></section>
+        <section id="teste2"></section>
+        <section id="teste3"></section>
+        <section id="teste4"></section>
+        <form id="form-busca">
+            <section class="section-form" id="section-cidade">
+                <label id="label-cidade" for="input-cidade">Cidade</label>
+                <select id="input-cidade" name="input-cidade">
+                    <option value="sp">São Paulo</option>
+                    <option value="bh">Belo Horizonte</option>
+                    <option value="rio">Rio de Janeiro</option>
+                </select>
+            </section>
+            <section class="section-form" id="section-bairro">
+                <label id="label-bairro" for="input-bairro">Bairro</label>
+                <input id="input-bairro" type="text">
+            </section>
+            <section class="section-form" id="section-quartos">
+                <label id="label-quartos" for="input-quartos">Quartos</label>
+                <input id="input-quartos" type="number">
+            </section>
+            <section class="section-form" id="section-valor">
+                <label id="label-valor" for="input-valor">Preço</label>
+                <select id="input-valor" name="input-valor">
+                    <option value="mil">até R$1000,00</option>
+                    <option value="bh">de R$1000,00 a R$1500,00</option>
+                    <option value="rio">acima de R$1500,00</option>
+                </select>
+            </section>
+            <button id="button-buscar" type="submit">B
+                U
+                S
+                C
+                A
+                R</button>
+        </form>
+
+        <article>
+            <section class="section-imoveis" id="imoveis-sp">
+                <h3 id="h-sp">Imóveis recentes em
+                    São Paulo:</h3>
+                <figure class="fig-imoveis" id="casa1">
+                    <img class="img-casa" src="./resources/casa1.jpg">
+                    <figcaption class="legenda">Para alugar em Vila Madalena</figcaption>
+                </figure>
+                <figure class="fig-imoveis" id="casa2">
+                    <img class="img-casa" src="./resources/casa2.jpg">
+                    <figcaption class="legenda">Para comprar em Vila Prudente</figcaption>
+                </figure>
+            </section>
+
+            <section class="section-imoveis" id="imoveis-bh">
+                <h3 id="h-bh">Imóveis recentes em
+                    Belo Horizonte:</h3>
+                <figure class="fig-imoveis" id="casa3">
+                    <img class="img-casa" src="./resources/casa3.jpg">
+                    <figcaption class="legenda">Para comprar em Cidade Jardim</figcaption>
+                </figure>
+                <figure class="fig-imoveis" id="casa4">
+                    <img class="img-casa" src="./resources/casa4.jpg">
+                    <figcaption class="legenda">Para alugar em Jd São Marcos</figcaption>
+                </figure>
+            </section>
+
+            <section class="section-imoveis" id="imoveis-rio">
+                <h3 id="h-rio">Imóveis recentes em
+                    Rio de Janeiro:</h3>
+                <figure class="fig-imoveis" id="casa5">
+                    <img class="img-casa" src="./resources/casa5.jpg">
+                    <figcaption class="legenda">Para alugar em Copacabana</figcaption>
+                </figure>
+                <figure class="fig-imoveis" id="casa6">
+                    <img class="img-casa" src="./resources/casa6.jpg">
+                    <figcaption class="legenda">Para alugar em Santa Cruz</figcaption>
+                </figure>
+            </section>
+        </article>
+    </main>
+    <footer>
+        <p id="contato">Sigam-nos os bons:</p>
+        <section id="container-contato">
+            <a href="https://facebook.com/" target="_blank"><img class="img-apps" src="https://image.flaticon.com/icons/png/512/25/25305.png"/></a>
+            <a href="https://www.instagram.com/?hl=en/" target="_blank"><img class="img-apps" src="https://image.flaticon.com/icons/png/512/25/25425.png"/></a>
+            <a href="https://twitter.com/?lang=en/" target="_blank"><img class="img-apps" src="https://image.flaticon.com/icons/png/512/8/8800.png"/></a>
+        </section>
+    </footer>
+</body>
+
+</html>

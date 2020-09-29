@@ -1,0 +1,317 @@
+/* Esse site será Mobile-First, com foco para usuários de iPhone6/7/8 */
+/* cor de fundo do logo: rgb(19, 34, 53)
+cor de letra do logo: rgb(109, 218, 211)
+combinação: rgb(132, 140, 156) */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: fit-content;
+}
+
+/* Cabeçalho */
+header {
+    height: 80px;
+    width: 100%;
+    background-color: rgb(19, 34, 53);
+    display: grid;
+    grid-template: 1fr / 70% 30%;
+    position: sticky;
+    top: 0;
+}
+
+/* Acesso ao Menu */
+#menu-p {
+    font-weight: bold;
+    color: rgb(213, 217, 226);
+    background-color: rgb(19, 34, 53);
+    grid-area: 1 / 2 / 1 / 3;
+    height: 48px;
+    width: fit-content;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    outline: 1px solid silver;
+}
+
+/* Logo do cabeçalho */
+img#logo-header {
+    margin-left: 3px;
+    height: 100%;
+    width: auto;
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+/* Opções do MENU */
+.menu-aberto {
+    list-style-type: none;
+    background-color: aliceblue;
+    display: none;
+    width: 60vw;
+    position: absolute;
+    top: 80px;
+    right: 0;
+}
+
+/* Itens das opções do MENU */
+.menu-li {
+    border: 2px solid rgb(132, 140, 156);
+    color: rgb(19, 34, 53);
+    font-weight: bolder;
+    border-top: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+}
+
+/* Efeitos do menu */
+#menu-p:hover {
+    background-color: rgba(45, 69, 100, 0.76);
+    color: rgb(109, 218, 211);
+}
+
+#menu-p:hover + .menu-aberto {
+    display: block;
+}
+
+.menu-aberto:hover {
+    display: block;
+}
+
+/* Subtítulo inicial */
+section.subtitle {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(76, 148, 148);
+    text-align: center;
+    color: rgb(18, 14, 61);
+}
+
+h2.subtitle {
+    display: inline;
+    color: rgb(3, 15, 31);
+}
+
+
+/* Layout da página */
+main {
+    width: 100%;
+    height: fit-content;
+    background-color:#384454;
+    display: grid;
+    grid-template: repeat(3,48px) 1fr / 10% 1fr 1fr 10%;
+}
+
+/* Formulário */
+form#form-busca {
+    background-color: rgb(185, 189, 195);
+    color: rgb(20, 36, 52);
+    grid-area: 1 / 1 / 4 / 5;
+    display: grid;
+    grid-template: 1fr 1fr / 10% 1fr 1fr 1fr 1fr 1fr 10%;
+    padding: 8px;
+    align-items: center;
+}
+
+form#form-busca section {
+    padding: 8px;
+}
+
+select {
+    width: 100%;
+}
+
+input#input-quartos {
+    width: 64px;
+}
+
+input#input-bairro {
+    width: 100%;
+}
+
+/* Posicionamento dentro do formulário */
+section#section-cidade {
+    grid-area: 1 / 2 / 2 / span 3;
+}
+
+section#section-quartos {
+    grid-area: 2 / -3 / 3 / -2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+section#section-bairro {
+    grid-area: 2 / 2 / 3 / span 4;
+}
+
+section#section-valor {
+    grid-area: 1 / -4 / 2 / -2 ;
+}
+
+button#button-buscar {
+    white-space: pre-line;
+    grid-area: 1 / -2 / -1 / -1;
+    padding: 8px 0;
+    margin: 4px;
+}
+
+/* Imóveis recentes */
+article {
+    background-color:#244654;
+    grid-area: 4 / 1 / -1 / 5;
+    display: grid;
+    grid-template-columns: 5% 1fr 5%;
+    width: 100%;
+    height: fit-content;
+}
+
+/* Posição das imagens e textos */
+section.section-imoveis{
+    width: 100%;
+    grid-column: 2 / 3;
+    display: grid;
+    grid-template: 64px 240px 240px / 1fr;
+    margin-bottom: 8px;
+}
+
+.section-imoveis > h3 {    
+    text-align: center;
+    grid-column: 1 / 3;
+    padding: 8px;
+    white-space: pre-line;
+    background-color: rgb(36, 70, 84);
+    color: white;
+}
+.fig-imoveis {
+    padding: 8px;
+    border: 1px solid black;    
+    grid-column: 1 / 3;
+    background-color: rgb(76, 148, 148);
+}
+
+/* Legenda */
+.legenda {
+    text-align: center;
+}
+
+/* Imagens de imóveis */
+img.img-casa {
+    width: 100%;
+    height: 200px;
+    max-height: 100%;
+}
+
+/* Logo apps */
+img.img-apps {
+    width: 32px;
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    height: 64px;
+    background-color: rgb(185, 189, 195);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+}
+
+/* Texto do footer */
+footer p {
+    margin: 4px;
+}
+
+/* Disposição das imagens */
+footer section#container-contato {
+    display: flex;
+    justify-content: space-around;
+}
+
+@media screen and (orientation:landscape) and (max-width:668px) {
+    section.section-imoveis {
+        grid-template: 64px 240px / 1fr 1fr;
+    }
+
+    .fig-imoveis {
+        grid-column: span 1;
+    }
+}
+
+@media screen and (min-width:550px) {
+
+    body {
+        width: 100vw;
+        height: fit-content;
+        overflow-x: hidden;
+    }
+    
+    img#logo-header {
+        justify-self: left;
+    }
+
+    .menu-aberto {
+        width: 30vw;
+    }
+
+    form#form-busca {
+        grid-template-columns: 10% 1fr 1fr 1fr 10%;
+    }
+
+    section#section-cidade {        
+        grid-column: 2 / span 1;
+    }
+    
+    section#section-bairro {
+        grid-column: 2 / span 2;
+    }
+
+    section#section-quartos {
+        grid-area: 1 / 3 / 2 / 4;
+        justify-self: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    section#section-valor {
+        grid-column: 4 / span 1;
+    }
+
+    button#button-buscar {
+        grid-area: 2 / 4 / 3 /5;
+        white-space: nowrap;
+        display: flex;
+        justify-content: center;
+        margin-left: 32px;
+    }
+
+    section.section-imoveis {
+        grid-template: 64px 480px / 1fr 1fr;
+    }
+
+    img.img-casa {
+        height: 440px;
+    }
+
+    .fig-imoveis {
+        grid-column: span 1;
+    }
+
+    .section-imoveis > h3 {
+        white-space: nowrap;
+        padding-top: 24px;
+    }
+
+}
