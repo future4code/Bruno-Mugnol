@@ -157,7 +157,7 @@ Se utilizassemos let e não const, poderíamos apenas atribuir um novo valor par
 
 // console.log(`O número correto é ${num}`)
 // while (verifier === 0) {
-//     guess = Math.floor((Math.random() * topGuess) + bottomGuess)
+//     guess = Math.floor((Math.random() * (topGuess - bottomGuess)) + bottomGuess)
 //     console.log (`O número chutado foi: ${guess}`)
 //     counter++
 //     if (guess < num){
@@ -172,5 +172,3 @@ Se utilizassemos let e não const, poderíamos apenas atribuir um novo valor par
 // }
 // console.log(`Parabéns, você acertou!!
 // O número de tentativas foi: ${counter}`)
-
-// Não deu muuuito certo, mas funciona!
