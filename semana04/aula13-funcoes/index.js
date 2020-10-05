@@ -171,11 +171,9 @@ A função recebe um array, verifica quais elementos são pares e armazena o val
 
 // // 2.c)
 // let indexOfLargest = (array) =>{
-//     let maximum = array[0]
-//     let maxIndex = 1
+//     let maxIndex = 0
 //     for (i=0; i < array.length; i++){
-//         if (maximum < array[i]){
-//             maximum = element
+//         if (largestNumber(array) === array[i]){
 //             maxIndex = i
 //         }
 //     }
