@@ -30,7 +30,8 @@ const addListItem = () =>{
     addUnorderedList(valueDayOfWeek())
     const unorderedList = document.getElementById(`${valueDayOfWeek() + "-list"}`)
     taskCounter++
-    unorderedList.innerHTML += `<li id=${"taskNumber" + taskCounter} onclick="lineThroughText()">${newTask()}</li>`
+    taskName = 'taskNumber' + taskCounter
+    unorderedList.innerHTML += `<li id=${taskName} onclick="lineThroughText(${taskName})">${newTask()}</li>`
 }
 
 const eraseTasks = () =>{
@@ -43,7 +44,7 @@ const eraseTasks = () =>{
     }
 }
 
-const lineThroughText = () =>{
-    const target = document.
-    target.style.property = "line-through"
+const lineThroughText = (taskId) =>{
+    const target = document.getElementById(`${taskId}`)
+    target.style.textDecoration = "line-through"
 }
