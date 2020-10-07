@@ -1,4 +1,6 @@
 let objectsArray = []
+let stringArray = []
+let submissionCounter = 0
 
 const createObject = () => {
     const titleElement = document.getElementById("titulo-post")
@@ -29,6 +31,21 @@ const clearForm = () => {
     picElement.value = ""
 }
 
+const stringifyObject = () => {
+    const stringedPost = JSON.stringify(createObject())
+    return stringedPost
+}
+
+const submitPost = () => {
+    const blogPost = createObject()
+    const stringedBlogPost = JSON.stringify(blogPost)
+    storeObject()
+    clearForm()
+    console.log(objectsArray)
+    localStorage.clear()
+    localStorage.setItem("postData", `${stringedBlogPost}`)
+}
+
 // O código comentado foi eliminado deste documento por termos criado uma nova página com as mesmas ações
 
 // const printPost = (post) => {
@@ -46,11 +63,3 @@ const clearForm = () => {
 //     printPost(blogPost)
 //     console.log(objectsArray)
 // }
-
-const submitPost = () => {
-    const blogPost = createObject()
-    storeObject()
-    clearForm()
-    printPost(blogPost)
-    console.log(objectsArray)
-}
