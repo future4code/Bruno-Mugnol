@@ -1,6 +1,8 @@
 let objectsArray = []
-let stringArray = []
-let submissionCounter = 0
+
+if (!localStorage.getItem('submissionsCounter')) {
+    localStorage.setItem("submissionsCounter", "0")
+}
 
 const createObject = () => {
     const titleElement = document.getElementById("titulo-post")
@@ -16,10 +18,6 @@ const createObject = () => {
     return blogPost
 }
 
-const storeObject = () => {
-    objectsArray.push(createObject())
-}
-
 const clearForm = () => {
     const titleElement = document.getElementById("titulo-post")
     const authorElement = document.getElementById("autor-post")
@@ -31,35 +29,56 @@ const clearForm = () => {
     picElement.value = ""
 }
 
+const storeObjectInArray = () => {
+    objectsArray.push(createObject())
+}
+
 const stringifyObject = () => {
-    const stringedPost = JSON.stringify(createObject())
-    return stringedPost
+    let stringedObject = JSON.stringify(createObject())
+    return stringedObject
+}
+
+const countPosts = () => {
+    currentCounter = Number(localStorage.getItem("submissionsCounter"))
+    updatedCounterString = `${currentCounter + 1}`
+    localStorage.setItem("submissionsCounter", `${updatedCounterString}`)
+    return currentCounter
+}
+
+const updateLocalStorage = () => {
+    localStorage.setItem(`${"postNumber" + countPosts()}`, `${stringifyObject()}`)
 }
 
 const submitPost = () => {
-    const blogPost = createObject()
-    const stringedBlogPost = JSON.stringify(blogPost)
-    storeObject()
-    clearForm()
-    console.log(objectsArray)
-    localStorage.clear()
-    localStorage.setItem("postData", `${stringedBlogPost}`)
+    if (checkValidity() && checkImage()) {
+        storeObjectInArray()
+        updateLocalStorage()
+        clearForm()
+    } else {
+        alert("Por favor, preencha todos os campos corretamente.")
+    }
 }
 
-// O código comentado foi eliminado deste documento por termos criado uma nova página com as mesmas ações
+const checkValidity = () => {
+    const titleElement = document.getElementById("titulo-post")
+    const authorElement = document.getElementById("autor-post")
+    const textElement = document.getElementById("conteudo-post")
+    let valid = false
+    if ((titleElement.value !== "") && (authorElement.value !== "") && (textElement.value !== "")) {
+        valid = true
+    } else {
+        valid = false
+    }
+    return valid
+}
 
-// const printPost = (post) => {
-//     const container = document.getElementById("container-de-posts")
-//     container.innerHTML += `<h3>${post.title}</h3>
-//     <h5>Autor(a): ${post.author}</h5>
-//     <p>${post.content}</p>
-//     <img src=${post.picture}>`
-// }
-
-// const submitPost = () => {
-//     const blogPost = createObject()
-//     storeObject()
-//     clearForm()
-//     printPost(blogPost)
-//     console.log(objectsArray)
-// }
+const checkImage = () => {
+    const picElement = document.getElementById("pic-post")
+    let validImage = false
+    if (picElement.value.includes("jpeg") || picElement.value.includes("png") || picElement.value.includes("http") || picElement.value.includes(".com")) {
+        validImage = true
+    } else {
+        validImage = false
+    }
+    return validImage
+}
