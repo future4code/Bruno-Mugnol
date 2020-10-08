@@ -26,7 +26,6 @@ function imprimirExtrato(){
 
     // AQUI VEM A IMPLEMENTAÇÃO
     arrDespesas.forEach((despesa) => {
-        gastoTotal += despesa.valor
         switch (despesa.tipo) {
             case 'alimentação':
                 gastoAlimentacao += despesa.valor
@@ -39,6 +38,10 @@ function imprimirExtrato(){
                 break
         }
     })
+
+    gastoTotal = arrDespesas.reduce((acumulador, valorAtual) => {
+        return acumulador + valorAtual.valor
+    }, 0)
 
     divExtrato.innerHTML = `<p>Extrato: Gasto Total: R$${gastoTotal} | Alimentação: R$${gastoAlimentacao} | 
                                         Utilidades: R$${gastoUtilidades} | Viagem: R$${gastoViagem}</p>`
@@ -126,7 +129,7 @@ const organizarDespesas = () => {
     arrDespesas.sort((a,b) => {
         return b.valor - a.valor
     })
-    
+
     imprimirDespesas(arrDespesas)
 }
 
