@@ -52,6 +52,8 @@ function limparFiltros() {
     document.getElementById('tipoFiltro').value = ""
     document.getElementById('valorFiltroMin').value = ""
     document.getElementById('valorFiltroMax').value = ""
+
+    imprimirDespesas(arrDespesas)
 }
 
 
