@@ -48,3 +48,16 @@ array2 contém apenas os elementos não-pares (como nosso array contém apenas n
 
 
 
+// Exercício 4
+/* Cria um array chamado numeros, uma variável numero1 com valor "infinity" (o que significa que não existe um valor maior) e uma variável numero2 com valor zero.
+Há um loop, que realiza seu conteúdo para cada "numero of numeros" (cada elemento do array numeros). Neste loop, se o elemento for menor que numero1, numero1 assume o valor do elemento. Se o elemento for maior que numero2, numero2 assume o valor do elemento.
+
+Perceba que as variáveis numero1 e numero2 serão possivelmente alteradas a cada iteração. O primeiro elemento sempre será menor que numero1, então numero1 assumirá o seu valor. Como numero1 a cada iteração assume o valor do elemento caso ele seja maior que o elemento, obteremos, ao final do loop, o menor valor dentro do array numeros. Ou seja, numero1 será o valor mínimo.
+Com o numero2 o processo será o contrário: ele assume o valor do elemento se este for maior, resultando no maior valor do array numeros ao final do loop. numero2 será o valor máximo.
+
+Será impresso no console, então:
+
+    -10
+    1590
+
+*/
