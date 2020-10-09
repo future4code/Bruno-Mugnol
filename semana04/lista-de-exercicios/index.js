@@ -17,10 +17,34 @@ segundoMontante invoca a função investeDinheiro com os parâmetros "Tesouro Di
 
 Como "Ações" é um tipo de investimento válido, console.log(novoMontante) retornará valorAposInvestimento, com seu novo valor: 150 * 1.1, ou seja, aparecerá no console, em azul (pois é tipo number):
 
-165
+    165
 
 Já em segundoMontante: a função retorna valorAposInvestimento após ter dado o alerta, mas como foi definido vazio, valorAposInvestimento = undefined. Assim, aparecerá no console:
 
-undefined
+    undefined
 
 */
+
+
+
+// Exercício 3
+/* Cria um array chamado numeros e dois arrays vazios, array1 e array2.
+Há um loop, que realiza seu conteúdo para cada "numero of numeros" (cada elemento do array numeros). Se o elemento analisado for par (numero%2 === 0), esse elemento será colocado no final do array1 (quando vazio, se torna o primeiro elemento). Caso contrário, será colocado no final do array2.
+
+numeros.lenght retorna a quantidade de elementos dentro do array numeros, então aparecerá no console:
+
+    Quantidade total de números 14
+
+
+array1 contém apenas os elementos pares do array numeros, então a quantidade de elementos nele será 6. No console será impresso array1.lenght, portanto:
+
+    6
+
+array2 contém apenas os elementos não-pares (como nosso array contém apenas números inteiros, isso significa que todos elementos serão ímpares). A quantidade de elementos será 8, assim array2.lenght:
+
+    8
+
+*/
+
+
+
