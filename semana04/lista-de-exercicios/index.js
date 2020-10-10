@@ -1,12 +1,12 @@
 // Exercícios de interpretação de código
-// Exercício 1:
+// Exercício 1
 /* Cria uma função de 1 parâmetro que pede ao usuário a inserção de um valor, o transforma em tipo Number, e retorna "R$" seguido do parâmetro multiplicado pelo valor inserido.
 Cria uma variável que invoca a função, substituindo o parâmetro pelo valor 100. A função retornará: "R$"  + 100*cotacao, sendo que cotacao é um número que depende da inserção do usuário.
 Imprime essa variável no console. */
 
 
 
-// Exercício 2:
+// Exercício 2
 /* Cria uma função que pede dois parâmetros: tipoDeInvestimento e valor. tipoDeInvestimento é do tipo string, e deve assumir um dos valores: "Poupança", "Renda Fixa", "CDB" ou "Ações", senão retorna um alerta ao usuário dizendo "TIPO DE INVESTIMENTO INFORMADO INCORRETO!".
 Dentro da função cria-se uma variável valorAposInvestimento, cujo valor altera dependendo do tipoDeInvestimento, pois este é comparado em um switch case e cada case é para um dos valores possíveis mencionados anteriormente.
 A função retorna valorAposInvestimento.
@@ -61,3 +61,57 @@ Será impresso no console, então:
     1590
 
 */
+
+
+/* ----------------------------------------------- */
+
+// Exercícios de Lógica de Programação
+// Exercício 1
+/* Para percorrer uma lista podemos utilizar for, for of, for in, while, forEach, map, filter, sendo que os três últimos requerem um callback. */
+const percorreUmaLista = (array) => {
+    for (element of array){
+        console.log(`Estou percorrendo o elemento que possui valor ${element}.`)
+    }
+}
+
+
+
+// Exercício 2
+/*
+2.a) booleano1 && booleano2 && !booleano4
+            true && false && !booleano4
+            false
+Como AND (&&) requer que todos valores sejam true para saída ser true, e temos uma condição falsa que será aplicada somente em ANDs, essa expressão resultará em false. (Não importa o valor de booleano1 e !booleano4, pois apenas 1 valor false é necessário para saída dessa expressão)
+
+
+2.b) (booleano1 && booleano2) || !booleano3
+            (true && false) || !(!booleano2)
+            false || booleano2
+            false || false
+            false
+
+
+2.c) (booleano2 || booleano3) &&  (booleano4 || booleano1)
+Como booleano3 = !booleano2, (booleano2 || booleano3) = true, independentemente do valor inicial de booleano2, pois um dos valores será true e o operador OR (||) necessita apenas de um valor true para a saída ser true.
+Como booleano1 = true, a expressão da direita (booleano4 || booleano1) será sempre true independentemente do valor de booleano4, pois o operador OR (||) necessita apenas de um valor true para a saída ser true.
+Portanto, temos:
+            (booleano2 || booleano3) && (booleano4 || booleano1)
+            true && true
+            true
+
+
+2.d) !(booleano2 && booleano3) || !(booleano1 && booleano3)
+Como booleano3 = !booleano2, (booleano2 && booleano3) = false, independentemente do valor inicial de booleano2, pois um dos valores será false e o operador AND (&&) necessita apenas de um valor false para a saída ser false.
+Assim, !(booleano2 && booleano3) = !(false) = true, então toda a expressão terá valor true pois o operador OR (||) necessita apenas de um valor true para a saída ser true.
+    !(booleano2 && booleano3) || !(booleano1 && booleano3)
+            true
+
+
+2.e) !(booleano1) && !(booleano3) || (!booleano4 && booleano3 && booleano3)
+            !true && !(!booleano2) || (!(!booleano3) && booleano3)
+            false && !(!false) || (booleano3 & booleano3)
+            false || booleano3
+            false || !booleano2
+            false || !false
+            false || true
+            true
