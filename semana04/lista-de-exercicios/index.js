@@ -115,3 +115,7 @@ Assim, !(booleano2 && booleano3) = !(false) = true, então toda a expressão ter
             false || !false
             false || true
             true
+
+
+
+// Exercício 3
