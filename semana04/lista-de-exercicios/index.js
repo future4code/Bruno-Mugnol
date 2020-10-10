@@ -144,3 +144,38 @@ const verificarTriangulo = (a,b,c) => {
         console.log("Os valores inseridos são inválidos.")
     }
 }
+
+
+
+// Exercício 5
+const comparaDoisNumeros = (x,y) => {
+    let xMaior = 0 //usado na conta final de diferença entre os números para sempre termos um resultado positivo
+
+    // Verifica qual é parâmetro maior
+    if (x > y) {
+        console.log(`O maior é: ${x}`)
+        xMaior = 1
+    } else if (x < y) {
+        console.log(`O maior é: ${y}`)
+        xMaior = -1
+    } else {
+        console.log(`x é igual a y ou os valores inseridos são inválidos`)
+    }
+
+    // Verifica divisibilidade de x por y
+    if (x % y === 0) {
+        console.log(`${x} é divisível por ${y}`)
+    } else {
+        console.log(`${x} não é divisível por ${y}`)
+    }
+
+    // Verifica divisibilidade de y por x
+    if (y % x === 0) {
+        console.log(`${y} é divisível por ${x}`)
+    } else {
+        console.log(`${y} não é divisível por ${x}`)
+    }
+
+    // Determina a diferença entre os parâmetros
+    console.log(`A diferença entre eles é ${xMaior*(x - y)}`)
+}
