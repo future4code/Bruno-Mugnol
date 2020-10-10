@@ -69,7 +69,7 @@ Será impresso no console, então:
 // Exercício 1
 /* Para percorrer uma lista podemos utilizar for, for of, for in, while, forEach, map, filter, sendo que os três últimos requerem um callback. */
 const percorreUmaLista = (array) => {
-    for (element of array){
+    for (element of array) {
         console.log(`Estou percorrendo o elemento que possui valor ${element}.`)
     }
 }
@@ -119,3 +119,13 @@ Assim, !(booleano2 && booleano3) = !(false) = true, então toda a expressão ter
 
 
 // Exercício 3
+/* O código não funciona pois não incrementamos a variável i dentro do Loop. E também, se houvesse esse incremento, como a variável i inicia em 0 e a condição é i <= quantidadeDeNumerosPares, retornaríamos um número par a mais. Isso ocorreria porque o loop iria iterar mesmo quando i = quantidadeDeNumerosPares.
+Correção do código (transformada em função): */
+
+const imprimirNumerosPares = (quantidadeDeNumerosPares) => {
+    let i = 0
+    while (i < quantidadeDeNumerosPares) {
+        console.log(i * 2)
+        i++
+    }
+}
