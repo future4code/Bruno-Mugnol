@@ -129,3 +129,18 @@ const imprimirNumerosPares = (quantidadeDeNumerosPares) => {
         i++
     }
 }
+
+
+
+// Exercício 4
+const verificarTriangulo = (a,b,c) => {
+    if ((a === b) && (a === c)) {
+        console.log("O triângulo é Equilátero.")
+    } else if (((a === b) && (a !== c)) || ((a === c) && (a !== b)) || ((b == c) && (b !== a))) {
+        console.log("O triângulo é Isósceles.")
+    } else if ((a !== b) && (a !== c) && (b !== c)) {
+        console.log("O triângulo é Escaleno.")
+    } else {
+        console.log("Os valores inseridos são inválidos.")
+    }
+}
