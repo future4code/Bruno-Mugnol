@@ -262,3 +262,17 @@ const filmeFavorito = {
 }
 console.log(`Venha assistir ao filme ${filmeFavorito.título}, de ${filmeFavorito.ano}, dirigido por ${filmeFavorito.diretor} e estrelado por ${filmeFavorito.atores}.`)
 
+
+
+// Exercício 4
+const pessoaAleatoria = {
+    nome: 'Fulano de Tal',
+    idade: '420',
+    email: 'fulano_tal@de.com',
+    endereço: 'Rua dos Loucos, n° 0'
+}
+
+const pessoaAnonima = {
+    ...pessoaAleatoria,
+    nome: 'ANÔNIMO'
+}
