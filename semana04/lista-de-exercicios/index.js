@@ -218,3 +218,10 @@ imprimirSegundos([1,2,3,4,5,6,7,8,9,10,0,0.5,0.3,-10,50])
 
 /* ----------------------------------------------- */
 
+// Exercício 2
+const alertar = () => {
+    alert("Hello Future4")
+}
+alertar()
+
+
