@@ -240,13 +240,3 @@ Arrays:
 
 
 
-// Exercício 2
-const criaRetangulo = (lado1, lado2) => {
-    const objetoRetangular = {
-        largura: lado1,
-        altura: lado2,
-        perímeto: 2 * (lado1 + lado2),
-        área: lado1 * lado2
-    }
-    return objetoRetangular
-}
