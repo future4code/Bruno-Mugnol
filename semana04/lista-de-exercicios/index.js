@@ -397,12 +397,12 @@ const arrayDeEmails = consultas.map((pessoa) => {
 
 // Exercício 5
 const contas = [
-	{ cliente: "João", saldoTotal: 1000, compras: [100, 200, 300] },
-	{ cliente: "Paula", saldoTotal: 7500, compras: [200, 1040] },
-	{ cliente: "Pedro", saldoTotal: 10000, compras: [5140, 6100, 100, 2000] },
-	{ cliente: "Luciano", saldoTotal: 100, compras: [100, 200, 1700] },
-	{ cliente: "Artur", saldoTotal: 1800, compras: [200, 300] },
-	{ cliente: "Soter", saldoTotal: 1200, compras: [] }
+    { cliente: "João", saldoTotal: 1000, compras: [100, 200, 300] },
+    { cliente: "Paula", saldoTotal: 7500, compras: [200, 1040] },
+    { cliente: "Pedro", saldoTotal: 10000, compras: [5140, 6100, 100, 2000] },
+    { cliente: "Luciano", saldoTotal: 100, compras: [100, 200, 1700] },
+    { cliente: "Artur", saldoTotal: 1800, compras: [200, 300] },
+    { cliente: "Soter", saldoTotal: 1200, compras: [] }
 ]
 
 const atualizarSaldo = (contas) => {
@@ -416,3 +416,37 @@ const atualizarSaldo = (contas) => {
 }
 
 atualizarSaldo(contas)
+
+
+
+/* Refazendo o exercício 2, utilizando .map */
+// Exercício 2
+const array2 = [1, 2, 3, 4, 5, 6]
+
+// 2.a)
+const arrayVezesDois2 = (array) => {
+    let arrayDobrado = array.map((numero) => {
+        return numero = numero * 2
+    })
+    return arrayDobrado
+}
+
+// 2.b)
+const arrayVezesTres2 = (array) => {
+    let arrayTriplicado = array.map((numero) => {
+        return numero = String(numero * 3)
+    })
+    return arrayTriplicado
+}
+
+// 2.c)
+const arrayDeStrings2 = (array) => {
+    let arrayDeStrings = array.map((numero) => {
+        if (numero % 2 === 0) {
+            return `${numero} é par`
+        } else {
+            return `${numero} é ímpar`
+        }
+    })
+    return arrayDeStrings
+}
