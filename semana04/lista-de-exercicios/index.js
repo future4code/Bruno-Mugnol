@@ -220,7 +220,7 @@ imprimirSegundos([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 0.5, 0.3, -10, 50])
 const alertar = () => {
     alert("Hello Future4")
 }
-alertar()
+//alertar()
 
 /* ----------------------------------------------- */
 
@@ -297,3 +297,39 @@ const arrayDeAdultos = arrayDePessoas.filter((pessoa) => {
 const arrayDeJovens = arrayDePessoas.filter((pessoa) => {
     return pessoa.idade < 20
 })
+
+
+
+// Exercício 2
+const array = [1, 2, 3, 4, 5, 6]
+
+// 2.a)
+const arrayVezesDois = (array) => {
+    let arrayDobrado = []
+    for (numero of array) {
+        arrayDobrado.push(numero * 2)
+    }
+    return arrayDobrado
+}
+
+// 2.b)
+const arrayVezesTres = (array) => {
+    let arrayTriplicado = []
+    for (numero of array) {
+        arrayTriplicado.push(String(numero * 3))
+    }
+    return arrayTriplicado
+}
+
+// 2.c)
+const arrayDeStrings = (array) => {
+    let arrayDeStrings = []
+    for (numero of array) {
+        if (numero%2 === 0) {
+            arrayDeStrings.push(`${numero} é par`)
+        } else {
+            arrayDeStrings.push(`${numero} é ímpar`)
+        }
+    }
+    return arrayDeStrings
+}
