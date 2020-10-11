@@ -251,3 +251,14 @@ const criaRetangulo = (lado1, lado2) => {
     return objetoRetangular
 }
 
+
+
+// Exercício 3
+const filmeFavorito = {
+    título: 'O Retorno do Rei',
+    ano: 2003,
+    diretor: 'Peter Jackson',
+    atores: ['Elijah Wood', ' Ian McKellen', ' Liv Tyler', ' Viggo Mortensen', ' Sean Astin', ' Cate Blanchett',' John Rhys-Davies', ' Billy Boyd', ' Dominic Monaghan', ' Orlando Bloom', ' Hugo Weaving', ' Miranda Otto', ' David Wenham', ' Karl Urban', ' John Noble', ' Andy Serkis', ' Ian Holm', ' Sean Bean']
+}
+console.log(`Venha assistir ao filme ${filmeFavorito.título}, de ${filmeFavorito.ano}, dirigido por ${filmeFavorito.diretor} e estrelado por ${filmeFavorito.atores}.`)
+
