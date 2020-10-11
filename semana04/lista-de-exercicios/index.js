@@ -258,7 +258,7 @@ const filmeFavorito = {
     título: 'O Retorno do Rei',
     ano: 2003,
     diretor: 'Peter Jackson',
-    atores: ['Elijah Wood', ' Ian McKellen', ' Liv Tyler', ' Viggo Mortensen', ' Sean Astin', ' Cate Blanchett',' John Rhys-Davies', ' Billy Boyd', ' Dominic Monaghan', ' Orlando Bloom', ' Hugo Weaving', ' Miranda Otto', ' David Wenham', ' Karl Urban', ' John Noble', ' Andy Serkis', ' Ian Holm', ' Sean Bean']
+    atores: ['Elijah Wood', ' Ian McKellen', ' Liv Tyler', ' Viggo Mortensen', ' Sean Astin', ' Cate Blanchett', ' John Rhys-Davies', ' Billy Boyd', ' Dominic Monaghan', ' Orlando Bloom', ' Hugo Weaving', ' Miranda Otto', ' David Wenham', ' Karl Urban', ' John Noble', ' Andy Serkis', ' Ian Holm', ' Sean Bean']
 }
 console.log(`Venha assistir ao filme ${filmeFavorito.título}, de ${filmeFavorito.ano}, dirigido por ${filmeFavorito.diretor} e estrelado por ${filmeFavorito.atores}.`)
 
@@ -276,3 +276,24 @@ const pessoaAnonima = {
     ...pessoaAleatoria,
     nome: 'ANÔNIMO'
 }
+
+/* ----------------------------------------------- */
+
+// Exercícios de funções de array
+// Exercício 1
+const arrayDePessoas = [
+    { nome: "Pedro", idade: 20 },
+    { nome: "João", idade: 10 },
+    { nome: "Paula", idade: 12 },
+    { nome: "Artur", idade: 89 }
+]
+
+// 1.a)
+const arrayDeAdultos = arrayDePessoas.filter((pessoa) => {
+    return pessoa.idade >= 20
+})
+
+// 1.b)
+const arrayDeJovens = arrayDePessoas.filter((pessoa) => {
+    return pessoa.idade < 20
+})
