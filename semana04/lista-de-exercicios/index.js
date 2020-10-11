@@ -325,7 +325,7 @@ const arrayVezesTres = (array) => {
 const arrayDeStrings = (array) => {
     let arrayDeStrings = []
     for (numero of array) {
-        if (numero%2 === 0) {
+        if (numero % 2 === 0) {
             arrayDeStrings.push(`${numero} é par`)
         } else {
             arrayDeStrings.push(`${numero} é ímpar`)
@@ -338,12 +338,12 @@ const arrayDeStrings = (array) => {
 
 // Exercício 3
 const pessoas = [
-	{ nome: "Paula", idade: 12, altura: 1.8},
-	{ nome: "João", idade: 20, altura: 1.3},
-	{ nome: "Pedro", idade: 15, altura: 1.9},
-	{ nome: "Luciano", idade: 22, altura: 1.8},
-	{ nome: "Artur", idade: 10, altura: 1.2},
-	{ nome: "Soter", idade: 70, altura: 1.9}
+    { nome: "Paula", idade: 12, altura: 1.8 },
+    { nome: "João", idade: 20, altura: 1.3 },
+    { nome: "Pedro", idade: 15, altura: 1.9 },
+    { nome: "Luciano", idade: 22, altura: 1.8 },
+    { nome: "Artur", idade: 10, altura: 1.2 },
+    { nome: "Soter", idade: 70, altura: 1.9 }
 ]
 
 // 3.a)
@@ -361,3 +361,34 @@ const impedirPessoas = (pessoas) => {
     })
     return pessoasImpedidas
 }
+
+
+
+// Exercício 4
+const consultas = [
+    { nome: "João", genero: "masculino", cancelada: true, dataDaConsulta: "01/10/2019" },
+    { nome: "Pedro", genero: "masculino", cancelada: false, dataDaConsulta: "02/10/2019" },
+    { nome: "Paula", genero: "feminino", cancelada: true, dataDaConsulta: "03/11/2019" },
+    { nome: "Márcia", genero: "feminino", cancelada: false, dataDaConsulta: "04/11/2019" }
+]
+
+const arrayDeEmails = consultas.map((pessoa) => {
+    let pronomes = []
+    switch (pessoa.genero) {
+        case 'masculino':
+            pronomes = ['Sr.', 'o']
+            break
+        case 'feminino':
+            pronomes = ['Sra.', 'a']
+            break
+        default:
+            pronomes = ['Sr@.', '@']
+            break
+    }
+
+    if (!pessoa.cancelada) {
+        return `Olá, ${pronomes[0]} ${pessoa.nome}. Estamos enviando esta mensagem para lembrá-l${pronomes[1]} da sua consulta no dia ${pessoa.dataDaConsulta}. Por favor, acuse o recebimento deste e-mail.`
+    } else {
+        return `Olá, ${pronomes[0]} ${pessoa.nome}. Infelizmente, sua consulta marcada para o dia ${pessoa.dataDaConsulta} foi cancelada. Se quiser, pode entrar em contato conosco para remarcá-la.`
+    }
+})
