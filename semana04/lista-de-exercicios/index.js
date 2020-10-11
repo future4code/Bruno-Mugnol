@@ -132,7 +132,7 @@ const imprimirNumerosPares = (quantidadeDeNumerosPares) => {
 
 
 // Exercício 4
-const verificarTriangulo = (a,b,c) => {
+const verificarTriangulo = (a, b, c) => {
     if ((a === b) && (a === c)) {
         console.log("O triângulo é Equilátero.")
     } else if (((a === b) && (a !== c)) || ((a === c) && (a !== b)) || ((b == c) && (b !== a))) {
@@ -147,7 +147,7 @@ const verificarTriangulo = (a,b,c) => {
 
 
 // Exercício 5
-const comparaDoisNumeros = (x,y) => {
+const comparaDoisNumeros = (x, y) => {
     let xMaior = 0 //usado na conta final de diferença entre os números para sempre termos um resultado positivo
 
     // Verifica qual é parâmetro maior
@@ -176,7 +176,7 @@ const comparaDoisNumeros = (x,y) => {
     }
 
     // Determina a diferença entre os parâmetros
-    console.log(`A diferença entre eles é ${xMaior*(x - y)}`)
+    console.log(`A diferença entre eles é ${xMaior * (x - y)}`)
 }
 
 /* ----------------------------------------------- */
@@ -199,24 +199,22 @@ const imprimirSegundos = (array) => {
         }
     }
 
-    for (element of array) {        
+    for (element of array) {
         if ((segundoMax < element) && (primeiroMax !== element)) {
-            segundoMax = element 
+            segundoMax = element
         }
-        
+
         if ((segundoMin > element) && (primeiroMin !== element)) {
             segundoMin = element
         }
-
     }
 
     console.log(`O segundo máximo é ${segundoMax} e o segundo mínimo é ${segundoMin}`)
-
 }
 
-imprimirSegundos([1,2,3,4,5,6,7,8,9,10,0,0.5,0.3,-10,50])
+imprimirSegundos([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 0.5, 0.3, -10, 50])
 
-/* ----------------------------------------------- */
+
 
 // Exercício 2
 const alertar = () => {
@@ -224,4 +222,31 @@ const alertar = () => {
 }
 alertar()
 
+/* ----------------------------------------------- */
 
+// Exercícios de Objetos
+// Exercício 1
+/*
+Objetos:
+    São usados para guardar um conjunto de informações de maneira organizada e associada a uma única palavra: o nome do objeto. Como um armário, ele contém várias gavetas (chamamos de chaves) que possuem itens diferentes dentro (valores). Criado esse objeto (armário), podemos acessar ele como um todo, o que nos retornaria as chaves com seus respectivos valores (gavetas e qual item está em cada gaveta); ou podemos acessar apenas uma das chaves do objeto (uma só gaveta do armário e seu conteúdo), retornando apenas seu valor (o item dentro da gaveta que queremos).
+
+    Isso nos permite associar, com facilidade, diversas características a um elemento: criando um objeto para um usuário, por exemplo, poderíamos associar a esse usuário as chaves nome, idade, formação, etc e seus respectivos valores, conseguindo acessar esses dados rapidamente e com a certeza que estão relacionados ao usuário.
+
+    Portanto, objetos são mais indicados para armazenar diversos valores e características associados a um nome.
+
+Arrays:
+    Arrays são vetores. Análogo a uma estante, onde itens são distribuídos desde a primeira prateleira até a última, os elementos de um array são associados a índices que determinam a posição do elemento nesse array. São indicados para armazenar um conjunto de valores em sequência, pois sempre que um elemento é acrescentado através de .push() ele é adicionado NO FINAL do array, o que nos permite um alto controle do índice de cada elemento e, assim, fácil acesso a ele.
+    */
+
+
+
+// Exercício 2
+const criaRetangulo = (lado1, lado2) => {
+    const objetoRetangular = {
+        largura: lado1,
+        altura: lado2,
+        perímeto: 2 * (lado1 + lado2),
+        área: lado1 * lado2
+    }
+    return objetoRetangular
+}
