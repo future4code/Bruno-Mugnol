@@ -62,7 +62,6 @@ Será impresso no console, então:
 
 */
 
-
 /* ----------------------------------------------- */
 
 // Exercícios de Lógica de Programação
@@ -179,3 +178,43 @@ const comparaDoisNumeros = (x,y) => {
     // Determina a diferença entre os parâmetros
     console.log(`A diferença entre eles é ${xMaior*(x - y)}`)
 }
+
+/* ----------------------------------------------- */
+
+// Exercícios de Funções
+// Exercício 1
+const imprimirSegundos = (array) => {
+    let primeiroMax = array[0]
+    let segundoMax = -Infinity
+    let primeiroMin = array[0]
+    let segundoMin = Infinity
+
+    for (element of array) {
+        if (primeiroMax < element) {
+            primeiroMax = element
+        }
+
+        if (primeiroMin > element) {
+            primeiroMin = element
+        }
+    }
+
+    for (element of array) {        
+        if ((segundoMax < element) && (primeiroMax !== element)) {
+            segundoMax = element 
+        }
+        
+        if ((segundoMin > element) && (primeiroMin !== element)) {
+            segundoMin = element
+        }
+
+    }
+
+    console.log(`O segundo máximo é ${segundoMax} e o segundo mínimo é ${segundoMin}`)
+
+}
+
+imprimirSegundos([1,2,3,4,5,6,7,8,9,10,0,0.5,0.3,-10,50])
+
+/* ----------------------------------------------- */
+
