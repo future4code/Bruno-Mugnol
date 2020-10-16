@@ -3,11 +3,10 @@ import styled from 'styled-components';
 import './App.css';
 import Post from './components/Post/Post';
 
-
 const GreyButton = styled.button`
   color: white;
   background-color: grey;
-`;
+`
 
 const FlexboxedDiv = styled.div`
   background-color: black;
