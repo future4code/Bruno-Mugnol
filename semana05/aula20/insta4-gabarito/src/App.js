@@ -1,6 +1,20 @@
 import React from 'react';
+import styled from 'styled-components';
 import './App.css';
 import Post from './components/Post/Post';
+
+
+const GreyButton = styled.button`
+  color: white;
+  background-color: grey;
+`;
+
+const FlexboxedDiv = styled.div`
+  background-color: black;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+`
 
 class App extends React.Component {
   state = {
@@ -41,7 +55,7 @@ class App extends React.Component {
       valorInputFotoPost: ""
     })
   }
-  
+
   onChangeNome = (event) => {
     this.setState({ valorInputNomeUsuario: event.target.value })
   }
@@ -65,10 +79,10 @@ class App extends React.Component {
         />
       )
     })
-  
+
     return (
       <div>
-        <div>
+        <FlexboxedDiv>
           <input
             value={this.state.valorInputNomeUsuario}
             onChange={this.onChangeNome}
@@ -84,8 +98,8 @@ class App extends React.Component {
             onChange={this.onChangeFotoPost}
             placeholder={"Link para foto do post"}
           />
-          <button onClick={this.adicionarPost}>Adicionar</button>
-        </div>
+          <GreyButton onClick={this.adicionarPost}>Adicionar ao topo</GreyButton>
+        </FlexboxedDiv>
         <div className={'app-container'}>
           {listaDePosts}
         </div>
