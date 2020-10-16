@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import '../SecaoComentario/SecaoComentario.css'
 
 import { IconeComContador } from '../IconeComContador/IconeComContador'
 
@@ -19,7 +20,6 @@ const PostHeader = styled.header`
   align-items: center;
   padding-left: 10px;
 `
-
 const PostFooter = styled.footer`
   height: 40px;
   display: flex;
@@ -27,14 +27,12 @@ const PostFooter = styled.footer`
   padding: 0 10px;
   justify-content: space-between;
 `
-
 const UserPhoto = styled.img`
   height: 30px;
   width: 30px;
   margin-right: 10px;
   border-radius: 50%;
 `
-
 const PostPhoto = styled.img`
   width: 100%;
 `
@@ -45,7 +43,7 @@ class Post extends React.Component {
     numeroCurtidas: 0,
     comentando: false,
     numeroComentarios: 0,
-    arrayDeComentarios: []
+    arrayDeComentarios: ['oi']
   }
 
   onClickCurtida = () => {
@@ -69,10 +67,13 @@ class Post extends React.Component {
     })
   }
 
-  aoEnviarComentario = () => {
+  aoEnviarComentario = (comentario) => {
+    const novoComentario = comentario
+    const novoArrayDeComentarios = [...this.state.arrayDeComentarios, novoComentario]
     this.setState({
       comentando: false,
-      numeroComentarios: this.state.numeroComentarios + 1
+      numeroComentarios: this.state.numeroComentarios + 1,
+      arrayDeComentarios: novoArrayDeComentarios
     })
   }
 
@@ -90,6 +91,10 @@ class Post extends React.Component {
     if (this.state.comentando) {
       componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario} />
     }
+
+    const listaDeComentarios = this.state.arrayDeComentarios.map((comentario) => {
+      return <li>{comentario}</li>
+    })
 
     return (
       <PostContainer>
@@ -114,6 +119,7 @@ class Post extends React.Component {
           />
         </PostFooter>
         {componenteComentario}
+        <div>{listaDeComentarios}</div>
       </PostContainer>
     )
   }
