@@ -42,7 +42,7 @@ class Post extends React.Component {
     curtido: false,
     numeroCurtidas: 0,
     comentando: false,
-    numeroComentarios: 0,
+    numeroComentarios: 1,
     arrayDeComentarios: ['oi']
   }
 
@@ -104,7 +104,7 @@ class Post extends React.Component {
         </PostHeader>
 
         <PostPhoto src={this.props.fotoPost} alt={'Imagem do post'} />
-
+        
         <PostFooter>
           <IconeComContador
             icone={iconeCurtida}
