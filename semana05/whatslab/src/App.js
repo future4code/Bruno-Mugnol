@@ -1,5 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
 import styled from 'styled-components'
 import ChatBox from './components/ChatBox/ChatBox'
 
@@ -14,9 +13,6 @@ justify-content: flex-end;
 align-items: center;
 border: 1px solid black;
 `
-=======
-import './App.css';
->>>>>>> 0538ca05bfaba03ee3217f629c14e167eae3d3f9
 
 class App extends React.Component {
   state = {
@@ -46,11 +42,7 @@ class App extends React.Component {
     this.setState({ messageInputValue: event.target.value })
   }
 
-<<<<<<< HEAD
   onClickSend = () => {
-=======
-  sendText = () => {
->>>>>>> 0538ca05bfaba03ee3217f629c14e167eae3d3f9
     const newMessage = {
       user: this.state.userInputValue,
       text: this.state.messageInputValue
@@ -61,28 +53,14 @@ class App extends React.Component {
     this.setState({
       messagesArray: newMessagesArray,
       messageInputValue: ""
-<<<<<<< HEAD
-    }, () => {
-      console.log(this.state.messagesArray);
     })
-
-=======
-    })
->>>>>>> 0538ca05bfaba03ee3217f629c14e167eae3d3f9
   }
 
   render() {
-    const chatBox = this.state.messagesArray.map((message, index) => {
-      return (
-        <div key={index}>
-          <p><strong>{message.user}</strong></p>
-          <p>{message.text}</p>
-        </div>
-      )
-    })
+    const chatBox = <ChatBox theArray={this.state.messagesArray} />
 
     return (
-      <div className="App">
+      <MotherDiv>
         <div>
           {chatBox}
         </div>
@@ -98,16 +76,12 @@ class App extends React.Component {
             placeholder="Message"
           />
           <button
-<<<<<<< HEAD
             onClick={() => {
               this.onClickSend();
             }}
-=======
-            onClick={this.sendText}
->>>>>>> 0538ca05bfaba03ee3217f629c14e167eae3d3f9
           >Send</button>
         </footer>
-      </div>
+      </MotherDiv>
     );
   }
 }
