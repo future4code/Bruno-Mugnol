@@ -1,20 +1,21 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
+const InlineLi = styled.li`
+display: inline;
+`
 
+const InlineP = styled.p`
+display: inline;
+`
 
 class ChatBox extends Component {
-    state = {
-        chatArray: this.props.theArray
-    }
-    
     render() {
-        {console.log(this.state.chatArray)}
-        const chatBox = this.state.chatArray.map((message, index) => {
+        const chatBox = this.props.theArray.map((message, index) => {
             return (
                 <div key={index}>
-                    <li><strong>{message.user}</strong></li>
-                    <p>{message.text}</p>
+                    <InlineLi><strong>{message.user}: </strong></InlineLi>
+                    <InlineP>{message.text}</InlineP>
                 </div>
             )
         })

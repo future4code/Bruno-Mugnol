@@ -4,7 +4,7 @@ import ChatBox from './components/ChatBox/ChatBox'
 
 const MotherDiv = styled.div`
 box-sizing: border-box;
-width: 300px;
+width: 60vw;
 height: 100vh;
 margin: auto;
 display: flex;
@@ -43,7 +43,23 @@ class App extends React.Component {
     this.setState({ messageInputValue: event.target.value })
   }
 
-  
+  onClickSend = () => {
+    const newMessage = {
+      user: this.state.userInputValue,
+      text: this.state.messageInputValue
+    }
+
+    const newMessagesArray = [...this.state.messagesArray, newMessage]
+
+    this.setState({
+      messagesArray: newMessagesArray,
+      messageInputValue: ""
+    }, () => {
+      console.log(this.state.messagesArray);
+    })
+
+  }
+
   render() {
     let componentChatBox = <ChatBox theArray={this.state.messagesArray} />
 
@@ -64,20 +80,7 @@ class App extends React.Component {
           />
           <button
             onClick={() => {
-              const newMessage = {
-                user: this.state.userInputValue,
-                text: this.state.messageInputValue
-              }
-          
-              const newMessagesArray = [...this.state.messagesArray, newMessage]
-          
-              this.setState({
-                messagesArray: newMessagesArray,
-                messageInputValue: ""
-              }, () => {
-                console.log(this.state.messagesArray);
-                componentChatBox = <ChatBox theArray={this.state.messagesArray} />
-              })
+              this.onClickSend();
             }}
           >Send</button>
         </footer>
