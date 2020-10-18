@@ -42,8 +42,8 @@ class Post extends React.Component {
     curtido: false,
     numeroCurtidas: 0,
     comentando: false,
-    numeroComentarios: 1,
-    arrayDeComentarios: ['oi']
+    numeroComentarios: 0,
+    arrayDeComentarios: ['oi','nope']
   }
 
   onClickCurtida = () => {
@@ -77,6 +77,11 @@ class Post extends React.Component {
     })
   }
 
+  enviaArray = () => {
+    const arrayEnviadoParaSecao = this.state.arrayDeComentarios
+    return arrayEnviadoParaSecao
+  }
+
   render() {
     let iconeCurtida
 
@@ -89,12 +94,8 @@ class Post extends React.Component {
     let componenteComentario
 
     if (this.state.comentando) {
-      componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario} />
-    }
-
-    const listaDeComentarios = this.state.arrayDeComentarios.map((comentario) => {
-      return <li>{comentario}</li>
-    })
+      componenteComentario = <SecaoComentario comentariosEnviados={this.enviaArray} aoEnviar={this.aoEnviarComentario} />
+    } 
 
     return (
       <PostContainer>
@@ -119,7 +120,6 @@ class Post extends React.Component {
           />
         </PostFooter>
         {componenteComentario}
-        <div>{listaDeComentarios}</div>
       </PostContainer>
     )
   }
