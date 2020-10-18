@@ -1,6 +1,22 @@
 import React from 'react';
+<<<<<<< HEAD
 import styled from 'styled-components'
+import ChatBox from './components/ChatBox/ChatBox'
+
+const MotherDiv = styled.div`
+box-sizing: border-box;
+width: 60vw;
+height: 100vh;
+margin: auto;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+align-items: center;
+border: 1px solid black;
+`
+=======
 import './App.css';
+>>>>>>> 0538ca05bfaba03ee3217f629c14e167eae3d3f9
 
 class App extends React.Component {
   state = {
@@ -30,7 +46,11 @@ class App extends React.Component {
     this.setState({ messageInputValue: event.target.value })
   }
 
+<<<<<<< HEAD
+  onClickSend = () => {
+=======
   sendText = () => {
+>>>>>>> 0538ca05bfaba03ee3217f629c14e167eae3d3f9
     const newMessage = {
       user: this.state.userInputValue,
       text: this.state.messageInputValue
@@ -41,7 +61,14 @@ class App extends React.Component {
     this.setState({
       messagesArray: newMessagesArray,
       messageInputValue: ""
+<<<<<<< HEAD
+    }, () => {
+      console.log(this.state.messagesArray);
     })
+
+=======
+    })
+>>>>>>> 0538ca05bfaba03ee3217f629c14e167eae3d3f9
   }
 
   render() {
@@ -71,7 +98,13 @@ class App extends React.Component {
             placeholder="Message"
           />
           <button
+<<<<<<< HEAD
+            onClick={() => {
+              this.onClickSend();
+            }}
+=======
             onClick={this.sendText}
+>>>>>>> 0538ca05bfaba03ee3217f629c14e167eae3d3f9
           >Send</button>
         </footer>
       </div>
