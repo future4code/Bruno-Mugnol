@@ -1,6 +1,22 @@
 import React from 'react';
-import styled from 'styled-components'
+<<<<<<< HEAD
 import './App.css';
+=======
+import styled from 'styled-components'
+import ChatBox from './components/ChatBox/ChatBox'
+
+const MotherDiv = styled.div`
+box-sizing: border-box;
+width: 300px;
+height: 100vh;
+margin: auto;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+align-items: center;
+border: 1px solid black;
+`
+>>>>>>> parent of 697aec3... Revert "tentativa de componentização"
 
 class App extends React.Component {
   state = {
@@ -19,7 +35,8 @@ class App extends React.Component {
       }
     ],
     userInputValue: "",
-    messageInputValue: ""
+    messageInputValue: "",
+    sendingMessage: false
   }
 
   onChangeUser = (event) => {
@@ -30,35 +47,14 @@ class App extends React.Component {
     this.setState({ messageInputValue: event.target.value })
   }
 
-  sendText = () => {
-    const newMessage = {
-      user: this.state.userInputValue,
-      text: this.state.messageInputValue
-    }
-
-    const newMessagesArray = [...this.state.messagesArray, newMessage]
-
-    this.setState({
-      messagesArray: newMessagesArray,
-      messageInputValue: ""
-    })
-  }
-
+  
   render() {
-    const chatBox = this.state.messagesArray.map((message, index) => {
-      return (
-        <div key={index}>
-          <p><strong>{message.user}</strong></p>
-          <p>{message.text}</p>
-        </div>
-      )
-    })
+    let componentChatBox = <ChatBox theArray={this.state.messagesArray} />
 
     return (
-      <div className="App">
-        <div>
-          {chatBox}
-        </div>
+      <MotherDiv>
+
+        {componentChatBox}
         <footer>
           <input
             value={this.state.userInputValue}
@@ -71,10 +67,25 @@ class App extends React.Component {
             placeholder="Message"
           />
           <button
-            onClick={this.sendText}
+            onClick={() => {
+              const newMessage = {
+                user: this.state.userInputValue,
+                text: this.state.messageInputValue
+              }
+          
+              const newMessagesArray = [...this.state.messagesArray, newMessage]
+          
+              this.setState({
+                messagesArray: newMessagesArray,
+                messageInputValue: ""
+              }, () => {
+                console.log(this.state.messagesArray);
+                componentChatBox = <ChatBox theArray={this.state.messagesArray} />
+              })
+            }}
           >Send</button>
         </footer>
-      </div>
+      </MotherDiv>
     );
   }
 }
