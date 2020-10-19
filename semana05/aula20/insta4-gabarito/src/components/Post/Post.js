@@ -42,8 +42,8 @@ class Post extends React.Component {
     curtido: false,
     numeroCurtidas: 0,
     comentando: false,
-    numeroComentarios: 0,
-    arrayDeComentarios: ['oi','nope']
+    numeroComentarios: 2,
+    arrayDeComentarios: ['oi', 'nope']
   }
 
   onClickCurtida = () => {
@@ -70,16 +70,12 @@ class Post extends React.Component {
   aoEnviarComentario = (comentario) => {
     const novoComentario = comentario
     const novoArrayDeComentarios = [...this.state.arrayDeComentarios, novoComentario]
+    
     this.setState({
       comentando: false,
-      numeroComentarios: this.state.numeroComentarios + 1,
-      arrayDeComentarios: novoArrayDeComentarios
+      arrayDeComentarios: novoArrayDeComentarios,
+      numeroComentarios: novoArrayDeComentarios.length
     })
-  }
-
-  enviaArray = () => {
-    const arrayEnviadoParaSecao = this.state.arrayDeComentarios
-    return arrayEnviadoParaSecao
   }
 
   render() {
@@ -94,8 +90,8 @@ class Post extends React.Component {
     let componenteComentario
 
     if (this.state.comentando) {
-      componenteComentario = <SecaoComentario comentariosEnviados={this.enviaArray} aoEnviar={this.aoEnviarComentario} />
-    } 
+      componenteComentario = <SecaoComentario comentariosEnviados={this.state.arrayDeComentarios} aoEnviar={this.aoEnviarComentario} />
+    }
 
     return (
       <PostContainer>
@@ -105,7 +101,7 @@ class Post extends React.Component {
         </PostHeader>
 
         <PostPhoto src={this.props.fotoPost} alt={'Imagem do post'} />
-        
+
         <PostFooter>
           <IconeComContador
             icone={iconeCurtida}

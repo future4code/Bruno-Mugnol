@@ -4,33 +4,16 @@ import './SecaoComentario.css'
 export class SecaoComentario extends Component {
 	state = {
 		valorInputComentario: "",
-		arrayDeComentariosDaSecao: ['oi']
 	}
 
 	onChangeComentario = (event) => {
 		this.setState({ valorInputComentario: event.target.value })
 	}
 
-
-
-
 	render() {
-		const wtf = () => {
-			console.log(this.props.comentariosEnviados())
-			const novoArrayDeComentariosDaSecao = this.props.comentariosEnviados()
-			console.log(novoArrayDeComentariosDaSecao)
-			this.setState({
-				arrayDeComentariosDaSecao: novoArrayDeComentariosDaSecao
-			})
-		}
-		
-		const listaDeComentarios = this.state.arrayDeComentariosDaSecao.map((comentario) => {
-			console.log(comentario)
-			console.log(this.state.arrayDeComentariosDaSecao)
-			return <li>{comentario}</li>
+		const listaDeComentarios = this.props.comentariosEnviados.map((comentario,index) => {
+			return <li key={index + comentario} >{comentario}</li>
 		})
-
-		
 
 		return (
 			<div>
@@ -44,12 +27,12 @@ export class SecaoComentario extends Component {
 
 					<button onClick={() => {
 						this.props.aoEnviar(this.state.valorInputComentario);
-
-						wtf()
 					}}>Enviar</button>
-
-					{listaDeComentarios}
+					<div>
+						
+					</div>
 				</div>
+				{listaDeComentarios}
 			</div>
 		)
 	}

@@ -68,9 +68,9 @@ class App extends React.Component {
   }
 
   render() {
-    const listaDePosts = this.state.arrayDePosts.map((info) => {
+    const listaDePosts = this.state.arrayDePosts.map((info,index) => {
       return (
-        <Post
+        <Post key={index}
           // passando props:
           nomeUsuario={info.nomeUsuario}
           fotoUsuario={info.fotoUsuario}
