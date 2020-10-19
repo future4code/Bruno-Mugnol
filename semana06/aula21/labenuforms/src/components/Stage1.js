@@ -50,7 +50,6 @@ class Stage1 extends React.Component {
 
     verifyInput = () => {
         if ((this.state.answerValues.name && (this.state.answerValues.age > 0)) && (this.state.answerValues.email && this.state.answerValues.scholarship)) {
-            console.log('yay')
             this.props.pickPage(this.nextStage(this.state.answerValues))
         } else {
             alert("something's wrong, I can feel it!")
@@ -58,7 +57,6 @@ class Stage1 extends React.Component {
     }
 
     nextStage = (basicInfo) => {
-        console.log(basicInfo.scholarship)
         switch (basicInfo.scholarship) {
             case 'superiorIncompleto':
                 return 2

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Stage1 from './components/Stage1';
 import Stage2 from './components/Stage2';
 import Stage3 from './components/Stage3';
-import Stage4 from './components/Stage4';
+import FinalStage from './components/FinalStage';
 
 class App extends React.Component {
   state = {
@@ -27,18 +27,45 @@ class App extends React.Component {
     this.setState({ secondStageAnswers: newSecondAnswers })
   }
 
+  submitThirdAnswers = (answerObject) => {
+    const newThirdAnswers = { ...answerObject }
+    this.setState({ thirdStageAnswers: newThirdAnswers })
+  }
+
+  allAnswers = () => {
+    const firstAnswers = this.state.firstStageAnswers
+    const secondAnswers = this.state.secondStageAnswers
+    const thirdAnswers = this.state.thirdStageAnswers
+
+    if (Object.keys(secondAnswers).length) {
+      const combinedAnswers = {
+        ...firstAnswers,
+        ...secondAnswers
+      }
+      console.log(combinedAnswers)
+      return combinedAnswers
+    } else {
+      const combinedAnswers = {
+        ...firstAnswers,
+        ...thirdAnswers
+      }
+      console.log(combinedAnswers)
+      return combinedAnswers
+    }
+    
+  }
+
   render() {
-
-
     const renderPage = () => {
-      if (this.state.page === 1) {
-        return <Stage1 onClickFetch={this.submitFirstAnswers} pickPage={this.changePage} />
-      } else if (this.state.page === 2) {
-        return <Stage2 onClickFetch={this.submitSecondAnswers} pickPage={this.changePage} />
-      } else if (this.state.page === 3) {
-        return <Stage3 />
-      } else if (this.state.page === 4) {
-        return <Stage4 />
+      switch (this.state.page) {
+        case 1:
+          return <Stage1 onClickFetch={this.submitFirstAnswers} pickPage={this.changePage} />
+        case 2:
+          return <Stage2 onClickFetch={this.submitSecondAnswers} pickPage={this.changePage} />
+        case 3:
+          return <Stage3 onClickFetch={this.submitThirdAnswers} pickPage={this.changePage} />
+        case 4:
+          return <FinalStage fetchAnswers={this.allAnswers} />
       }
     }
 
