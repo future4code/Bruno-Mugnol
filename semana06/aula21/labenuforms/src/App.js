@@ -19,26 +19,29 @@ class App extends React.Component {
 
   submitFirstAnswers = (answerObject) => {
     const newFirstAnswers = { ...answerObject }
-    this.setState({
-      firstStageAnswers: newFirstAnswers
-    })
+    this.setState({ firstStageAnswers: newFirstAnswers })
+  }
+
+  submitSecondAnswers = (answerObject) => {
+    const newSecondAnswers = { ...answerObject }
+    this.setState({ secondStageAnswers: newSecondAnswers })
   }
 
   render() {
-    
+
 
     const renderPage = () => {
       if (this.state.page === 1) {
         return <Stage1 onClickFetch={this.submitFirstAnswers} pickPage={this.changePage} />
       } else if (this.state.page === 2) {
-        return <Stage2 />
+        return <Stage2 onClickFetch={this.submitSecondAnswers} pickPage={this.changePage} />
       } else if (this.state.page === 3) {
         return <Stage3 />
       } else if (this.state.page === 4) {
         return <Stage4 />
       }
     }
-    
+
     return (
       <div>
         {renderPage()}

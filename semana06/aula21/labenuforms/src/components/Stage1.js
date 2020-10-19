@@ -49,31 +49,29 @@ class Stage1 extends React.Component {
     }
 
     verifyInput = () => {
-        if ((this.state.answerValues.name && (this.state.answerValues.age > 0)) && this.state.answerValues.email) {
+        if ((this.state.answerValues.name && (this.state.answerValues.age > 0)) && (this.state.answerValues.email && this.state.answerValues.scholarship)) {
             console.log('yay')
             this.props.pickPage(this.nextStage(this.state.answerValues))
         } else {
             alert("something's wrong, I can feel it!")
-            console.log('input inválido')
         }
     }
 
     nextStage = (basicInfo) => {
         console.log(basicInfo.scholarship)
-        switch (basicInfo.scholarship) {            
-          case 'superiorIncompleto':
-            return 2
-          case 'superiorCompleto':
-            return 2
-          case 'medioIncompleto':
-            return 3
-          case 'medioCompleto':
-            return 3
-          default:
-              console.log('defÔ')
-            return 1
+        switch (basicInfo.scholarship) {
+            case 'superiorIncompleto':
+                return 2
+            case 'superiorCompleto':
+                return 2
+            case 'medioIncompleto':
+                return 3
+            case 'medioCompleto':
+                return 3
+            default:
+                return 1
         }
-      }
+    }
 
     render() {
 
@@ -95,6 +93,7 @@ class Stage1 extends React.Component {
                             value={this.state.answerValues.email} />
                         <li>Grau de escolaridade:</li>
                         <select onChange={this.onChangeScholarship}>
+                            <option value="" disabled selected>Selecione uma opção</option>
                             <option value="medioIncompleto">Ensino Médio Incompleto</option>
                             <option value="medioCompleto">Ensino Médio Completo</option>
                             <option value="superiorIncompleto">Ensino Superior Incompleto</option>
