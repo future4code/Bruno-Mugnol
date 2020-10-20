@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import Stage1 from './components/Stage1';
 import Stage2 from './components/Stage2';
 import Stage3 from './components/Stage3';
@@ -42,17 +41,15 @@ class App extends React.Component {
         ...firstAnswers,
         ...secondAnswers
       }
-      console.log(combinedAnswers)
       return combinedAnswers
     } else {
       const combinedAnswers = {
         ...firstAnswers,
         ...thirdAnswers
       }
-      console.log(combinedAnswers)
       return combinedAnswers
     }
-    
+
   }
 
   render() {
@@ -65,7 +62,9 @@ class App extends React.Component {
         case 3:
           return <Stage3 onClickFetch={this.submitThirdAnswers} pickPage={this.changePage} />
         case 4:
-          return <FinalStage fetchAnswers={this.allAnswers} />
+          return <FinalStage fetchAnswers={this.allAnswers} pickPage={this.changePage} />
+        default:
+          alert("Something's VERY wrong, I can feel it in my bones D:")
       }
     }
 

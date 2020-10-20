@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 class Stage3 extends React.Component {
     state = {
@@ -46,14 +45,15 @@ class Stage3 extends React.Component {
                             onChange={this.onChangeWhy}
                             value={this.state.answerValues.why} />
                         <li>Você fez algum curso complementar?</li>
-                        <select onChange={this.onChangeComplementary}>
-                            <option value="" disabled selected>Selecione uma opção</option>
+                        <select defaultValue="disabledOption" onChange={this.onChangeComplementary}>
+                            <option value="disabledOption" disabled>Selecione uma opção</option>
                             <option value="technicianCourse">Curso técnico</option>
                             <option value="englishCourse">Curso de inglês</option>
                             <option value="noCourse">Não fiz curso complementar</option>
                         </select>
                     </ol>
                 </form>
+                <button onClick={() => { this.props.pickPage(1) }}>Voltar</button>
                 <button onClick={() => {
                     this.props.onClickFetch(this.state.answerValues)
                     this.verifyInput()

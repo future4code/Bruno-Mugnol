@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 class Stage2 extends React.Component {
     state = {
@@ -51,6 +50,7 @@ class Stage2 extends React.Component {
                             value={this.state.answerValues.institution} />
                     </ol>
                 </form>
+                <button onClick={() => { this.props.pickPage(1) }}>Voltar</button>
                 <button onClick={() => {
                     this.props.onClickFetch(this.state.answerValues)
                     this.verifyInput()

@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 class Stage1 extends React.Component {
     state = {
@@ -90,8 +89,8 @@ class Stage1 extends React.Component {
                             onChange={this.onChangeEmail}
                             value={this.state.answerValues.email} />
                         <li>Grau de escolaridade:</li>
-                        <select onChange={this.onChangeScholarship}>
-                            <option value="" disabled selected>Selecione uma opção</option>
+                        <select defaultValue="disabledOption" onChange={this.onChangeScholarship}>
+                            <option value="disabledOption" disabled>Selecione uma opção</option>
                             <option value="medioIncompleto">Ensino Médio Incompleto</option>
                             <option value="medioCompleto">Ensino Médio Completo</option>
                             <option value="superiorIncompleto">Ensino Superior Incompleto</option>
