@@ -6,12 +6,10 @@ const TarefaList = styled.ul`
   padding: 0;
   width: 200px;
 `
-
 const Tarefa = styled.li`
   text-align: left;
   text-decoration: ${({ completa }) => (completa ? 'line-through' : 'none')};
 `
-
 const InputsContainer = styled.div`
   display: grid;
   grid-auto-flow: column;
