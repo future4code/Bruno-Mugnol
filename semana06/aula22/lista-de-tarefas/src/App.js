@@ -49,7 +49,9 @@ class App extends React.Component {
 
   componentDidMount() {
     const buscaTarefas = JSON.parse(localStorage.getItem("arrayTarefas"))
+    if (buscaTarefas) {      
     this.setState({ tarefas: buscaTarefas })
+    }
   };
 
   onChangeInput = (event) => {
