@@ -4,7 +4,7 @@ import './styles.css'
 
 const TarefaList = styled.ul`
   padding: 0;
-  width: 200px;
+  width: 600px;
 `
 const Tarefa = styled.li`
   text-align: left;
@@ -24,22 +24,23 @@ class App extends React.Component {
       completa: true
     },
     {
-      id: `${Date.now() - 1}`,
+      id: Date.now() - 1,
       texto: "tomar café",
       completa: false
     },
     {
-      id: `${Date.now() - 2}`,
+      id: Date.now() - 2,
       texto: "lanchar",
       completa: false
     },
     {
-      id: `${Date.now() - 3}`,
+      id: Date.now() - 3,
       texto: "comer bolo",
       completa: false
     }
     ],
     inputValue: '',
+    editValue: '',
     filtro: ''
   }
 
@@ -49,8 +50,9 @@ class App extends React.Component {
 
   componentDidMount() {
     const buscaTarefas = JSON.parse(localStorage.getItem("arrayTarefas"))
-    if (buscaTarefas) {      
-    this.setState({ tarefas: buscaTarefas })
+
+    if (buscaTarefas) {
+      this.setState({ tarefas: buscaTarefas })
     }
   };
 
@@ -59,14 +61,29 @@ class App extends React.Component {
     this.setState({ inputValue: novoInputValue })
   }
 
+  onChangeEdit = (event) => {
+    const novoEditValue = event.target.value
+    this.setState({ editValue: novoEditValue })
+  }
+
+  onChangeFilter = (event) => {
+    const novoFilterValue = event.target.value
+    this.setState({ filtro: novoFilterValue })
+  }
+
   criaTarefa = () => {
     const novaTarefa = {
       id: Date.now(),
       texto: this.state.inputValue,
       completa: false
     }
+
     const novoArrayTarefas = [...this.state.tarefas, novaTarefa]
-    this.setState({ tarefas: novoArrayTarefas })
+
+    this.setState({
+      tarefas: novoArrayTarefas,
+      inputValue: ""
+    })
   }
 
   selectTarefa = (id) => {
@@ -81,12 +98,50 @@ class App extends React.Component {
         return tarefa
       }
     })
+
     this.setState({ tarefas: arrayTarefasMapeado })
   }
 
-  onChangeFilter = (event) => {
-    const novoFilterValue = event.target.value
-    this.setState({ filtro: novoFilterValue })
+  editaTarefa = (id) => {
+    const arrayTarefasEditado = this.state.tarefas.map((tarefa) => {
+      if (tarefa.id === id) {
+        const tarefaEditada = {
+          ...tarefa,
+          texto: this.state.editValue
+        }
+        return tarefaEditada
+      } else {
+        return tarefa
+      }
+    })
+
+    this.setState({
+      tarefas: arrayTarefasEditado,
+      editValue: ""
+    })
+
+  }
+
+
+  apagaTarefa = (id) => {
+    const arrayTarefasFiltrado = this.state.tarefas.filter((tarefa) => {
+      return !(tarefa.id === id)
+    })
+
+    this.setState({ tarefas: arrayTarefasFiltrado })
+  }
+
+  criaBackup = () => {
+    localStorage.setItem('arrayBackup', JSON.stringify(this.state.tarefas))
+  }
+
+  onClickEraseAll = () => {
+    this.setState({ tarefas: [] })
+  }
+
+  onClickRestoreAll = () => {
+    const backupArray = JSON.parse(localStorage.getItem('arrayBackup'))
+    this.setState({ tarefas: backupArray })
   }
 
   render() {
@@ -121,15 +176,35 @@ class App extends React.Component {
         <TarefaList>
           {listaFiltrada.map(tarefa => {
             return (
-              <Tarefa
-                completa={tarefa.completa}
-                onClick={() => this.selectTarefa(tarefa.id)}
-              >
-                {tarefa.texto}
-              </Tarefa>
+              <InputsContainer key={tarefa.id}>
+                <Tarefa
+                  completa={tarefa.completa}
+                  onClick={() => this.selectTarefa(tarefa.id)}
+                >
+                  {tarefa.texto}
+
+                </Tarefa>
+                <button onClick={() => this.editaTarefa(tarefa.id)}>Editar</button>
+                <button onClick={() => this.apagaTarefa(tarefa.id)}
+                >Apagar tarefa</button>
+              </InputsContainer>
+
             )
           })}
         </TarefaList>
+
+        <br />
+        <InputsContainer>
+          <p>Faça a edição aqui e escolha a tarefa a ser editada:</p>
+          <input value={this.state.editValue} onChange={this.onChangeEdit} />
+        </InputsContainer>
+        <br />
+        <InputsContainer>
+          <button onClick={this.onClickEraseAll}>Apagar tudo</button>
+          <button onClick={this.criaBackup}>Criar backup</button>
+          <button onClick={this.onClickRestoreAll}>Resgatar</button>
+        </InputsContainer>
+
       </div>
     )
   }
