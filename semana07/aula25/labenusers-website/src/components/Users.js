@@ -8,7 +8,8 @@ class Users extends React.Component {
             return (
                 <div key={user.id}>
                     <SingleUser username={user.name} />
-                    <button onClick={this.props.onClickDelete}>Deletar usuário</button>
+                    <button onClick={() => this.props.onClickDetails(user.id)}>Ver detalhes</button>
+                    <button onClick={() => this.props.onClickDelete(user.id)}>Deletar usuário</button>
                 </div>
             )
         })
