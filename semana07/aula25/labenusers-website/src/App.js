@@ -9,16 +9,14 @@ class App extends React.Component {
   state = {
     pageNumber: 1,
     usersArray: [],
+    filteredUser: "",
     userDetails: "",
     nameInputValue: "",
-    emailInputValue: ""
+    emailInputValue: "",
+    filterInputValue: ""
   }
 
   componentDidMount = () => {
-    this.getAllUsers()
-  }
-
-  componentDidUpdate = () => {
     this.getAllUsers()
   }
 
@@ -28,6 +26,10 @@ class App extends React.Component {
 
   onChangeEmailValue = (event) => {
     this.setState({ emailInputValue: event.target.value })
+  }
+
+  onChangeFilterValue = (event) => {
+    this.setState({ filterInputValue: event.target.value })
   }
 
   onClickRegister = () => {
@@ -69,6 +71,17 @@ class App extends React.Component {
     this.editUser(userId)
   }
 
+  onClickSearch = () => {
+    this.searchUser(this.state.filterInputValue)
+  }
+
+  onClickClearSearch = () => {
+    this.setState({
+      filteredUser: "",
+      filterInputValue: ""
+    })
+  }
+
   createUser = () => {
     const body = {
       name: this.state.nameInputValue,
@@ -81,6 +94,7 @@ class App extends React.Component {
       }
     }).then(response => {
       alert('Usuário criado com sucesso')
+      this.getAllUsers()
       this.setState({
         nameInputValue: "",
         emailInputValue: "",
@@ -103,6 +117,7 @@ class App extends React.Component {
       }
     }).then(response => {
       alert('Usuário editado com sucesso')
+      this.getAllUsers()
       this.setState({
         nameInputValue: "",
         emailInputValue: "",
@@ -121,6 +136,7 @@ class App extends React.Component {
       }
     }).then(response => {
       alert("Usuário deletado com sucesso")
+      this.getAllUsers()
     }).catch(error => {
       alert("Erro ao tentar deletar usuário")
       console.log(error.message)
@@ -147,8 +163,22 @@ class App extends React.Component {
       }
     }).then(response => {
       this.setState({ userDetails: response.data })
+      this.getAllUsers()
     }).catch(error => {
       alert("Erro ao buscar detalhes do usuário")
+      console.log(error.message)
+    })
+  }
+
+  searchUser = (text) => {
+    axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/search?name=${text}&email=`, {
+      headers: {
+        Authorization: "bruno-mugnol-dumont"
+      }
+    }).then(response => {
+      this.setState({ filteredUser: response.data })
+    }).catch(error => {
+      alert("Erro ao buscar por nome. Insira o nome exato.")
       console.log(error.message)
     })
   }
@@ -172,10 +202,16 @@ class App extends React.Component {
           return (
             <Users
               usersArray={this.state.usersArray}
+              filteredUser={this.state.filteredUser}
+
+              filterInputValue={this.state.filterInputValue}
+              onChangeFilterValue={this.onChangeFilterValue}
 
               onClickDetails={this.onClickDetails}
               onClickDelete={this.onClickDelete}
               onClickChangePage={this.onClickChangePage}
+              onClickSearch={this.onClickSearch}
+              onClickClearSearch={this.onClickClearSearch}
             />)
         case 3:
           return (
