@@ -24,20 +24,16 @@ class Details extends React.Component {
         playlistTracks: [],
     }
 
-    componentDidUpdate = () => {
+    componentDidMount = () => {
         this.fetchPlaylistTracks()
     }
 
     fetchPlaylistTracks = () => {
-        console.log(this.props.playlistInfo.id)
         axios.get(`${baseUrl + this.props.playlistInfo.id}/tracks`, { headers: this.props.headers })
             .then(response => {
-                if (response.data.result.quantity) {
                     this.setState({ playlistTracks: response.data.result.tracks })
-                }
-                console.log(response.data.result.tracks)
             }).catch((error) => {
-                console.log("Erro ao buscar tracks")
+                console.log("Erro ao buscar músicas")
                 console.log(error.message)
             })
     }
@@ -45,7 +41,7 @@ class Details extends React.Component {
     render() {
         const renderedTracks = (this.state.playlistTracks[0]) ?
             this.state.playlistTracks.map((track) => {
-            return <p>{track.name}</p>
+                return <p>{track.name}</p>
             })
             : <p>Esta playlist não tem nenhuma música!</p>
 

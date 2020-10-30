@@ -52,11 +52,13 @@ class App extends React.Component {
         case 0:
           return <LoginPage fetchAuthorization={this.fetchAuthorization} />
         case 1:
-          return <PlayList
+          return (
+          <PlayList
             playlistsArray={this.state.playlistsArray}
             headers={this.state.headers}
             updater={this.fetchPlaylists}
           />
+          )
         default:
           return <div>error</div>
       }
