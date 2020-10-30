@@ -39,18 +39,24 @@ class App extends React.Component {
       axios.get(baseUrl, { headers: this.state.headers })
         .then((response) => {
           this.setState({ playlistsArray: response.data.result.list })
+        }).catch(error => {
+          console.log("Erro ao buscar playlists")
+          console.log(error.data)
         })
     }
   }
 
   render() {
-    console.log(this.state.playlistsArray)
     const renderedPage = () => {
       switch (this.state.pageNumber) {
         case 0:
           return <LoginPage fetchAuthorization={this.fetchAuthorization} />
         case 1:
-          return <PlayList />
+          return <PlayList
+            playlistsArray={this.state.playlistsArray}
+            headers={this.state.headers}
+            updater={this.fetchPlaylists}
+          />
         default:
           return <div>error</div>
       }
