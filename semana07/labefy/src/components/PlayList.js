@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import Details from './Details';
 
 const baseUrl = "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/"
 
@@ -36,12 +37,16 @@ const KidDiv = styled.div`
     height: fit-content;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 `
-
+const HuggingButton = styled.button`
+    margin: 8px 4px;
+`
 
 class PlayList extends React.Component {
     state = {
         playlistNameValue: "",
+        selectedPlaylist: null,
     }
 
     onChangePlaylistName = (event) => {
@@ -67,41 +72,79 @@ class PlayList extends React.Component {
         }
     }
 
+    onClickDeletePlaylist = (playlistID) => {
+        if (window.confirm("Tem certeza que deseja deletar esta playlist?")) {
+            axios.delete(`${baseUrl + playlistID}`, { headers: this.props.headers })
+                .then(() => {
+                    this.props.updater()
+                })
+                .catch(error => {
+                    console.log("Erro ao deletar playlist")
+                    console.log(error.message)
+                })
+        }
+    }
+
+    onClickDetails = (playlistID, playlistName) => {
+        const playlistInfo = {
+            name: playlistName,
+            id: playlistID
+        }
+        this.setState({ selectedPlaylist: playlistInfo })
+    }
+
     render() {
         const renderedPlaylist = this.props.playlistsArray ?
             this.props.playlistsArray.map((playlist) => {
                 return (
-                    <KidDiv>
-                    <li>{playlist.name}</li>
-                    <button>X</button>
+                    <KidDiv key={playlist.id}>
+                        <li>{playlist.name}</li>
+                        <div>
+                            <HuggingButton
+                                onClick={() => { this.onClickDetails(playlist.id, playlist.name) }}
+                            >Ver detalhes</HuggingButton>
+                            <HuggingButton
+                                onClick={() => { this.onClickDeletePlaylist(playlist.id) }}
+                            >X</HuggingButton>
+                        </div>
                     </KidDiv>
                 )
             })
             : <></>
 
+        const renderedDetailOrNot = this.state.selectedPlaylist ?
+            <Details
+                playlistInfo={this.state.selectedPlaylist}
+                headers={this.props.headers}
+            />
+            : <></>
+
+
 
         return (
             <DaddyDiv>
-
                 <HeaderDiv>
                     <h3>Crie uma playlist:</h3>
                     <div>
-                    <PlaylistNameInput
-                        value={this.state.playlistNameValue}
-                        placeholder="Nome da playlist"
-                        onChange={this.onChangePlaylistName}
-                    />
-                    <button
-                        onClick={this.onClickCreatePlaylist}
-                    >Criar</button>
+                        <PlaylistNameInput
+                            value={this.state.playlistNameValue}
+                            placeholder="Nome da playlist"
+                            onChange={this.onChangePlaylistName}
+                        />
+                        <button
+                            onClick={this.onClickCreatePlaylist}
+                        >Criar</button>
                     </div>
                 </HeaderDiv>
+
                 <HalflingDiv>
                     <h2>Suas playlists:</h2>
+                    <br />
                     {renderedPlaylist}
                     <br />
-
                 </HalflingDiv>
+
+                {renderedDetailOrNot}
 
             </DaddyDiv>
         )
