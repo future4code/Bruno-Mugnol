@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios'
 import styled from 'styled-components';
 import stc from 'string-to-color';
-import SpeciesList from './SpeciesList'
 
 const HumongousDiv = styled.div`
   background-color: transparent;
@@ -32,7 +31,7 @@ const CardDiv = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: teal;
+    background-color: ${({ color }) => (stc(color))};
 `
 
 class SpeciesCard extends React.Component {
@@ -63,27 +62,34 @@ class SpeciesCard extends React.Component {
                 }).catch(error => {
                     console.log("Homeworld fetching error")
                     console.log(error.message)
+                    this.setState({ homeworldInfo: null })
                 })
         }
     }
 
     render() {
-        const renderedDetails = this.state.homeworldInfo ? this.state.info.map((data) => {
+        const renderedHomeworldDetails = this.state.homeworldInfo ?
+            <>
+                <h2><strong>Homeworld -</strong> {this.state.homeworldInfo.name}</h2>
+                <p><strong>Climate:</strong> {this.state.homeworldInfo.climate}</p>
+                <p><strong>Terrain:</strong> {this.state.homeworldInfo.terrain}</p>
+                <p><strong>Gravity:</strong> {this.state.homeworldInfo.gravity}</p>
+                <p><strong>Population:</strong> {this.state.homeworldInfo.population}</p>
+            </>
+            :
+            <></>
+        const renderedDetails = this.state.info ? this.state.info.map((data) => {
             return (
                 <HumongousDiv>
-                <CardDiv key={this.state.homeworldInfo}>
-                    <CloseButton onClick={this.props.onClickCloseCard}><strong>X</strong></CloseButton>
-                    <h2><strong>Species - {data.name}</strong></h2>
-                    <p><strong>Classification:</strong> {data.classification}</p>
-                    <p><strong>Average height:</strong> {data.average_height} cm</p>
-                    <p><strong>Average lifespan:</strong> {data.average_lifespan} years</p>
-                    <br />
-                    <h2><strong>Homeworld -</strong> {this.state.homeworldInfo.name}</h2>
-                    <p><strong>Climate:</strong> {this.state.homeworldInfo.climate}</p>
-                    <p><strong>Terrain:</strong> {this.state.homeworldInfo.terrain}</p>
-                    <p><strong>Gravity:</strong> {this.state.homeworldInfo.gravity}</p>
-                    <p><strong>Population:</strong> {this.state.homeworldInfo.population}</p>                    
-                </CardDiv>
+                    <CardDiv color={data.skin_colors}>
+                        <CloseButton onClick={this.props.onClickCloseCard}><strong>X</strong></CloseButton>
+                        <h2><strong>Species - {data.name}</strong></h2>
+                        <p><strong>Classification:</strong> {data.classification}</p>
+                        <p><strong>Average height:</strong> {data.average_height} cm</p>
+                        <p><strong>Average lifespan:</strong> {data.average_lifespan} years</p>
+                        <br />
+                        {renderedHomeworldDetails}
+                    </CardDiv>
                 </HumongousDiv>
             )
         })
@@ -92,7 +98,7 @@ class SpeciesCard extends React.Component {
 
         return (
             <div>
-                {renderedDetails} 
+                {renderedDetails}
             </div>
         )
     }

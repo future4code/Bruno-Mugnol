@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios'
 import styled from 'styled-components';
-import stc from 'string-to-color';
 import SpeciesCard from './SpeciesCard';
 
 const MainContainer = styled.div`
@@ -62,7 +61,7 @@ class SpeciesList extends React.Component {
             this.props.allSpecies.map((species) => {
                 return (
                     <SpeciesListItem
-                        key={species.created}
+                        key={species.edited}
                         onClick={() => {this.onClickOpenCard(species.name)}}
                     >{species.name}
                     </SpeciesListItem>
