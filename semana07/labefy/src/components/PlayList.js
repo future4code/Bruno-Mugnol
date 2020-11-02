@@ -77,6 +77,9 @@ class PlayList extends React.Component {
             axios.delete(`${baseUrl + playlistID}`, { headers: this.props.headers })
                 .then(() => {
                     this.props.updater()
+                    if (playlistID === this.state.selectedPlaylist.id) {
+                        this.setState({ selectedPlaylist: null })
+                    }
                 })
                 .catch(error => {
                     console.log("Erro ao deletar playlist")
@@ -116,6 +119,7 @@ class PlayList extends React.Component {
             <Details
                 playlistInfo={this.state.selectedPlaylist}
                 headers={this.props.headers}
+                updater={this.props.updater}
             />
             : <></>
 
