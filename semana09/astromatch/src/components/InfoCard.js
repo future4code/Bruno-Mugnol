@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import { Img200x200, InnerCard } from '../screens/styled';
 
 const InfoCard = (props) => {

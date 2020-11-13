@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components'
-
-import { baseUrl } from './constants/constants'
 
 import MatchingScreen from './screens/MatchingScreen';
 import YourMatches from './screens/YourMatches';

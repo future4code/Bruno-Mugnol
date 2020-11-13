@@ -7,6 +7,8 @@ import MatchButton from '../components/MatchButton';
 import { MatchButtonDiv } from '../components/styled';
 import { CenteredBiggerCard } from './styled';
 import InfoCard from '../components/InfoCard';
+import { Button } from '@material-ui/core';
+
 
 
 const MatchingScreen = (props) => {
@@ -35,7 +37,6 @@ const MatchingScreen = (props) => {
 
         axios.post(`${baseUrl}/choose-person`, body)
             .then(response => {
-                console.log(response.data)
                 getUnseenProfile()
             })
             .catch(error => {
@@ -46,7 +47,7 @@ const MatchingScreen = (props) => {
 
     return (
         <CenteredBiggerCard>
-            <button onClick={props.onClickChangePage} >Ver seus matches</button>
+            <Button variant="contained" onClick={props.onClickChangePage} >Ver seus matches</Button>
             <InfoCard name={profile.name} age={profile.age} photo={profile.photo} bio={profile.bio} />
             <MatchButtonDiv>
                 <MatchButton buttonText={"Not so nice"} match={false} onClickChoose={onClickChoose} />

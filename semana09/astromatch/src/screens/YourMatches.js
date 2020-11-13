@@ -1,10 +1,10 @@
-import Axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import { baseUrl } from '../constants/constants';
 
-import { CenteredBiggerCard, Img64x64 } from './styled';
+import { CenteredBiggerCard, Img64x64, PicPlusNameBox } from './styled';
+import { Button } from '@material-ui/core'
 
 
 const YourMatches = (props) => {
@@ -39,13 +39,13 @@ const YourMatches = (props) => {
 
     const renderedMatchedProfiles = !matchedProfiles.length ? <p>Você ainda não deu match! Penteia o cabelo aí</p>
         : matchedProfiles.map((profile) => {
-            return <li key={profile.id}><Img64x64 src={profile.photo} />{profile.name}</li>
+            return <PicPlusNameBox color="text.primary" key={profile.id}><Img64x64 src={profile.photo} />{profile.name}</PicPlusNameBox>
         })
 
     return (
         <CenteredBiggerCard>
-            <button onClick={props.onClickChangePage}>Continue a dar matches!</button>
-            <p>ou...<button onClick={onClickClearMatches}>Limpe todos seus matches</button></p>            
+            <Button variant="contained" onClick={props.onClickChangePage}>Continue a dar matches!</Button>
+            <Button variant="contained" color="secondary" onClick={onClickClearMatches}>Limpe todos seus matches</Button>
             {renderedMatchedProfiles}
         </CenteredBiggerCard>
     )
