@@ -9,15 +9,10 @@ const TripDetailPage = () => {
     history.push("/trips")
   }
 
-  const goToUserApplication = () => {
-    history.push(`/application/${pathParams.tripID}`)
-  }
-
   return (
     <div>
       <p>TripDetailPage</p>
       <button onClick={goBackToTrips}>Voltar</button>
-      <button onClick={goToUserApplication}>Inscreva-se!</button>
     </div>
   );
 }
