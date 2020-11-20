@@ -1,7 +1,9 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import useAdminOnlyAccess from '../hooks/useAdminOnlyAccess';
 
 const AdminHomePage = () => {
+    useAdminOnlyAccess()
     const history = useHistory()
 
     const goBackAdminHome = () => {

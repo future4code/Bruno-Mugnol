@@ -38,10 +38,12 @@ const LoginPage = () => {
   return (
     <div>
       <p>LoginPage</p>
-      <input placeholder="example_email@gmail.com" value={emailValue}
+      <input placeholder="example_email@gmail.com" type="email"
+        value={emailValue}
         onChange={(event) => { setEmailValue(event.target.value) }}
       />
-      <input placeholder="123senha456" type="password" value={passwordValue}
+      <input placeholder="123senha456" type="password"
+        value={passwordValue}
         onChange={(event) => { setPasswordValue(event.target.value) }}
       />
       <button onClick={goBackHome}>Voltar</button>
