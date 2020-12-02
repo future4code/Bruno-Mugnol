@@ -4,8 +4,10 @@ import useForm from '../hooks/useForm'
 import { BASE_URL } from '../constants/constants'
 import { goToFeedPage, goToSignUpPage } from '../routes/coordinator'
 import { useHistory } from 'react-router-dom'
+import useRequireNotLoggedIn from '../hooks/useRequireNotLoggedIn'
 
 const LoginPage = () => {
+    useRequireNotLoggedIn()
     const history = useHistory()
     const [form, onChange, resetForm] = useForm({
         email: "",

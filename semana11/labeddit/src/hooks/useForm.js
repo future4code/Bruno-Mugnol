@@ -1,4 +1,4 @@
-const { useState } = require("react")
+import { useState } from 'react'
 
 const useForm = (initialState) => {
     const [form, setForm] = useState(initialState)

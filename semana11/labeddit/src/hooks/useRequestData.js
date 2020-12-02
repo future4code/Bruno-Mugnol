@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
+import axios from 'axios'
 
-const { default: axios } = require("axios")
-const { BASE_URL } = require("../constants/constants")
+import { BASE_URL } from '../constants/constants'
 
 const useRequestData = (urlEnd, token) => {
     const [data, setData] = useState({})
 
     const getData = () => {
-        axios.get(`${BASE_URL}${urlEnd}`, { headers: { Authorization: token } })
+        axios.get(`${BASE_URL}/${urlEnd}`, { headers: { Authorization: token } })
             .then(response => {
                 setData(response.data)
             })
@@ -19,8 +19,9 @@ const useRequestData = (urlEnd, token) => {
 
     useEffect(() => {
         getData()
+        //React reclama de missing dependency, mas inserir a dependência causa loop infinito.
     }, [])
-    
+
     return [data, getData]
 }
 

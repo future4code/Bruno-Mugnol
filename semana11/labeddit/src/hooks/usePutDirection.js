@@ -1,13 +1,12 @@
-const { default: axios } = require("axios")
-const { BASE_URL } = require("../constants/constants")
+import axios from 'axios'
+import { BASE_URL } from '../constants/constants'
 
-const usePutDirection = (postId, token) => {
+const usePutDirection = (endUrl, token) => {
     const vote = (direction, updateFunction) => {
-        axios.put(`${BASE_URL}/posts/${postId}/vote`,
+        axios.put(`${BASE_URL}/posts/${endUrl}`,
             { direction: direction },
             { headers: { Authorization: token } })
-            .then(response => {
-                console.log(response.data)
+            .then(() => {
                 updateFunction()
             })
             .catch(error => {

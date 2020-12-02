@@ -1,11 +1,12 @@
 import React from 'react'
 import useFetchToken from '../hooks/useFetchToken'
 import usePutDirection from '../hooks/usePutDirection'
+import { goToPostPage } from '../routes/coordinator'
 
 const PostCard = (props) => {
-    const { title, text, username, likes, comments, liked, id, updatePosts } = props
+    const { title, text, username, likes, comments, liked, id, updatePosts, history } = props
     const token = useFetchToken()
-    const vote = usePutDirection(id, token)
+    const vote = usePutDirection(`${id}/vote`, token)
 
     const onClickRate = (rate) => {
         vote(rate, updatePosts)
@@ -13,10 +14,11 @@ const PostCard = (props) => {
 
     return (
         <div>
-            <h2>{title}</h2>
-            <h3>{username}</h3>
+            <h3>{title}</h3>
+            <h4>{username}</h4>
             <p>{text}</p>
-            <h4>Curtidas: {likes}</h4>
+            <button onClick={() => {goToPostPage(history, id)}}>Ir para post</button>
+            <h5>Curtidas: {likes}</h5>
             {liked === 0 ?
                 <>
                     <button
@@ -45,7 +47,7 @@ const PostCard = (props) => {
                         >Deixar de odiar</button>
                     </>)
             }
-            <h4>Comentários: {comments}</h4>
+            <h5>Comentários: {comments}</h5>
         </div>
     )
 }
