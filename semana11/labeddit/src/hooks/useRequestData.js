@@ -19,7 +19,6 @@ const useRequestData = (urlEnd, token) => {
 
     useEffect(() => {
         getData()
-        //React reclama de missing dependency, mas inserir a dependência causa loop infinito.
     }, [])
 
     return [data, getData]

@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import axios from 'axios'
 import useForm from '../hooks/useForm'
 import { BASE_URL } from '../constants/constants'
 import { goToFeedPage, goToSignUpPage } from '../routes/coordinator'
 import { useHistory } from 'react-router-dom'
 import useRequireNotLoggedIn from '../hooks/useRequireNotLoggedIn'
+import LoggedContext from '../context/LoggedContext'
 
 const LoginPage = () => {
-    useRequireNotLoggedIn()
+    const {logged, setLogged} = useContext(LoggedContext)
+    useRequireNotLoggedIn(logged, setLogged)
+
     const history = useHistory()
     const [form, onChange, resetForm] = useForm({
         email: "",
@@ -25,6 +28,7 @@ const LoginPage = () => {
             .then(response => {
                 localStorage.setItem("token", response.data.token)
                 alert(`Login realizado como ${response.data.user.username}`)
+                setLogged(true)
                 goToFeedPage(history)
             })
             .catch(error => {

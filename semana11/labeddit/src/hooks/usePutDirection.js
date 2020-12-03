@@ -10,6 +10,7 @@ const usePutDirection = (endUrl, token) => {
                 updateFunction()
             })
             .catch(error => {
+                console.log(`Erro ao votar em ${endUrl}`)
                 console.log(error.message)
             })
     }

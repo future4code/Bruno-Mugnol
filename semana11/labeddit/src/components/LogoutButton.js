@@ -1,17 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import LoggedContext from '../context/LoggedContext'
 import { goToLoginPage } from '../routes/coordinator'
 
 const LogoutButton = (props) => {
-    const clearTokenFromStorage = () => {
-        localStorage.setItem("token", "")
+    const {setLogged} = useContext(LoggedContext)
+
+    const onClickLogout = () => {
+        localStorage.removeItem("token")
+        setLogged(false)
+        goToLoginPage(props.history)
     }
 
     return (
         <button
-            onClick={() => {
-                clearTokenFromStorage()
-                goToLoginPage(props.history)
-            }}
+            onClick={onClickLogout}
         >Logout</button>
     )
 }

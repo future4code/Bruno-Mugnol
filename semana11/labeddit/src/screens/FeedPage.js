@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import LogoutButton from '../components/LogoutButton'
 import PostCard from '../components/PostCard'
+import LoggedContext from '../context/LoggedContext'
 import useCreateData from '../hooks/useCreateData'
 import useFetchToken from '../hooks/useFetchToken'
 import useForm from '../hooks/useForm'
@@ -9,7 +10,8 @@ import useRequestData from '../hooks/useRequestData'
 import useRequireLogin from '../hooks/useRequireLogin'
 
 const FeedPage = () => {
-    useRequireLogin()
+    const {logged, setLogged} = useContext(LoggedContext)
+    useRequireLogin(logged, setLogged)
     const history = useHistory()
     const token = useFetchToken()
     const [{ posts }, updatePosts] = useRequestData("posts", token)    
@@ -35,7 +37,7 @@ const FeedPage = () => {
             <LogoutButton history={history} />
             <div>
                 <form onSubmit={onClickCreatePost}>
-                    <h1>Crie o seu post :)</h1>
+                    <h1>{"Crie o seu post :)"}</h1>
                     <label>Título: </label>
                     <input
                         name="title"

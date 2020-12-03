@@ -1,13 +1,16 @@
 import axios from 'axios'
-import React from 'react'
+import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import { BASE_URL } from '../constants/constants'
+import LoggedContext from '../context/LoggedContext'
 import useForm from '../hooks/useForm'
 import useRequireNotLoggedIn from '../hooks/useRequireNotLoggedIn'
 import { goToFeedPage, goToLoginPage } from '../routes/coordinator'
 
 const SignUpPage = () => {
-    useRequireNotLoggedIn()
+    const {logged, setLogged} = useContext(LoggedContext)
+    useRequireNotLoggedIn(logged, setLogged)
+
     const history = useHistory()
     const [form, onChange, resetForm] = useForm({
         email: "",
@@ -25,7 +28,8 @@ const SignUpPage = () => {
         axios.post(`${BASE_URL}/signup`, form)
             .then(response => {
                 localStorage.setItem("token", response.data.token)
-                alert(`Cadastro realizado como ${response.data.user.username}`)
+                alert(`Cadastro realizado com sucesso! Seja bem-vindo(a), ${response.data.user.username}`)
+                setLogged(true)
                 goToFeedPage(history)
             })
             .catch(error => {

@@ -15,7 +15,7 @@ const Router = () => {
                 <Route exact path="/sign-up">
                     <SignUpPage />
                 </Route>
-                <Route exact path={["/", "/home"]}>
+                <Route exact path={["/", "/home", "/feed"]}>
                     <FeedPage />
                 </Route>
                 <Route exact path="/post/:postId">
