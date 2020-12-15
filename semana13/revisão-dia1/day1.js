@@ -66,11 +66,23 @@ const printLargestWord = (string) => {
     let maxWord = ""
 
     splitString.forEach((word) => {
-        if(maxWord.length < word.length) {
+        if (maxWord.length < word.length) {
             maxWord = word
         }
     })
 
     return maxWord
 }
-console.log(printLargestWord("o astrodev é malvado pra dedéu, tunumachamermão?"))
+//console.log(printLargestWord("o astrodev é malvado pra dedéu, tunumachamermão?"))
+
+// Exercício 7
+const countVowel = (string) => {
+    return string.split("").reduce((vowelCount, letter) => {
+        if (letter.toLowerCase() === "a" || letter.toLowerCase() === "e" || letter.toLowerCase() === "i" || letter.toLowerCase() === "o" || letter.toLowerCase() === "u") {
+            return vowelCount + 1
+        } else {
+            return vowelCount + 0
+        }
+    }, 0)
+}
+console.log(countVowel("Exemplo"))
