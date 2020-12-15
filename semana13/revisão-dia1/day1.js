@@ -44,4 +44,18 @@ const sortStringAlphabetically = (string) => {
     return string.toLowerCase().split("").sort().join("")
 }
 
-console.log(sortStringAlphabetically("abcdefghijklmnopqrstuvwxyzkmasfbAgDAghJAAOGFUSAGJUHFBPAHFQWKNB"))
+//console.log(sortStringAlphabetically("abcdefghijklmnopqrstuvwxyzkmasfbAgDAghJAAOGFUSAGJUHFBPAHFQWKNB"))
+
+// Exercício 5
+const capitalizeFirstLetters = (string) => {
+    const outputArray = []
+    const splitString = string.split(" ")
+
+    for (let word of splitString) {
+        word = word[0].toUpperCase() + word.substring(1)
+        outputArray.push(word)
+    }
+
+    return outputArray.join(" ")
+}
+console.log(capitalizeFirstLetters("fala meu good"))
