@@ -58,4 +58,19 @@ const capitalizeFirstLetters = (string) => {
 
     return outputArray.join(" ")
 }
-console.log(capitalizeFirstLetters("fala meu good"))
+// console.log(capitalizeFirstLetters("fala meu good"))
+
+// Exercício 6
+const printLargestWord = (string) => {
+    const splitString = string.split(" ")
+    let maxWord = ""
+
+    splitString.forEach((word) => {
+        if(maxWord.length < word.length) {
+            maxWord = word
+        }
+    })
+
+    return maxWord
+}
+console.log(printLargestWord("o astrodev é malvado pra dedéu, tunumachamermão?"))
