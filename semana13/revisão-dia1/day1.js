@@ -17,7 +17,7 @@ const verifyPalindrome = (text) => {
 const getAllCombinations = (string) => {
     const outputArray = []
     const splitString = string.split("")
-    
+
     const getAllSubsets = (array) => {
         return array.reduce(
             (subsets, value) => {
@@ -38,3 +38,10 @@ const getAllCombinations = (string) => {
 }
 
 // console.log(getAllCombinations("pão"))
+
+// Exercício 4
+const sortStringAlphabetically = (string) => {
+    return string.toLowerCase().split("").sort().join("")
+}
+
+console.log(sortStringAlphabetically("abcdefghijklmnopqrstuvwxyzkmasfbAgDAghJAAOGFUSAGJUHFBPAHFQWKNB"))
