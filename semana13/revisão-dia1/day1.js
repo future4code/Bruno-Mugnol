@@ -11,9 +11,30 @@ const verifyPalindrome = (text) => {
     const reversedText = reverseText(normalText)
     return normalText === reversedText
 }
-console.log(verifyPalindrome("socorram-me subi no onibus em marrocos"))
+// console.log(verifyPalindrome("socorram-me subi no onibus em marrocos"))
 
 // Exercício 3
-const allCombinations = (string) => {
+const getAllCombinations = (string) => {
+    const outputArray = []
+    const splitString = string.split("")
+    
+    const getAllSubsets = (array) => {
+        return array.reduce(
+            (subsets, value) => {
+                return subsets.concat(subsets.map(set => [...set, value]))
+            }
+            ,
+            [[]]
+        )
+    }
 
+    getAllSubsets(splitString).forEach((subset) => {
+        outputArray.push(subset.join(""))
+    })
+
+    outputArray.splice(0, 1)
+
+    return outputArray.join(", ")
 }
+
+// console.log(getAllCombinations("pão"))
