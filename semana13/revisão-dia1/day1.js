@@ -85,4 +85,20 @@ const countVowel = (string) => {
         }
     }, 0)
 }
-console.log(countVowel("Exemplo"))
+// console.log(countVowel("Exemplo"))
+
+// Exercício 8
+const findSecondsWithSort = (numbersArray) => {
+    const noRepetitionsArray = numbersArray.filter((num, i, numArray) => {
+        return i === numArray.indexOf(num)
+    })
+    if (noRepetitionsArray.length >= 4) {
+        noRepetitionsArray.sort((a, b) => a - b)
+        const secondMin = noRepetitionsArray[1]
+        const secondMax = noRepetitionsArray[noRepetitionsArray.length - 2]
+        return [secondMin, secondMax].join(", ")
+    } else {
+        alert("Seu array é muito pequeno")
+    }
+}
+console.log(findSecondsWithSort([-2, 1, 3, 5, 5, 15, -5, 15, -2, -5]))
