@@ -101,4 +101,13 @@ const findSecondsWithSort = (numbersArray) => {
         alert("Seu array é muito pequeno")
     }
 }
-console.log(findSecondsWithSort([-2, 1, 3, 5, 5, 15, -5, 15, -2, -5]))
+// console.log(findSecondsWithSort([-2, 1, 3, 5, 5, 15, -5, 15, -2, -5]))
+
+// Exercício 9
+const removeRepetitions = (string) => {
+    const newArray = string.split("").filter((char, i, charArray) => {
+        return i === charArray.indexOf(char)
+    })
+    return newArray.join("")
+}
+console.log(removeRepetitions("thequickbrownfoxjumpsoverthelazydog"))
