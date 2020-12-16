@@ -110,4 +110,18 @@ const removeRepetitions = (string) => {
     })
     return newArray.join("")
 }
-console.log(removeRepetitions("thequickbrownfoxjumpsoverthelazydog"))
+// console.log(removeRepetitions("thequickbrownfoxjumpsoverthelazydog"))
+
+// Exercício 10
+const countLetters = (string) => {
+    const letterCountObject = string.split("").reduce((lettersObject, char) => {
+        if(lettersObject[char]){
+            return {...lettersObject, [char]: lettersObject[char] + 1}
+        } else {
+            return {...lettersObject, [char]: 1}
+        }
+    }, {})
+
+    return letterCountObject
+}
+console.log(countLetters("teste"))
