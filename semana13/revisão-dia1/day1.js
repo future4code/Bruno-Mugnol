@@ -129,4 +129,18 @@ const countLetters = (string) => {
     
     return outputArray.join(", ")
 }
-console.log(countLetters("bananada"))
+// console.log(countLetters("bananada"))
+
+// -------------------------------------------- \\
+// Laços
+// Exercício 1
+const returnMaximum = (arrayOfNumbers) => {
+    let max = -Infinity
+    arrayOfNumbers.forEach((number) => {
+        if (max < number){
+            max = number
+        }
+    })
+    return max
+}
+console.log(returnMaximum([1, 3, 9, 5 , 2, 7]))
