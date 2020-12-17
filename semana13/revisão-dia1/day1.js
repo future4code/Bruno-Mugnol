@@ -122,6 +122,11 @@ const countLetters = (string) => {
         }
     }, {})
 
-    return letterCountObject
+    const outputArray = []
+    for (let letter in letterCountObject) {
+       outputArray.push(`${letterCountObject[letter]} ${letter}`)
+    }
+    
+    return outputArray.join(", ")
 }
-console.log(countLetters("teste"))
+console.log(countLetters("bananada"))
