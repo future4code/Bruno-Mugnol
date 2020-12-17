@@ -228,4 +228,4 @@ const gradeAtoE = (scoreObject) => {
 
     return gradesObject
 }
-console.log(gradeAtoE(scores))
+// console.log(gradeAtoE(scores))
