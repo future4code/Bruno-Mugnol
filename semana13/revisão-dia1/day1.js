@@ -189,9 +189,43 @@ const verifyDivisibilityBy2And3 = () => {
 // Exercício 6
 const drawPyramid = (material, height) => {
     let printedString = ""
-    for (let i=0; i < height; i++) {
+    for (let i = 0; i < height; i++) {
         printedString += `${material}`
         console.log(printedString)
     }
 }
-drawPyramid("*", 5)
+// drawPyramid("*", 5)
+
+// Exercício 7
+const scores = {
+    Soter: 80,
+    Paula: 77,
+    Caio: 88,
+    Amanda: 95,
+    Mateus: 68
+}
+
+const gradeAtoE = (scoreObject) => {
+    let gradesObject = {}
+    for (let student in scoreObject) {
+        let grade
+        if (scoreObject[student] > 90) {
+            grade = "A"
+        } else if (scoreObject[student] > 80) {
+            grade = "B"
+        } else if (scoreObject[student] > 60) {
+            grade = "C"
+        } else if (scoreObject[student] > 40) {
+            grade = "D"
+        } else if (scoreObject[student] > 30) {
+            grade = "E"
+        } else {
+            grade = "F"
+        }
+
+        gradesObject = { ...gradesObject, [student]: grade }
+    }
+
+    return gradesObject
+}
+console.log(gradeAtoE(scores))
