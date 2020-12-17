@@ -115,32 +115,45 @@ const removeRepetitions = (string) => {
 // Exercício 10
 const countLetters = (string) => {
     const letterCountObject = string.split("").reduce((lettersObject, char) => {
-        if(lettersObject[char]){
-            return {...lettersObject, [char]: lettersObject[char] + 1}
+        if (lettersObject[char]) {
+            return { ...lettersObject, [char]: lettersObject[char] + 1 }
         } else {
-            return {...lettersObject, [char]: 1}
+            return { ...lettersObject, [char]: 1 }
         }
     }, {})
 
     const outputArray = []
     for (let letter in letterCountObject) {
-       outputArray.push(`${letterCountObject[letter]} ${letter}`)
+        outputArray.push(`${letterCountObject[letter]} ${letter}`)
     }
-    
+
     return outputArray.join(", ")
 }
 // console.log(countLetters("bananada"))
 
 // -------------------------------------------- \\
+
 // Laços
 // Exercício 1
 const returnMaximum = (arrayOfNumbers) => {
     let max = -Infinity
     arrayOfNumbers.forEach((number) => {
-        if (max < number){
+        if (max < number) {
             max = number
         }
     })
     return max
 }
-console.log(returnMaximum([1, 3, 9, 5 , 2, 7]))
+// console.log(returnMaximum([1, 3, 9, 5 , 2, 7]))
+
+// Exercício 2
+const returnLargestString = (arrayOfStrings) => {
+    let largest = ""
+    arrayOfStrings.forEach((string) => {
+        if (largest.length < string.length) {
+            largest = string
+        }
+    })
+    return largest
+}
+console.log(returnLargestString(["Casa", "Elefante", "Espelho", "Internacional"]))
