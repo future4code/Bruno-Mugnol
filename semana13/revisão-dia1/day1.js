@@ -52,13 +52,13 @@ const capitalizeFirstLetters = (string) => {
     const splitString = string.split(" ")
 
     for (let word of splitString) {
-        word = word[0].toUpperCase() + word.substring(1)
+        word = word[0].toUpperCase() + word.substring(1).toLowerCase()
         outputArray.push(word)
     }
 
     return outputArray.join(" ")
 }
-// console.log(capitalizeFirstLetters("fala meu good"))
+console.log(capitalizeFirstLetters("fala meu good"))
 
 // Exercício 6
 const printLargestWord = (string) => {
@@ -156,4 +156,10 @@ const returnLargestString = (arrayOfStrings) => {
     })
     return largest
 }
-console.log(returnLargestString(["Casa", "Elefante", "Espelho", "Internacional"]))
+// console.log(returnLargestString(["Casa", "Elefante", "Espelho", "Internacional"]))
+
+// Exercício 3
+const sortArray = (arrayOfNumbers) => {
+    return arrayOfNumbers.sort((a, b) => a - b)
+}
+console.log(sortArray([3,27,12]))
