@@ -162,4 +162,26 @@ const returnLargestString = (arrayOfStrings) => {
 const sortArray = (arrayOfNumbers) => {
     return arrayOfNumbers.sort((a, b) => a - b)
 }
-console.log(sortArray([3,27,12]))
+// console.log(sortArray([3, 27, 12]))
+
+// Exercício 4
+const sortAndPrintMax = (arrayOfNumbers) => {
+    arrayOfNumbers.sort((a, b) => a - b)
+    alert(`Maior número do array é: ${arrayOfNumbers[arrayOfNumbers.length - 1]}`)
+    return arrayOfNumbers
+}
+// console.log(sortAndPrintMax([3, 27, 12]))
+
+// Exercício 5
+const bob = () => {
+    for (let i = 0; i <= 30; i++) {
+        if (i !== 0 && !(i % 2) && !(i % 3)) {
+            console.log(`${i} é par e divisível por 3.`)
+        } else if (i === 0 || !(i % 2)) {
+            console.log(`${i} é par.`)
+        } else if (!(i % 3)) {
+            console.log(`${i} é divisível por 3.`)
+        }
+    }
+}
+bob()
