@@ -58,7 +58,7 @@ const capitalizeFirstLetters = (string) => {
 
     return outputArray.join(" ")
 }
-console.log(capitalizeFirstLetters("fala meu good"))
+// console.log(capitalizeFirstLetters("fala meu good"))
 
 // Exercício 6
 const printLargestWord = (string) => {
@@ -173,7 +173,7 @@ const sortAndPrintMax = (arrayOfNumbers) => {
 // console.log(sortAndPrintMax([3, 27, 12]))
 
 // Exercício 5
-const bob = () => {
+const verifyDivisibilityBy2And3 = () => {
     for (let i = 0; i <= 30; i++) {
         if (i !== 0 && !(i % 2) && !(i % 3)) {
             console.log(`${i} é par e divisível por 3.`)
@@ -184,4 +184,14 @@ const bob = () => {
         }
     }
 }
-bob()
+// verifyDivisibilityBy2And3()
+
+// Exercício 6
+const drawPyramid = (material, height) => {
+    let printedString = ""
+    for (let i=0; i < height; i++) {
+        printedString += `${material}`
+        console.log(printedString)
+    }
+}
+drawPyramid("*", 5)
