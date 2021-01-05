@@ -38,7 +38,7 @@ const person4: person = {
 }
 
 // e)
-enum rainbowColors {
+enum RainbowColors {
     RED = "vermelho",
     ORANGE = "laranja",
     YELLOW = "amarelo",
@@ -51,12 +51,12 @@ enum rainbowColors {
 type basicHuman = {    
     name: string,
     age: number,
-    favColour: rainbowColors
+    favColour: RainbowColors
 }
 
 const person5: basicHuman = {
     name: "Squirrel",
     age: 3,
-    favColour: rainbowColors.VIOLET
+    favColour: RainbowColors.VIOLET
 }
 console.log(person5)
