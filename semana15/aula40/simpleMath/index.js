@@ -16,6 +16,6 @@ switch (operation) {
         console.log(`${value1} / ${value2} = ${Number(value1) / Number(value2)}`)
         break
     default:
-        console.log("The inserted values are invalid. Try again.")
+        console.log("The inserted operation or values are invalid. Try again.")
         break
 }

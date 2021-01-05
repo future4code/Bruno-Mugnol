@@ -4,10 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js",
-    "print-basic-info": "clear && node ./src/printBasicInfo.js",
-    "math": "node ./src/simpleMath.js",
-    "add-task": "node ./src/addTask.js"
+    "start": "node ./index.js"
   },
   "author": "Bruno Mugnol",
   "license": "ISC"
