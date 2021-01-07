@@ -83,11 +83,6 @@ app.put('/countries/edit/:id', (req: Request, res: Response) => {
 
     const editId: number = Number(req.params.id)
 
-    type bodyType = {
-        name: string,
-        capital: string
-    }
-
     const validBody: string[] = ['name', 'capital']
 
     try {
@@ -97,7 +92,7 @@ app.put('/countries/edit/:id', (req: Request, res: Response) => {
             throw new Error(errorMessage)
         }
 
-        const isValidBody = (body: bodyType): boolean => {
+        const isValidBody = (): boolean => {
             for (let key in req.body) {
                 if (!validBody.includes(key)) {
                     errorCode = 422
@@ -115,7 +110,7 @@ app.put('/countries/edit/:id', (req: Request, res: Response) => {
             return true
         }
 
-        if (!isValidBody(req.body)) {
+        if (!isValidBody()) {
             throw new Error(errorMessage)
         }
 
@@ -125,8 +120,7 @@ app.put('/countries/edit/:id', (req: Request, res: Response) => {
 
         if (countryIndex === -1) {
             errorCode = 404
-            errorMessage = "Country ID not found."
-            throw new Error(errorMessage)
+            throw new Error("Country ID not found.")
         }
 
         countries[countryIndex] = {
@@ -138,7 +132,7 @@ app.put('/countries/edit/:id', (req: Request, res: Response) => {
         res.status(200).send("Country edited sucessfully.")
 
     } catch (error) {
-        res.status(errorCode).send(errorMessage)
+        res.status(errorCode).send(errorMessage || error.message)
     }
 })
 
@@ -167,6 +161,40 @@ app.get('/countries/:id', (req: Request, res: Response) => {
         res.status(errorCode).send(error.message)
     }
 
+})
+
+app.delete('/countries/:id', (req: Request, res: Response) => {
+    console.log("hi")
+    let errorCode: number = 400
+    const deleteId: number = Number(req.params.id)
+
+    try {
+        if (isNaN(deleteId)) {
+            errorCode = 422
+            throw new Error("Invalid ID.")
+        }
+
+        if (typeof req.headers.authorization !== "string" || req.headers.authorization.length < 10) {
+            errorCode = 401
+            throw new Error("Invalid authorization.")
+        }
+
+        const countryIndex: number = countries.findIndex((country) => {
+            return country.id === deleteId
+        })
+
+        if (countryIndex === -1) {
+            errorCode = 404
+            throw new Error("Country ID not found.")
+        }
+
+        countries.splice(countryIndex, 1)
+
+        res.status(200).send("Country deleted sucessfully.")
+
+    } catch (error) {
+        res.status(errorCode).send(error.message)
+    }
 })
 
 app.listen(3003, () => {
