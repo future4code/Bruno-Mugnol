@@ -73,8 +73,7 @@ app.get('/countries/search', (req: Request, res: Response) => {
         res.status(200).send(result)
 
     } catch (error) {
-        console.log(error)
-        res.status(errorCode).end()
+        res.status(errorCode).send(error.message)
     }
 })
 
@@ -94,7 +93,8 @@ app.put('/countries/edit/:id', (req: Request, res: Response) => {
     try {
         if (isNaN(editId)) {
             errorCode = 422
-            throw new Error("Invalid ID.")
+            errorMessage = "Invalid ID."
+            throw new Error(errorMessage)
         }
 
         const isValidBody = (body: bodyType): boolean => {
@@ -105,7 +105,7 @@ app.put('/countries/edit/:id', (req: Request, res: Response) => {
                     return false
                 }
 
-                if (!key) {
+                if (!req.body[key]) {
                     errorCode = 401
                     errorMessage = "Found an empty required field."
                     return false
@@ -138,8 +138,7 @@ app.put('/countries/edit/:id', (req: Request, res: Response) => {
         res.status(200).send("Country edited sucessfully.")
 
     } catch (error) {
-        console.log(error)
-        res.status(errorCode).end()
+        res.status(errorCode).send(errorMessage)
     }
 })
 
@@ -165,8 +164,7 @@ app.get('/countries/:id', (req: Request, res: Response) => {
         res.status(200).send(searchedCountry)
 
     } catch (error) {
-        console.log(error)
-        res.status(errorCode).end()
+        res.status(errorCode).send(error.message)
     }
 
 })
