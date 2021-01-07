@@ -2,7 +2,6 @@ import express, { Express, Request, Response } from 'express'
 import cors from 'cors'
 
 
-import { users, User } from './users'
 import allUsers from './users-path'
 
 const app: Express = express()
@@ -16,6 +15,10 @@ app.use(cors())
 // Exercício 2
 // a) Utilizei QueryParams, pois em caso de buscas é mais recomendado que PathParams
 // b) Sim. Ver arquivo users-path.ts
+
+// Exercício 3
+// a) Query
+// b) Dito e feito.
 
 
 app.use('/users', allUsers)

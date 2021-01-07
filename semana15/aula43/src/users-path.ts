@@ -19,7 +19,7 @@ router.get('/', (req: Request, res: Response) => {
 
         const searchQuery: string = (req.query.type as string).toUpperCase()
 
-        if(!validQueries.includes(searchQuery)){
+        if (!validQueries.includes(searchQuery)) {
             errorCode = 422
             throw new Error("Invalid query parameter")
         }
@@ -35,6 +35,35 @@ router.get('/', (req: Request, res: Response) => {
     }
 })
 
+router.get('/search', (req: Request, res: Response) => {
+    let errorCode = 400
+    const validQueries = ["name"]
+    
+    try {
+        const searchQuery: string = req.query.name as string
+        
+        for (let key in req.query) {
+            if (!validQueries.includes(key)) {
+                errorCode = 422
+                throw new Error("Invalid query parameter")
+            }
+        }
+
+        const result: User[] = users.filter((user) => {
+            return user.name.toLowerCase().includes(searchQuery.toLowerCase())
+        })
+
+        if (!result.length) {
+            errorCode = 404
+            throw new Error ("User not found.")
+        }
+
+        res.status(200).send(result)
+
+    } catch (error) {
+        res.status(errorCode).send(error.message)
+    }
+})
 
 
 export default router
