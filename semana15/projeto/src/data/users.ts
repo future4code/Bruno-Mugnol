@@ -21,11 +21,13 @@ export const users: User[] = [
         statements: [
             {
                 value: 100,
-                date: 1155438000000
+                date: 1155438000000,
+                description: "Money from grandma"
             },
             {
                 value: -233,
-                date: 0
+                date: 0,
+                description: "Bought -some- chocolate"
             }
         ]
     },
@@ -36,11 +38,11 @@ export const users: User[] = [
         balance: 100,
         statements: [
             {
-                value: 100,
+                value: 500,
                 date: 1155438000000
             },
             {
-                value: -233,
+                value: -112,
                 date: 0
             }
         ]

@@ -20,7 +20,7 @@ router.post('/create', (req: Request, res: Response) => {
         }
 
         users.push(newUser)
-        res.status(200).send("User created successfully.")
+        res.status(201).send("User created successfully.")
 
     } catch (error) {
         res.status(errorCode).send(error.message)

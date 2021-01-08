@@ -42,20 +42,17 @@ router.put('/deposit', (req: Request, res: Response) => {
 
         users[userIndex] = {
             ...users[userIndex],
-            balance: users[userIndex].balance + req.body.balance
+            statements: [
+                ...users[userIndex].statements,
+                {
+                    value: req.body.value,
+                    date: Date.now(),
+                    description: "Self made deposit."
+                }
+            ]
         }
 
-        res.status(200).send(`Your account now has: ${users[userIndex].balance}`)
-
-    } catch (error) {
-        res.status(errorCode).send(error.message)
-    }
-})
-
-router.put('/pay', (req: Request, res: Response) => {
-    let errorCode = 400
-
-    try {
+        res.status(200).send(`Deposit was successful.`)
 
     } catch (error) {
         res.status(errorCode).send(error.message)

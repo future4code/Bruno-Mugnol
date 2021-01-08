@@ -6,12 +6,14 @@ import { users } from './data/users'
 import account from './routes/accountRoute'
 import balance from './routes/balanceRoute'
 import userlist from './routes/usersRoute'
+import transactions from './routes/transactionRoute'
 
 const app: Express = express()
 
 app.use('/account', account)
 app.use('/balance', balance)
 app.use('/users', userlist)
+app.use('/trans', transactions)
 
 
 // Server
