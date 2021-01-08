@@ -1,4 +1,4 @@
-import express, { Express, Request, Response } from 'express'
+import express, { Request, Response } from 'express'
 import cors from 'cors'
 
 import { users, User } from './users'
@@ -38,10 +38,10 @@ router.get('/', (req: Request, res: Response) => {
 router.get('/search', (req: Request, res: Response) => {
     let errorCode = 400
     const validQueries = ["name"]
-    
+
     try {
         const searchQuery: string = req.query.name as string
-        
+
         for (let key in req.query) {
             if (!validQueries.includes(key)) {
                 errorCode = 422
@@ -55,7 +55,7 @@ router.get('/search', (req: Request, res: Response) => {
 
         if (!result.length) {
             errorCode = 404
-            throw new Error ("User not found.")
+            throw new Error("User not found.")
         }
 
         res.status(200).send(result)
@@ -64,6 +64,5 @@ router.get('/search', (req: Request, res: Response) => {
         res.status(errorCode).send(error.message)
     }
 })
-
 
 export default router
