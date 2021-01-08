@@ -152,7 +152,35 @@ router.patch('/:id/patch', (req: Request, res: Response) => {
             name: `${req.body.name} - REALTERED`
         }
         
-        res.status(200).send("Username edited successfully")
+        res.status(200).send("Username patched successfully")
+
+    } catch (error) {
+        res.status(errorCode).send(error.message)
+    }
+})
+
+router.delete('/:id/delete', (req: Request, res: Response) => {
+    let errorCode = 400
+    const userId: number = Number(req.params.id)
+
+    try {
+        if (isNaN(userId)) {
+            errorCode = 422
+            throw new Error("User ID is invalid.")
+        }
+
+        const userIndex: number = users.findIndex((user) => {
+            return user.id === userId
+        })
+
+        if (userIndex === -1) {
+            errorCode = 404
+            throw new Error("User ID not found.")
+        }
+
+        users.splice(userIndex, 1)
+        
+        res.status(200).send("Username deleted successfully")
 
     } catch (error) {
         res.status(errorCode).send(error.message)
