@@ -1,7 +1,8 @@
 import express, { Request, Response } from 'express'
 import cors from 'cors'
 
-import { users, User } from './users'
+import { users } from './users'
+import { validateReq, validateNumber } from './validators'
 
 const router = express.Router()
 router.use(express.json())
@@ -15,30 +16,14 @@ router.post('/create', (req: Request, res: Response) => {
     const validTypes = ["ADMIN", "NORMAL"]
 
     try {
-        if (Object.keys(req.body).length < 4) {
-            errorCode = 422
-            throw new Error("Missing key(s) in requisition body.")
-        } else if (Object.keys(req.body).length > 4) {
-            errorCode = 422
-            throw new Error("Found extra key(s) in requisition body.")
-        }
-
-        for (let key in req.body) {
-            if (!validBody.includes(key)) {
-                errorCode = 422
-                throw new Error("Invalid key in requisition body.")
-            }
-
-            if (!req.body[key]) {
-                errorCode = 422
-                throw new Error("Empty value in a required key.")
-            }
-        }
+        errorCode = 422
 
         if (!validTypes.includes(req.body.type as string)) {
-            errorCode = 422
             throw new Error("Invalid type value in requisition body.")
         }
+
+        validateReq(req.body, validBody)
+        validateNumber(req.body.age, "age")
 
         users.push({
             id: Date.now(),
@@ -61,33 +46,13 @@ router.put('/:id/edit', (req: Request, res: Response) => {
     const validBody = ["name"]
 
     try {
-        if (isNaN(userId)) {
-            errorCode = 422
-            throw new Error("User ID is invalid.")
-        }
+        errorCode = 422
 
-        if (Object.keys(req.body).length < 1){
-            errorCode = 422
-            throw new Error("Missing key(s) in requisition body.")
-        } else if (Object.keys(req.body).length > 1) {
-            errorCode = 422
-            throw new Error("Found extra key(s) in requisition body.")
-        }
-        
-        for (let key in req.body) {
-            if (!validBody.includes(key)) {
-                errorCode = 422
-                throw new Error("Invalid key in requisition body.")
-            }
-
-            if (!req.body[key]) {
-                errorCode = 422
-                throw new Error("Empty value in a required key.")
-            }
-        }
+        validateNumber(req.params.id, "user ID")
+        validateReq(req.body, validBody)
 
         const userIndex: number = users.findIndex((user) => {
-            return user.id === userId
+            return user.id === Number(req.params.id)
         })
 
         if (userIndex === -1) {
@@ -99,7 +64,7 @@ router.put('/:id/edit', (req: Request, res: Response) => {
             ...users[userIndex],
             name: `${req.body.name} - ALTERED`
         }
-        
+
         res.status(200).send("Username edited successfully")
 
     } catch (error) {
@@ -109,37 +74,16 @@ router.put('/:id/edit', (req: Request, res: Response) => {
 
 router.patch('/:id/patch', (req: Request, res: Response) => {
     let errorCode = 400
-    const userId: number = Number(req.params.id)
     const validBody = ["name"]
 
     try {
-        if (isNaN(userId)) {
-            errorCode = 422
-            throw new Error("User ID is invalid.")
-        }
+        errorCode = 422
 
-        if (Object.keys(req.body).length < 1){
-            errorCode = 422
-            throw new Error("Missing key(s) in requisition body.")
-        } else if (Object.keys(req.body).length > 1) {
-            errorCode = 422
-            throw new Error("Found extra key(s) in requisition body.")
-        }
-        
-        for (let key in req.body) {
-            if (!validBody.includes(key)) {
-                errorCode = 422
-                throw new Error("Invalid key in requisition body.")
-            }
-
-            if (!req.body[key]) {
-                errorCode = 422
-                throw new Error("Empty value in a required key.")
-            }
-        }
+        validateNumber(req.params.id, "user ID")
+        validateReq(req.body, validBody)
 
         const userIndex: number = users.findIndex((user) => {
-            return user.id === userId
+            return user.id === Number(req.params.id)
         })
 
         if (userIndex === -1) {
@@ -151,7 +95,7 @@ router.patch('/:id/patch', (req: Request, res: Response) => {
             ...users[userIndex],
             name: `${req.body.name} - REALTERED`
         }
-        
+
         res.status(200).send("Username patched successfully")
 
     } catch (error) {
@@ -161,16 +105,12 @@ router.patch('/:id/patch', (req: Request, res: Response) => {
 
 router.delete('/:id/delete', (req: Request, res: Response) => {
     let errorCode = 400
-    const userId: number = Number(req.params.id)
 
     try {
-        if (isNaN(userId)) {
-            errorCode = 422
-            throw new Error("User ID is invalid.")
-        }
+        validateNumber(req.params.id, "user ID")
 
         const userIndex: number = users.findIndex((user) => {
-            return user.id === userId
+            return user.id === Number(req.params.id)
         })
 
         if (userIndex === -1) {
@@ -179,7 +119,7 @@ router.delete('/:id/delete', (req: Request, res: Response) => {
         }
 
         users.splice(userIndex, 1)
-        
+
         res.status(200).send("Username deleted successfully")
 
     } catch (error) {
