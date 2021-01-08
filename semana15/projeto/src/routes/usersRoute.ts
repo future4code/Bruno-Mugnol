@@ -1,16 +1,14 @@
 import express, { Router, Request, Response } from 'express'
 import cors from 'cors'
 
-import { users } from './users'
+import { users } from '../data/users'
 
 const router: Router = express.Router()
 router.use(express.json())
 router.use(cors())
 
-router.post('/create', (req: Request, res: Response) => {
-
-    //new Date("mm/dd/yyyy").getTime()
-
+router.get('/', (req: Request, res: Response) => {
+    res.status(200).send(users)
 })
 
 export default router

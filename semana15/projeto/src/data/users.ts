@@ -1,4 +1,4 @@
-export type BankStatement = {
+export type Transaction = {
     value: number,
     date: number,
     description?: string
@@ -6,16 +6,16 @@ export type BankStatement = {
 
 export type User = {
     name: string,
-    CPF: number,
+    cpf: number,
     birthdate: number,
     balance: number,
-    statements: BankStatement[]
+    statements: Transaction[]
 }
 
 export const users: User[] = [
     {
         name: "Bob",
-        CPF: 98765432100,
+        cpf: 98765432100,
         birthdate: 787197700000,
         balance: 10000,
         statements: [
@@ -31,7 +31,7 @@ export const users: User[] = [
     },
     {
         name: "Billy",
-        CPF: 98765432101,
+        cpf: 98765432101,
         birthdate: 787197600000,
         balance: 100,
         statements: [
