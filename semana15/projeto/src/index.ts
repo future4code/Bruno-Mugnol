@@ -1,8 +1,7 @@
-import express, { Express, Request, Response } from 'express'
-import cors from 'cors'
+// Libraries
+import express, { Express } from 'express'
 
-import { users } from './data/users'
-
+// Routes
 import account from './routes/accountRoute'
 import balance from './routes/balanceRoute'
 import userlist from './routes/usersRoute'

@@ -31,7 +31,7 @@ router.put('/pay', (req: Request, res: Response) => {
             ]
         }
 
-        res.status(200).send(`Transfer was successful.`)
+        res.status(200).send(`Payment was successful.`)
 
     } catch (error) {
         res.status(errorCode).send(error.message)
