@@ -62,8 +62,37 @@ export const createActor = async (actorObj: Actor): Promise<void> => {
     }
 }
 
-export const updateSalary = async (obj:
-    { id: string, salary: number }
-): Promise<void> => {
+export const updateSalary = async (actor: { id: string, salary: number }): Promise<void> => {
+    try {
+        await connection("Actor")
+            .update({ salary: actor.salary })
+            .where("id", actor.id)
 
+    } catch (error) {
+        throw new Error(error.sqlMessage || error.message)
+    }
+}
+
+export const deleteActor = async (actor: { id: string }): Promise<void> => {
+    try {
+        await connection("Actor")
+            .delete()
+            .where("id", actor.id)
+
+    } catch (error) {
+        throw new Error(error.sqlMessage || error.message)
+    }
+}
+
+export const avgSalaryByGender = async (gender: Gender): Promise<any> => {
+    try {
+        const result = await connection("Actor")
+            .avg("salary as average_salary")
+            .where({ gender })
+
+        return result[0].average_salary
+
+    } catch (error) {
+        throw new Error(error.sqlMessage || error.message)
+    }
 }

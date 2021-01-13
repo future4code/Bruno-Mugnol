@@ -4,11 +4,12 @@ import express, { Express } from "express"
 // Connection setup
 import { AddressInfo } from "net";
 
-
-
+// Routes
+import actor from './routes/actor'
 
 const app: Express = express()
 
+app.use("/actor", actor)
 
 // Server configuration
 const server = app.listen(process.env.PORT || 3003, () => {
