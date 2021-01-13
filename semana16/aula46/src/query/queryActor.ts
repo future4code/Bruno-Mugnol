@@ -4,7 +4,7 @@ import Knex from 'knex';
 import dotenv from 'dotenv';
 
 // Types and enums
-import { Actor, Gender } from './validators/types'
+import { Actor, Gender } from '../validators/types'
 
 // Database configuration
 dotenv.config()
@@ -22,6 +22,19 @@ const connection: Knex = knex({
 
 
 // Raw Queries
+export const getActorById = async (id: string): Promise<any> => {
+    try {
+        const result = await connection.raw(`
+            SELECT * FROM Actor WHERE id = "${id}";
+        `)
+
+        return result[0][0]
+
+    } catch (error) {
+        throw new Error(error.sqlMessage || error.message)
+    }
+}
+
 export const getActorByName = async (name: string): Promise<any> => {
     try {
         const result = await connection.raw(`
@@ -38,11 +51,10 @@ export const getActorByName = async (name: string): Promise<any> => {
 export const getGenderCount = async (gender: Gender): Promise<any> => {
     try {
         const result = await connection.raw(`
-            SELECT COUNT(*) FROM Actor WHERE gender = '${gender}';
+            SELECT COUNT(*) as gender_count FROM Actor WHERE gender = '${gender}';
         `)
-        console.log(result)
 
-        return result[0][0][0]
+        return result[0][0]
 
     } catch (error) {
         throw new Error(error.sqlMessage || error.message)
@@ -54,7 +66,10 @@ export const getGenderCount = async (gender: Gender): Promise<any> => {
 export const createActor = async (actorObj: Actor): Promise<void> => {
     try {
         await connection
-            .insert(actorObj)
+            .insert({
+                ...actorObj,
+                birth_date: actorObj.birth_date
+            })
             .into("Actor")
 
     } catch (error) {
