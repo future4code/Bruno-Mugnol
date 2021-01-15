@@ -1,43 +1,5 @@
 USE `dumont-bruno-mugnol`;
 
-CREATE TABLE Users (
-	user_id INT PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(255) NOT NULL,
-    nickname VARCHAR(255) NOT NULL UNIQUE,
-    email VARCHAR(255) NOT NULL
-);
-
-CREATE TABLE Tasks (
-	task_id INT PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(255) NOT NULL,
-    description TEXT NOT NULL,
-    due_date DATE NOT NULL,
-    status ENUM("to do", "doing", "done") NOT NULL DEFAULT "to do",
-    creator_id INT NOT NULL,
-    FOREIGN KEY (creator_id) REFERENCES Users(user_id)
-);
-
-CREATE TABLE Assignments (
-	task_id INT,
-    user_id INT,
-    FOREIGN KEY (task_id) REFERENCES Tasks(task_id),
-    FOREIGN KEY (user_id) REFERENCES Users(user_id)
-);
-
-
-DESCRIBE Users;
-DESCRIBE Tasks;
-DESCRIBE Assignments;
-
-SELECT * FROM Users;
-SELECT * FROM Assignments;
-SELECT * FROM Tasks;
-
-SELECT * FROM Tasks t
-LEFT JOIN Assignments a ON t.task_id = a.task_id
-JOIN Users u ON u.user_id = a.user_id
-ORDER BY t.task_id;
-
 INSERT INTO Users (username, nickname, email)
 VALUE
 	("Bob o Bobo", "bob_o_bobo", "bob@bobo.com"),
@@ -73,8 +35,3 @@ VALUE
     (5, 1), (5, 2), (5, 3), (5, 4), (5, 5),
     (6, 3), (6, 4)
 ;
-    
-
-UPDATE Users
-SET nickname = "bob_o_bobo"
-WHERE userid = 1;
