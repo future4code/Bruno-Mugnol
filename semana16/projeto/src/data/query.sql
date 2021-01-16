@@ -26,7 +26,7 @@ WHERE user_id = 1;
 -- Endpoint 3
 UPDATE Users
 SET
-	name = "Bob el Bobo",
+	username = "Bob el Bobo",
     nickname = "bob_el_bobo"
 WHERE user_id = 1;
 
@@ -40,8 +40,13 @@ VALUE
         
 -- Endpoint 5
 SELECT 
-	t.task_id, t.title, t.description, t.due_date, t.status, t.creator_id,
-    u.nickname
+	t.task_id as taskId,
+	t.title as title,
+	t.description as description,
+	t.due_date as dueDate,
+	t.status as status,
+	t.creator_id as creatorId,
+    u.nickname as creatorNickname
 FROM Tasks t
 JOIN Users u ON u.user_id = t.creator_id
 WHERE t.task_id = 3;
