@@ -1,4 +1,6 @@
+// Database connection
 import { connection } from './config'
+
 
 const setupTable = async (): Promise<void> => {
     try {
