@@ -9,9 +9,9 @@ export const createUser = async (newUser: newUser): Promise<void> => {
         await connection.raw(`
         INSERT INTO Users (username, nickname, email)
         VALUE (
-            ${newUser.username},
-            ${newUser.nickname},
-            ${newUser.email}
+            '${newUser.username}',
+            '${newUser.nickname}',
+            '${newUser.email}'
         );
         `)
 
@@ -39,8 +39,8 @@ export const editUser = async (userId: number, editData: editData): Promise<void
         await connection.raw(`
         UPDATE Users
         SET
-            username = ${editData.username},
-            nickname = ${editData.nickname}
+            username = '${editData.username}',
+            nickname = '${editData.nickname}'
         WHERE user_id = ${userId};
         `)
 
@@ -52,14 +52,13 @@ export const editUser = async (userId: number, editData: editData): Promise<void
 export const createTask = async (newTask: newTask): Promise<void> => {
     try {
         await connection.raw(`
-        INSERT INTO Tasks (title, due_date, status, creator_id, description)
+        INSERT INTO Tasks (title, due_date, creator_id, description)
         VALUE
             (
-            ${newTask.title},
-            ${newTask.dueDate},
-            ${newTask.status},
+            '${newTask.title}',
+            '${newTask.dueDate}',
             ${newTask.creatorId},
-            ${newTask.description}
+            '${newTask.description}'
             );
         `)
 
@@ -85,5 +84,10 @@ export const getTaskById = async (taskId: number): Promise<any> => {
         
         `)
 
+        return result[0]
+
+    } catch (error) {
+        throw new Error(error.sqlMessage || error.message)
     }
+
 }

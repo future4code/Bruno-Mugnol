@@ -12,7 +12,6 @@ export type editData = {
 export type newTask = {
     title: string,
     dueDate: string,
-    status: "to do" | "doing" | "done",
-    creatorId: number
+    creatorId: number,
     description: string
 }
