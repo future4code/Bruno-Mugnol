@@ -1,11 +1,13 @@
 // Database connection
 import { connection } from "./config";
 
-const getUsersData = async (): Promise<any> => {
+const selectPaginatedUsers = async (pageNumber: number): Promise<any> => {
     try {
         const result = await connection.raw(`
             SELECT id, name, email, type
-            FROM aula48_exercicio;
+            FROM aula48_exercicio
+            LIMIT 5
+            OFFSET ${5 * (pageNumber - 1)};
         `)
 
         return result[0]
@@ -15,4 +17,4 @@ const getUsersData = async (): Promise<any> => {
     }
 }
 
-export default getUsersData
+export default selectPaginatedUsers

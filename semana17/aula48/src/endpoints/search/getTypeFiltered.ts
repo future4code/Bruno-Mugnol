@@ -1,16 +1,15 @@
 // Types from Express.js library
 import { Request, Response } from 'express'
 
-// Database connection
-import { connection } from '../data/config'
-
 // Database function
-import getUsersData from '../data/getUsersData'
+import selectTypeFiltered from '../../data/selectTypeFiltered'
 
 
-const getUsers = async (req: Request, res: Response): Promise<void> => {
+const getTypeFiltered = async (req: Request, res: Response): Promise<void> => {
     try {
-        const result = await getUsersData()
+        const type = req.params.type
+
+        const result = await selectTypeFiltered(type as string)
 
         if (!result.length) {
             res.statusCode = 404
@@ -24,4 +23,4 @@ const getUsers = async (req: Request, res: Response): Promise<void> => {
     }
 }
 
-export default getUsers
+export default getTypeFiltered
