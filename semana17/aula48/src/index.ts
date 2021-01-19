@@ -26,7 +26,7 @@ app.get("/paginated", getPaginatedUsers)
 app.get("/search", getNameFiltered)
 app.get("/search/:type", getTypeFiltered)
 
-app.get("/complete/:type", getCompleteSelection)
+app.get("/complete", getCompleteSelection)
 
 
 // Server

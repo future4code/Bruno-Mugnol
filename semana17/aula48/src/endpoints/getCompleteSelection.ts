@@ -10,16 +10,15 @@ import CompleteSelection from '../types/CompleteSelection'
 
 
 const getCompleteSelection = async (req: Request, res: Response): Promise<void> => {
-    const validTypes = ["ALL", "CX", "OPERATIONS", "TEACHER"]
-    const validQueries = ["name", "orderby", "ordertype", "page", "perpage"]
+    const validTypes = ["", "CX", "OPERATIONS", "TEACHER"]
+    const validQueries = ["name", "type", "orderby", "ordertype", "page", "perpage"]
     const validOrderBy = ["id", "name", "type"]
     const validOrderTypes = ["ASC", "DESC"]
 
     try {
-        const { type = "ALL" } = { type: req.params.type as string }
-
         const {
             name = "",
+            type = "",
             orderby = "id",
             ordertype = "DESC",
             page = "1",
@@ -30,7 +29,7 @@ const getCompleteSelection = async (req: Request, res: Response): Promise<void> 
         if (!validTypes.includes((type as string).toUpperCase())
         ) {
             res.statusCode = 422
-            throw new Error(`Invalid "type" query: must either be "all", "CX", "Teacher" or "Operations".`)
+            throw new Error(`Invalid "type" query: must either be empty or be "CX", "Teacher" or "Operations".`)
         }
 
         // Page validation
@@ -67,7 +66,7 @@ const getCompleteSelection = async (req: Request, res: Response): Promise<void> 
 
         const options: CompleteSelection = {
             nameSearch: name as string,
-            typeSearch: type.toUpperCase() === "ALL" ? "" : type as string,
+            typeSearch: type as string,
             orderBy: orderby as string,
             orderType: ordertype as string,
             pageNumber: page as string,
@@ -78,7 +77,7 @@ const getCompleteSelection = async (req: Request, res: Response): Promise<void> 
 
         if (!result.length) {
             res.statusCode = 404
-            throw new Error("User not found.")
+            throw new Error("User not found in this page.")
         }
 
         res.status(200).send(result)
