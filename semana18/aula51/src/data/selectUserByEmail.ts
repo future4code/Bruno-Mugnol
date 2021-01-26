@@ -1,7 +1,10 @@
 // Database connection
 import { connection } from './configurations/connection'
 
-const selectUserByEmail = async (email: string): Promise<any> => {
+// Types
+import { User } from '../types/types'
+
+const selectUserByEmail = async (email: string): Promise<User> => {
     try {
         const result = await connection.raw(`
             SELECT * FROM Users

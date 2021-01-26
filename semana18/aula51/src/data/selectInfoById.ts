@@ -1,13 +1,11 @@
 // Database connection
 import { connection } from './configurations/connection'
 
-// Types
-import { AuthData } from '../services/authenticator'
 
-const selectUserById = async ({ id }: AuthData): Promise<any> => {
+const selectInfoById = async (id: string): Promise<any> => {
     try {
         const result = await connection.raw(`
-            SELECT * FROM Users
+            SELECT id, email, role FROM Users
                 WHERE
                     id = "${id}"
             ;
@@ -20,4 +18,4 @@ const selectUserById = async ({ id }: AuthData): Promise<any> => {
     }
 }
 
-export default selectUserById
+export default selectInfoById

@@ -5,9 +5,15 @@ import { Request, Response } from 'express'
 import insertUser from '../data/insertUser'
 
 // Services
+import { generateHash } from '../services/hashManager'
 import { generateId } from '../services/idGenerator'
 import { generateToken } from '../services/authenticator'
-import { verifyBodyKeys, verifyEmail, verifyLength, verifyString } from '../services/validators'
+import {
+    verifyBodyKeys,
+    verifyEmail,
+    verifyLength,
+    verifyString
+} from '../services/validators'
 
 
 const createUser = async (req: Request, res: Response): Promise<void> => {
@@ -25,16 +31,20 @@ const createUser = async (req: Request, res: Response): Promise<void> => {
         verifyEmail(email)
 
         const id = generateId()
+        const hashedPassword = await generateHash(password)
 
-        const result = await insertUser({id, email, password})
+        const result = await insertUser({ id, email, password: hashedPassword })
 
         res.status(201).send({
             status: {
                 code: 201,
-                message:`User created successfully.`
+                message: `User created successfully.`
             },
             user_id: result.id,
-            token: generateToken(result.id)
+            token: generateToken({
+                id: result.id,
+                role: result.role
+            })
         })
 
     } catch (error) {
