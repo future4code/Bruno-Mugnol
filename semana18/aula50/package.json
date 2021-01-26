@@ -1,12 +1,12 @@
 {
-   "name": "mock-project",
+   "name": "projeto-aula50",
    "version": "1.0.0",
    "description": "",
    "main": "index.js",
    "scripts": {
       "dev": "ts-node-dev ./src/index.ts",
       "start": "tsc && node ./build/index.js",
-      "setup": "tsc && node ./build/data/setup.js",
+      "setup": "tsc && node ./build/data/configurations/setup.js",
       "test": "echo \"Error: no test specified\" && exit 1"
    },
    "author": "Bruno Mugnol",

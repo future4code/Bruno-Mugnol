@@ -6,15 +6,20 @@ import cors from 'cors'
 import { AddressInfo } from 'net'
 
 // Endpoints
-import mockEndpoint from './endpoints/mockEndpoint'
+import createUser from './endpoints/createUser'
+import loginUser from './endpoints/loginUser'
+import getLoggedUser from './endpoints/getLoggedUser'
 
 
 const app: Express = express()
 app.use(express.json())
 app.use(cors())
 
-app.get("/mock", mockEndpoint)
+app.post("/signup", createUser)
 
+app.post("/login", loginUser)
+
+app.get("/user/profile", getLoggedUser)
 
 // Server
 const server = app.listen(process.env.PORT || 3003, () => {

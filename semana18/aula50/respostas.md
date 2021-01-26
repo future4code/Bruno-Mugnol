@@ -5,6 +5,17 @@ Strings fornecem uma maior variedade de caracteres por dígito que um número, p
 
 
 
+### b)
+```typescript
+import { v4 } from 'uuid'
+
+export const generateId = (): string => {
+    return v4()
+}
+```
+
+
+
 # Exercício 2
 
 ```typescript
@@ -35,13 +46,33 @@ const createUser = async (id: string, email: string, password: string) => {
 ### a)
 O código acima utiliza o knex na variável **connection** para se conectar com o banco de dados MySQL. Utilizando essa conexão, há uma função que insere dados (passados por parâmetro) à tabela de nome *userTableName = **"User"*** localizada no banco de dados.
 
+
+
 ### b)
 ```sql
 CREATE TABLE User (
-	id VARCHAR(255) PRIMARY KEY,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL
+  id VARCHAR(255) PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL
 );
 ```
 
+
 ### c)
+```sql
+INSERT INTO Users (id, email, password)
+  VALUES (
+    "${id}",
+    "${email}",
+    "${password}"
+  );
+```
+
+
+
+# Exercício 3
+
+### a)
+*as string* nos diz que a chave JWT_KEY guardada no arquivo .env será retornada, aqui, como string. Precisamos dela para se encaixar como o tipo do segundo parâmetro esperado pela função **jwt.sign**.
+
+*Obs: o segundo parâmetro, em realidade, pede o tipo **jwt.Secret**, porém não temos acesso a essa tipagem.*

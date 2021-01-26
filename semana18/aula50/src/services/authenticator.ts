@@ -1,9 +1,9 @@
 // Libraries
 import * as jwt from 'jsonwebtoken'
 
-export const generateToken = (id: string): string => {
+export const generateToken = (input: AuthData): string => {
     const token: string = jwt.sign(
-        { id },
+        { id: input.id },
         process.env.JWT_KEY as string,
         { expiresIn: process.env.JWT_EXPIRE_TIME }
     )
@@ -11,12 +11,18 @@ export const generateToken = (id: string): string => {
     return token
 }
 
-export const getTokenData = (token:string): AuthData => {
-    const payload = jwt.verify(token, process.env.JWT_KEY!);
+export const getTokenData = (token: string): AuthData => {
+    const payload = jwt.verify(token, process.env.JWT_KEY! as string) as Payload
 
-    return payload as AuthenticationData
+    return { id: payload.id }
 }
 
-export type AuthenticationData = {
+export type AuthData = {
     id: string
+}
+
+export type Payload = {
+    id: string,
+    iat: number,
+    exp: number
 }
