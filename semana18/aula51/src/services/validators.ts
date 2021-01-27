@@ -53,3 +53,9 @@ export const verifyEmail = (email: string) => {
         throw new Error("Invalid email.")
     }
 }
+
+export const verifyRole = (role: string) => {
+    if (role !== "normal" && role !== "admin") {
+        throw new Error("The field 'role' must be either 'normal' or 'admin'.")
+    }
+}

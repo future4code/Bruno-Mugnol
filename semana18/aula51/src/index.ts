@@ -6,9 +6,13 @@ import cors from 'cors'
 import { AddressInfo } from 'net'
 
 // Endpoints
-import createUser from './endpoints/createUser'
-import loginUser from './endpoints/loginUser'
-import getLoggedUser from './endpoints/getLoggedUser'
+import loginUser from './endpoints/login/loginUser'
+
+import createUser from './endpoints/signup/createUser'
+
+import deleteUser from './endpoints/user/deleteUser'
+import getUserById from './endpoints/user/getUserById'
+import getLoggedUser from './endpoints/user/profile/getLoggedUser'
 
 
 const app: Express = express()
@@ -18,6 +22,9 @@ app.use(cors())
 app.post("/signup", createUser)
 
 app.post("/login", loginUser)
+
+app.delete("/user/:id", deleteUser)
+app.get("/user/:id", getUserById)
 
 app.get("/user/profile", getLoggedUser)
 

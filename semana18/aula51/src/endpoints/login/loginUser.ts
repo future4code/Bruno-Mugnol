@@ -2,12 +2,12 @@
 import { Request, Response } from 'express'
 
 // Database function
-import selectUserByEmail from '../data/selectUserByEmail'
-import { generateToken } from '../services/authenticator'
-import { compareHash } from '../services/hashManager'
+import selectUserByEmail from '../../data/selectUserByEmail'
+import { generateToken } from '../../services/authenticator'
+import { compareHash } from '../../services/hashManager'
 
 // Services
-import { verifyBodyKeys, verifyEmail, verifyString } from '../services/validators'
+import { verifyBodyKeys, verifyEmail, verifyString } from '../../services/validators'
 
 
 const loginUser = async (req: Request, res: Response): Promise<void> => {
@@ -34,7 +34,7 @@ const loginUser = async (req: Request, res: Response): Promise<void> => {
             res.statusCode = 400
             throw new Error("Password is wrong.")
         }
-        
+
         const token = generateToken({ id: user.id, role: user.role })
 
         res.status(200).send({

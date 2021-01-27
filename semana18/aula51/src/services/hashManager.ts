@@ -11,6 +11,4 @@ export const generateHash = async (plainText: string): Promise<string> => {
     return cypheredText
 }
 
-export const compareHash = async (plainText: string, hash: string): Promise<boolean> => {
-    return bcrypt.compare(plainText, hash)
-}
+export const compareHash = async (plainText: string, hash: string): Promise<boolean> => bcrypt.compare(plainText, hash)

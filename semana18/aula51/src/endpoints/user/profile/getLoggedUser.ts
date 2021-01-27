@@ -2,10 +2,10 @@
 import { Request, Response } from 'express'
 
 // Database function
-import selectInfoById from '../data/selectInfoById'
+import selectInfoById from '../../../data/selectInfoById'
 
 // Services
-import { getTokenData } from '../services/authenticator'
+import { getTokenData } from '../../../services/authenticator'
 
 const getLoggedUser = async (req: Request, res: Response) => {
     
