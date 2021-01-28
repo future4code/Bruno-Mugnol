@@ -45,7 +45,7 @@ const getUserById = async (req: Request, res: Response) => {
         })
 
     } catch (error) {
-
+        res.send({ message: error.message || error.sqlMessage })
     }
 }
 

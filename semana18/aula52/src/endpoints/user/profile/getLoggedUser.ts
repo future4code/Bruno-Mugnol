@@ -11,7 +11,6 @@ const getLoggedUser = async (req: Request, res: Response) => {
 
     try {
         const token = req.headers.authorization as string
-        console.log("token")
 
         if (!token) {
             res.statusCode = 401

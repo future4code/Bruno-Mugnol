@@ -32,11 +32,11 @@ export const generateToken = (input: AuthData): string => {
 
 
 export const getTokenData = (token: string): AuthData => {
-    const payload = jwt.verify(token, process.env.JWT_KEY!) as Payload
+    const {user_id, role} = jwt.verify(token, process.env.JWT_KEY!) as Payload
     
     return {
-        user_id: payload.user_id,
-        role: payload.role
+        user_id,
+        role
     }
 
 }

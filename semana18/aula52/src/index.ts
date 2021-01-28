@@ -24,8 +24,8 @@ app.post("/signup", createUser)
 app.post("/login", loginUser)
 
 app.get("/user/profile", getLoggedUser)
-
 app.get("/user/:id", getUserById)
+
 app.delete("/user/:id", deleteUser)
 
 
