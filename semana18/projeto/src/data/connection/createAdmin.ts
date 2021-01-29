@@ -19,7 +19,7 @@ const createAdmin = async (): Promise<any> => {
         verifyLength(password, "Password", 9)
 
         const id = generateId()
-        const encryptedPassword = generateHash(password)
+        const encryptedPassword = await generateHash(password)
 
         await connection.raw(`
             INSERT INTO Users (id, name, email, password, role)
