@@ -3,24 +3,24 @@ import { Request, Response } from 'express'
 
 // Database function
 import insertUser from '../../data/insertUser'
+import { generateToken } from '../../services/authenticator'
 
 // Services
 import { generateHash } from '../../services/hashManager'
 import { generateId } from '../../services/idGenerator'
-import { getTokenData } from '../../services/authenticator'
 import { verifyAdmin, verifyEmail, verifyKeys, verifyLength, verifyString } from '../../services/validators'
 
 // Types
 import { USER_ROLES } from '../../types/types'
 
 const createUser = async (req: Request, res: Response): Promise<void> => {
-    const validBody = ["name", "email", "password", "role"]
-    const unrequiredBody = ["role"]
+    const validBodyKeys = ["name", "email", "password", "role"]
+    const unrequiredBodyKey = ["role"]
 
     try {
         res.statusCode = 422
 
-        verifyKeys(req.body, validBody, unrequiredBody)
+        verifyKeys(req.body, validBodyKeys, unrequiredBodyKey)
         verifyString(req.body)
 
         const { name, email, password, role = USER_ROLES.NORMAL } = req.body
@@ -39,15 +39,26 @@ const createUser = async (req: Request, res: Response): Promise<void> => {
             verifyAdmin(token)
         }
 
-        const encryptedPassword: string = await generateHash(password)
+        const hashedPassword: string = await generateHash(password)
+        const userId: string = generateId()
 
         await insertUser({
-            id: generateId(),
+            id: userId,
             name, email, role,
-            password: encryptedPassword
+            password: hashedPassword
         })
 
-        res.status(200).send("User created successfully.")
+        res.status(201).send({
+            status: {
+                code: 201,
+                message: `User created successfully.`
+            },
+            id: userId,
+            token: generateToken({
+                id: userId,
+                role: role
+            })
+        })
 
     } catch (error) {
         res.send(error.message || error.sqlMessage)

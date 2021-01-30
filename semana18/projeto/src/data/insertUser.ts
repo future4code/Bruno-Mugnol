@@ -1,8 +1,8 @@
 // Database connection
-import { newUser } from '../types/types'
-import { connection } from './connection/connection'
+import { user } from '../types/types'
+import { connection } from './configurations/connection'
 
-const insertUser = async ({ id, name, email, password, role }: newUser): Promise<void> => {
+const insertUser = async ({ id, name, email, password, role }: user): Promise<void> => {
     try {
         await connection.raw(`
             INSERT INTO Users (id, name, email, password, role)

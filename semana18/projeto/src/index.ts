@@ -7,13 +7,16 @@ import { AddressInfo } from 'net'
 
 // Endpoints
 import createUser from './endpoints/signup/createUser'
+import loginUser from './endpoints/login/loginUser'
 
 
 const app: Express = express()
 app.use(express.json())
 app.use(cors())
 
-app.put("/signup", createUser)
+app.post("/signup", createUser)
+
+app.post("/login", loginUser)
 
 
 // Server
