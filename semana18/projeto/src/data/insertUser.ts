@@ -2,7 +2,7 @@
 import { newUser } from '../types/types'
 import { connection } from './connection/connection'
 
-const insertUser = async ({ id, name, email, password }: newUser): Promise<void> => {
+const insertUser = async ({ id, name, email, password, role }: newUser): Promise<void> => {
     try {
         await connection.raw(`
             INSERT INTO Users (id, name, email, password, role)
@@ -11,7 +11,7 @@ const insertUser = async ({ id, name, email, password }: newUser): Promise<void>
                 "${name}",
                 "${email}",
                 "${password}",
-                "admin"
+                "${role}"
             )
         `)
 

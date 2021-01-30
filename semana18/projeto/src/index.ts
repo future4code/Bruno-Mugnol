@@ -13,7 +13,7 @@ const app: Express = express()
 app.use(express.json())
 app.use(cors())
 
-app.get("/signup", createUser)
+app.put("/signup", createUser)
 
 
 // Server

@@ -1,3 +1,9 @@
+// Services
+import { getTokenData } from "./authenticator"
+
+// Types
+import { USER_ROLES } from "../types/types"
+
 export const verifyString = (strObj: any): void => {
     for (let str in strObj) {
 
@@ -34,23 +40,60 @@ export const verifyEmail = (email: string) => {
     }
 }
 
-
-export const verifyKeys = (reqObj: any, validKeys: string[]): void => {
-
-    if (Object.keys(reqObj).length < validKeys.length) {
-        throw new Error(`Missing key(s) in requisition. Valid keys are: ${validKeys.join(", ")}.`)
-    } else if (Object.keys(reqObj).length > validKeys.length) {
-        throw new Error(`Found extra key(s) in requisition. Valid keys are: ${validKeys.join(", ")}.`)
+export const verifyAdmin = (token: string | undefined): void => {
+    if (!token) {
+        throw new Error("Unauthorized. No token provided in Authorization headers.")
     }
 
-    for (let key in reqObj) {
-        if (!validKeys.includes(key)) {
-            throw new Error(`Invalid key in requisition. Valid keys are: ${validKeys.join(", ")}.`)
-        }
+    const { role } = getTokenData(token)
 
-        if (!reqObj[key] && reqObj[key] !== 0) {
-            throw new Error(`Empty value in the required field: "${key}".`)
-        }
+    if (role !== USER_ROLES.ADMIN) {
+        throw new Error("Unauthorized. Admin token required.")
     }
+}
 
+
+export const verifyKeys = (reqObject: any, validKeys: string[], unrequiredKeys?: string[]): void => {
+
+    if (!unrequiredKeys) {
+        if (Object.keys(reqObject).length < validKeys.length) {
+            throw new Error(`Missing key(s) in requisition. Valid keys are: ${validKeys.join(", ")}.`)
+        } else if (Object.keys(reqObject).length > validKeys.length) {
+            throw new Error(`Found extra key(s) in requisition. Valid keys are: ${validKeys.join(", ")}.`)
+        }
+
+        for (let key in reqObject) {
+            if (!validKeys.includes(key)) {
+                throw new Error(`Invalid key in requisition. Valid keys are: ${validKeys.join(", ")}.`)
+            }
+
+            if (!reqObject[key] && reqObject[key] !== 0) {
+                throw new Error(`Empty value in the required field: "${key}".`)
+            }
+        }
+    } else {
+        const requiredKeys = validKeys.reduce((requiredArray: string[], currentKey: string): string[] => {
+            if (!unrequiredKeys.includes(currentKey)) {
+                return [...requiredArray, currentKey]
+            } else return [...requiredArray]
+        }, [])
+
+        let obligatoryReqObject: any = {}
+
+        for (let key in reqObject) {
+            if (requiredKeys.includes(key)) {
+
+                obligatoryReqObject = {
+                    ...obligatoryReqObject,
+                    [key]: reqObject[key]
+                }
+
+            } else {
+                obligatoryReqObject = { ...obligatoryReqObject }
+            }
+
+        }
+
+        verifyKeys(obligatoryReqObject, requiredKeys)
+    }
 }

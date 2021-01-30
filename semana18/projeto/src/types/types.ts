@@ -12,5 +12,6 @@ export type newUser = {
     id: string,
     name: string,
     email: string,
-    password: string
+    password: string,
+    role: USER_ROLES
 }
