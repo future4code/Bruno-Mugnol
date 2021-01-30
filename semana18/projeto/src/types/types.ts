@@ -8,3 +8,9 @@ export enum USER_ROLES {
     ADMIN = "admin"
 }
 
+export type newUser = {
+    id: string,
+    name: string,
+    email: string,
+    password: string
+}

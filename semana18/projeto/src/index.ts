@@ -6,14 +6,14 @@ import cors from 'cors'
 import { AddressInfo } from 'net'
 
 // Endpoints
-import mockEndpoint from './endpoints/mockEndpoint'
+import createUser from './endpoints/signup/createUser'
 
 
 const app: Express = express()
 app.use(express.json())
 app.use(cors())
 
-app.get("/mock", mockEndpoint)
+app.get("/signup", createUser)
 
 
 // Server
