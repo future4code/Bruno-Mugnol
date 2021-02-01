@@ -1,8 +1,8 @@
 // Database connection
-import { connection } from './configurations/connection'
+import { connection } from '../configurations/connection'
 
 // Types
-import { user } from '../types/types'
+import { user } from '../../types/types'
 
 const selectUserByEmail = async (email: string): Promise<user> => {
     try {

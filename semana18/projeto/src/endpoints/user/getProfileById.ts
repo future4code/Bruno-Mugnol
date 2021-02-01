@@ -2,7 +2,7 @@
 import { Request, Response } from 'express'
 
 // Database function
-import selectUserById from '../../data/selectUserById'
+import selectUserById from '../../data/selects/selectUserById'
 
 // Services
 import { getTokenData } from '../../services/authenticator'

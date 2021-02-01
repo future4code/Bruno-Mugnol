@@ -2,7 +2,7 @@
 import { Request, Response } from 'express'
 
 // Database function
-import selectUserByEmail from '../../data/selectUserByEmail'
+import selectUserByEmail from '../../data/selects/selectUserByEmail'
 import { generateToken } from '../../services/authenticator'
 import { compareHash } from '../../services/hashManager'
 

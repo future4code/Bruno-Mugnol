@@ -1,8 +1,8 @@
 // Database connection
-import { connection } from './configurations/connection'
+import { connection } from '../configurations/connection'
 
 // Types
-import { recipe } from '../types/types'
+import { recipe } from '../../types/types'
 
 const selectRecipeById = async (recipeId: string): Promise<recipe> => {
     try {

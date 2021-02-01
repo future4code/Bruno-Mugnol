@@ -2,7 +2,7 @@
 import { Request, Response } from 'express'
 
 // Database function
-import insertUser from '../../data/insertUser'
+import insertUser from '../../data/inserts/insertUser'
 import { generateToken } from '../../services/authenticator'
 
 // Services

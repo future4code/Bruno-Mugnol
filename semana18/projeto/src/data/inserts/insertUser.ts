@@ -1,6 +1,6 @@
 // Database connection
-import { user } from '../types/types'
-import { connection } from './configurations/connection'
+import { user } from '../../types/types'
+import { connection } from '../configurations/connection'
 
 const insertUser = async ({ id, name, email, password, role }: user): Promise<void> => {
     try {
