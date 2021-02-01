@@ -1,4 +1,0 @@
-tabela relacionando followers vs followed user
-follower_id fk User(id)
-followed_id fk User(id)
-
