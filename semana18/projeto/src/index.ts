@@ -13,17 +13,22 @@ import getProfileById from './endpoints/user/getProfileById'
 import getRecipeById from './endpoints/recipe/getRecipeById'
 import createRecipe from './endpoints/recipe/createRecipe'
 import followUser from './endpoints/user/follow/followUser'
+import unfollowUser from './endpoints/user/unfollow/unfollowUser'
 
 
 const app: Express = express()
 app.use(express.json())
 app.use(cors())
 
+
 app.post("/signup", createUser)
 
 app.post("/login", loginUser)
 
+
 app.post("/user/follow", followUser)
+app.delete("/user/unfollow", unfollowUser)
+
 app.get("/user/profile", getSelfProfile)
 app.get("/user/:id", getProfileById)
 

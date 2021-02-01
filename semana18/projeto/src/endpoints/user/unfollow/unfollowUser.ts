@@ -2,7 +2,7 @@
 import { Request, Response } from 'express'
 
 // Database function
-import insertFollowRelation from '../../../data/inserts/insertFollowRelation'
+import deleteFollowRelation from '../../../data/deletes/deleteFollowRelation'
 import selectFollowRelation from '../../../data/selects/selectFollowage'
 
 // Services
@@ -11,8 +11,8 @@ import { verifyKeys, verifyString } from '../../../services/validators'
 
 
 
-const followUser = async (req: Request, res: Response): Promise<void> => {
-    const validBodyKeys = ["userToFollowId"]
+const unfollowUser = async (req: Request, res: Response): Promise<void> => {
+    const validBodyKeys = ["userToUnfollowId"]
 
     try {
         res.statusCode = 422
@@ -20,7 +20,7 @@ const followUser = async (req: Request, res: Response): Promise<void> => {
         verifyKeys(req.body, validBodyKeys)
         verifyString(req.body)
 
-        const { userToFollowId } = req.body
+        const { userToUnfollowId } = req.body
 
         const token = req.headers.authorization
 
@@ -31,30 +31,30 @@ const followUser = async (req: Request, res: Response): Promise<void> => {
 
         const tokenData = getTokenData(token)
 
-        if (tokenData.id === userToFollowId) {
+        if (tokenData.id === userToUnfollowId) {
             res.statusCode = 400
             throw new Error("Cannot unfollow oneself.")
         }
 
         const followage = await selectFollowRelation({
             follower_id: tokenData.id,
-            followee_id: userToFollowId
+            followee_id: userToUnfollowId
         })
 
-        if(followage) {
+        if(!followage) {
             res.statusCode = 400
-            throw new Error("Follow relation already exists.")
+            throw new Error("Follow relation does not exist.")
         }
 
-        await insertFollowRelation({
+        await deleteFollowRelation({
             follower_id: tokenData.id,
-            followee_id: userToFollowId
+            followee_id: userToUnfollowId
         })
 
-        res.status(201).send({
+        res.status(200).send({
             status: {
-                code: 201,
-                message: `Followed successfully.`
+                code: 200,
+                message: `Unfollow successful.`
             }
         })
 
@@ -63,4 +63,4 @@ const followUser = async (req: Request, res: Response): Promise<void> => {
     }
 }
 
-export default followUser
+export default unfollowUser

@@ -8,10 +8,10 @@ const insertFollowRelation = async ({ follower_id, followee_id }: followRelation
     try {
         await connection.raw(`
             INSERT INTO Followage (follower_id, followee_id)
-            VALUES (
-                "${follower_id}",
-                "${followee_id}"
-            )
+                VALUES (
+                    "${follower_id}",
+                    "${followee_id}"
+            );
         `)
 
 
