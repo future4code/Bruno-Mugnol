@@ -16,13 +16,6 @@ export const verifyString = (strObj: any): void => {
 }
 
 
-export const verifyNumber = (id: any): void => {
-    if (isNaN(Number(id))) {
-        throw new Error(`ID is invalid: must be a number.`)
-    }
-}
-
-
 export const verifyLength = (key: string, keyName: string, minLength: number) => {
     if (key.length < minLength) {
         throw new Error(`${keyName} has insufficient length. Mininum length is ${minLength}.`)

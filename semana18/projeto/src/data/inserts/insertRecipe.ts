@@ -1,6 +1,8 @@
 // Database connection
-import { recipe } from '../../types/types'
 import { connection } from '../configurations/connection'
+
+// Types
+import { recipe } from '../../types/types'
 
 const insertRecipe = async ({ id, title, description, created_at, creator_id }: recipe): Promise<void> => {
     try {

@@ -23,3 +23,8 @@ export type recipe = {
     created_at: string,
     creator_id: string
 }
+
+export type followRelation = {
+    follower_id: string,
+    followee_id: string
+}

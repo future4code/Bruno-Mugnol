@@ -12,6 +12,7 @@ import getSelfProfile from './endpoints/user/profile/getSelfProfile'
 import getProfileById from './endpoints/user/getProfileById'
 import getRecipeById from './endpoints/recipe/getRecipeById'
 import createRecipe from './endpoints/recipe/createRecipe'
+import followUser from './endpoints/user/follow/followUser'
 
 
 const app: Express = express()
@@ -22,6 +23,7 @@ app.post("/signup", createUser)
 
 app.post("/login", loginUser)
 
+app.post("/user/follow", followUser)
 app.get("/user/profile", getSelfProfile)
 app.get("/user/:id", getProfileById)
 
