@@ -15,3 +15,11 @@ export type user = {
     password: string,
     role: USER_ROLES
 }
+
+export type recipe = {
+    id: string,
+    title: string,
+    description: string,
+    created_at: string,
+    creator_id: string
+}

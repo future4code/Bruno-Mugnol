@@ -40,6 +40,7 @@ export const verifyEmail = (email: string) => {
     }
 }
 
+
 export const verifyAdmin = (token: string | undefined): void => {
     if (!token) {
         throw new Error("Unauthorized. No token provided in Authorization headers.")
@@ -53,9 +54,9 @@ export const verifyAdmin = (token: string | undefined): void => {
 }
 
 
-export const verifyKeys = (reqObject: any, validKeys: string[], unrequiredKeys?: string[]): void => {
+export const verifyKeys = (reqObject: any, validKeys: string[], optionalKeys?: string[]): void => {
 
-    if (!unrequiredKeys) {
+    if (!optionalKeys) {
         if (Object.keys(reqObject).length < validKeys.length) {
             throw new Error(`Missing key(s) in requisition. Valid keys are: ${validKeys.join(", ")}.`)
         } else if (Object.keys(reqObject).length > validKeys.length) {
@@ -73,7 +74,7 @@ export const verifyKeys = (reqObject: any, validKeys: string[], unrequiredKeys?:
         }
     } else {
         const requiredKeys = validKeys.reduce((requiredArray: string[], currentKey: string): string[] => {
-            if (!unrequiredKeys.includes(currentKey)) {
+            if (!optionalKeys.includes(currentKey)) {
                 return [...requiredArray, currentKey]
             } else return [...requiredArray]
         }, [])

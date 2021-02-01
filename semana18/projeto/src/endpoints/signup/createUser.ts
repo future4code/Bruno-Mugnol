@@ -15,12 +15,12 @@ import { USER_ROLES } from '../../types/types'
 
 const createUser = async (req: Request, res: Response): Promise<void> => {
     const validBodyKeys = ["name", "email", "password", "role"]
-    const unrequiredBodyKey = ["role"]
+    const optionalBodyKey = ["role"]
 
     try {
         res.statusCode = 422
 
-        verifyKeys(req.body, validBodyKeys, unrequiredBodyKey)
+        verifyKeys(req.body, validBodyKeys, optionalBodyKey)
         verifyString(req.body)
 
         const { name, email, password, role = USER_ROLES.NORMAL } = req.body
