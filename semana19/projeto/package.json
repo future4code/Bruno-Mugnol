@@ -6,7 +6,10 @@
    "scripts": {
       "my-sql-setup":"tsc && node ./build/mySqlSetup.js",
       "start": "npm run build && node --inspect ./build/src/index.js",
-      "dev": "clear && ts-node-dev ./src/index.ts",
+      "dev": "ts-node-dev ./src/index.ts",
+      "extra1": "tsc ./exerciciosPOO/extra1.ts && node ./exerciciosPOO/extra1.js",
+      "extra2": "tsc ./exerciciosPOO/extra2.ts && node ./exerciciosPOO/extra2.js",
+      "extra3": "tsc ./exerciciosPOO/extra3.ts && node ./exerciciosPOO/extra3.js",
       "build": "clear && echo \"Transpiling files...\" && tsc && echo \"Done!\" ",
       "test": "jest"
    },
