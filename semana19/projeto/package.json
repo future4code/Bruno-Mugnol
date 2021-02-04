@@ -4,7 +4,7 @@
    "description": "",
    "main": "index.js",
    "scripts": {
-      "my-sql-setup":"tsc && node ./build/mySqlSetup.js",
+      "my-sql-setup": "tsc && node ./build/mySqlSetup.js",
       "start": "npm run build && node --inspect ./build/src/index.js",
       "dev": "ts-node-dev ./src/index.ts",
       "extra1": "tsc ./exerciciosPOO/extra1.ts && node ./exerciciosPOO/extra1.js",
