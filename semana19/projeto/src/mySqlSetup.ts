@@ -1,6 +1,6 @@
-import {connection} from "./index"
+import { connection } from "./data/configurations/connection"
 
-async function createTables(){
+async function createTables() {
    try {
       await connection.raw(`
          CREATE TABLE labook_users(
