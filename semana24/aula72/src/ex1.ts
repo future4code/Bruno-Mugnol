@@ -41,7 +41,7 @@ const checkIfOneEdit = (original: string, edited: string): boolean => {
             // Original string has 1 less character: character added case
 
             for (let i = 0; i < original.length; i++) {
-                if (edited[i] !== original[i] && edited[i + 1] !== edited[i]) {
+                if (edited[i] !== original[i] && edited[i + 1] !== original[i]) {
                     mismatchCount++
                 }
             }
@@ -58,9 +58,11 @@ const checkIfOneEdit = (original: string, edited: string): boolean => {
     return false
 }
 
-console.log(checkIfOneEdit("banana", "banan"))
-console.log(checkIfOneEdit("banana", "bananaa"))
-console.log(checkIfOneEdit("banana", "bananaaa"))
-console.log(checkIfOneEdit("banana", "banaa"))
-console.log(checkIfOneEdit("banana", "banaga"))
-console.log(checkIfOneEdit("banana", "banagaa"))
+console.log(checkIfOneEdit("banana", "banan")) // true
+console.log(checkIfOneEdit("banana", "bananaa")) // true
+console.log(checkIfOneEdit("banana", "bananaaa")) // false
+console.log(checkIfOneEdit("banana", "bananna")) // true
+console.log(checkIfOneEdit("banana", "banaa")) // true
+console.log(checkIfOneEdit("banana", "banaga"))  // true
+console.log(checkIfOneEdit("banana", "banagaa"))  // false
+console.log(checkIfOneEdit("banana", "panaga"))  // false
