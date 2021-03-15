@@ -1,0 +1,16 @@
+{
+  "name": "problem-solving",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ex1": "tsc && node ./build/ex1.js",
+    "ex2": "tsc && node ./build/ex2.js"
+  },
+  "author": "Bruno Mugnol",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.1.3"
+  }
+}
