@@ -5,6 +5,7 @@ export class LinkedListNode {
     ) { }
 }
 
+
 export class LinkedList {
     constructor(
         public start?: LinkedListNode
@@ -24,10 +25,23 @@ export class LinkedList {
             node.next = new LinkedListNode(value)
         }
     }
+
+
+    public printAll = () => {
+        let node = this.start
+        console.log(node?.value)
+
+        while (node!.next !== undefined) {
+            node = node!.next
+            console.log(node.value)
+        }
+    }
 }
 
 
 const names: LinkedList = new LinkedList(new LinkedListNode("billy"))
 names.push("bob")
+names.push("joaquim")
 
 console.log(JSON.stringify(names, null, 2))
+names.printAll()
