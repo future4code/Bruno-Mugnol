@@ -6,7 +6,7 @@ export class Stack {
     ) { }
 
 
-    public isEmpty = () => this.frames.start === undefined
+    public isEmpty = (): boolean => this.frames.start === undefined
 
 
     public push = (value: any): void => {
