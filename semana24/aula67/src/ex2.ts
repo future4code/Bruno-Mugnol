@@ -1,43 +1,59 @@
+import { LinkedList, LinkedListNode } from "./ex1"
+
 export class Stack {
     constructor(
-        public frames: any[] = []
+        public frames: LinkedList
     ) { }
 
 
-    public isEmpty = () => this.frames.length === 0
+    public isEmpty = () => this.frames.start === undefined
 
 
     public push = (value: any): void => {
-        this.frames[this.frames.length] = value
+        this.frames.push(value)
     }
 
 
-    public pop = (): void => {
-        const popped = this.frames[this.frames.length - 1]
-
-        this.frames.length--
-
-        return popped
-    }
-
-
-    public print = (): void => {
-        if (this.frames.length === 0) return
-
-        for (const frame of this.frames) {
-            console.log(frame)
+    public pop = (): any | void => {
+        if (this.frames.start === undefined) {
+            return
+        } else if (this.frames.start.next === undefined) {
+            const startFrame = this.frames.start
+            this.frames.start = undefined
+            return startFrame
         }
+
+        let node = this.frames.start
+
+        while (node!.next!.next !== undefined) {
+            node = node!.next!
+        }
+
+        const popped = node.next!
+        node.next = undefined
+        
+        return popped.value
     }
+
+
+    public print = (): void => { this.frames.printAll() }
 }
 
 
-const oldStack = new Stack()
+const oldStack = new Stack(new LinkedList())
 console.log(oldStack.isEmpty())
 
+const newLinkedList = new LinkedList(
+    new LinkedListNode(
+        1, new LinkedListNode(2,
+            new LinkedListNode(3)
+        )
+    )
+)
+const newStack = new Stack(newLinkedList)
+console.log(newStack.isEmpty())
 
-const newStack = new Stack([1, 2, 3, 4, 5])
-
-newStack.push(6)
+newStack.push(4)
 newStack.print()
 
 console.log("popped:", newStack.pop())
