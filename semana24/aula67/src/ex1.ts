@@ -43,5 +43,5 @@ const names: LinkedList = new LinkedList(new LinkedListNode("billy"))
 names.push("bob")
 names.push("joaquim")
 
-console.log(JSON.stringify(names, null, 2))
-names.printAll()
+// console.log(JSON.stringify(names, null, 2))
+// names.printAll()
