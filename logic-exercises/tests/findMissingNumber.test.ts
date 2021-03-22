@@ -12,6 +12,31 @@ describe("Testing findMissingNumber", () => {
         expect(result).toBe(33)
     })
 
+
+    it("Should return 33, but for unordered array", () => {
+        const numberArray: number[] = []
+
+        for (let i = 100; i >= 1; i--) numberArray.push(i)
+        numberArray.splice(67, 1)
+
+        const result = findMissingNumber(numberArray)
+
+        expect(result).toBe(33)
+    })
+
+
+    it("Should return 100", () => {
+        const numberArray: number[] = []
+
+        for (let i = 1; i <= 100; i++) numberArray.push(i)
+        numberArray.splice(99, 1)
+
+        const result = findMissingNumber(numberArray)
+
+        expect(result).toBe(100)
+    })
+
+
     it("Should return undefined if no number is missing", () => {
         const numberArray: number[] = []
 
