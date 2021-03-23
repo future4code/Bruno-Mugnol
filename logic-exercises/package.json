@@ -1,0 +1,18 @@
+{
+  "name": "logic-exercises",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": "node ./node_modules/jest/bin/jest.js",
+    "ex1": "tsc && node ./build/findMissingNumber.js"
+  },
+  "author": "Bruno Mugnol",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^26.0.21",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.5.4",
+    "typescript": "^4.1.3"
+  }
+}
