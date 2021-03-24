@@ -27,6 +27,8 @@ export const checkBrackets = (str: string): boolean => {
             if (!isPair) return false
         }
     }
+    
+    if (stack.length > 0) return false
 
     return true
 }
