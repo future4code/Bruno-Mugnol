@@ -4,10 +4,11 @@
   "description": "",
   "main": "",
   "scripts": {
-    "test": "clear && node ./node_modules/jest/bin/jest.js",
+    "test": "clear && node ./node_modules/jest/bin/jest.js -t findLongestCommonPrefix",
     "ex1": "tsc && node ./build/src/findMissingNumber.js",
     "ex2": "tsc && node ./build/src/indexOf.js",
-    "ex3": "tsc && node ./build/src/checkBrackets.js"
+    "ex3": "tsc && node ./build/src/checkBrackets.js",
+    "ex4": "tsc && node ./build/src/findLongestCommonPrefix.js"
   },
   "author": "Bruno Mugnol",
   "license": "ISC",
