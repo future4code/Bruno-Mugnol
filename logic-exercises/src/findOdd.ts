@@ -14,7 +14,7 @@ const findOdd = (input: number[]): number => {
     }, {})
 
     for (const num in numberCount) {
-        if (numberCount[num] % 2 !== 0) return Number(num)
+        if (numberCount[num] % 2 === 1) return Number(num)
     }
 
     return NaN
