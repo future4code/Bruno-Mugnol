@@ -9,7 +9,8 @@
     "ex2": "tsc && node ./build/src/indexOf.js",
     "ex3": "tsc && node ./build/src/checkBrackets.js",
     "ex4": "tsc && node ./build/src/findLongestCommonPrefix.js",
-    "ex5": "tsc && node ./build/src/nonAdjacentHighestSum.js"
+    "ex5": "tsc && node ./build/src/nonAdjacentHighestSum.js",
+    "ex8": "tsc && node ./build/src/twoSum.js"
   },
   "author": "Bruno Mugnol",
   "license": "ISC",
