@@ -10,6 +10,8 @@
     "ex3": "tsc && node ./build/src/checkBrackets.js",
     "ex4": "tsc && node ./build/src/findLongestCommonPrefix.js",
     "ex5": "tsc && node ./build/src/nonAdjacentHighestSum.js",
+    "ex6": "tsc && node ./build/src/findOdd.js",
+    "ex7": "tsc && node ./build/src/isAnagram.js",
     "ex8": "tsc && node ./build/src/twoSum.js"
   },
   "author": "Bruno Mugnol",
